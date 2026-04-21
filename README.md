@@ -17,7 +17,7 @@
 | Danny Cordero Arrieta           | 2023042387  | Fuente de datos transaccional + ETL        |
 | Raquel Gómez Vargas             | 20220502    | Modelo dimensional                         |
 | Mariana Herrera Bermúdez        | 2023800120  | Comprensión del caso + documentación       |
-| Randall Marcelo Sánchez Ortiz   | —           | Solución analítica (dashboard) + ETL       |
+| Randall Marcelo Sánchez Ortiz   | 2023177127  | Solución analítica (dashboard) + ETL       |
 
 ---
 
