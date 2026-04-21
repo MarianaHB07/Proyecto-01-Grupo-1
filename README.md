@@ -359,4 +359,4 @@ python export_tables_to_csv.py
 ## 📄 Licencia
 
 Material académico para uso interno del curso TI-6900 del TEC, I Semestre 2026.  
-No distribuir fuera del grupo sin autorización del profesor.
+
