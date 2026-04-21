@@ -1,0 +1,16 @@
+id_sucursal,nombre_sucursal,direccion,id_provincia,fecha_apertura,gerente,telefono
+1,Sucursal 01 - Ampliación Laureano,"Boulevard Tailandia 819 Edif. 600 , Depto. 133, Nueva Ucrania, TAB 79402",6,2012-07-01,Jacinto Ledesma,351-161-5594
+2,Sucursal 02 - Pasaje Terán,"Privada Lozada 959 Edif. 310 , Depto. 341, Nueva Letonia, NAY 52553-4192",1,2016-03-03,Dr. Dalia Ríos,483-503-0564x139
+3,Sucursal 03 - Calzada Zacatecas,"Circuito Chile 884 969, San Jos de la Montaña, DF 10122-6916",2,2015-01-03,Rubén Rocha,480-184-5146x2704
+4,Sucursal 04 - Periférico Bulgaria,"Corredor Costa Rica 809 Edif. 570 , Depto. 154, Nueva Filipinas, COL 71822",2,2012-04-19,Paulina de Jesús,896-383-4657
+5,Sucursal 05 - Boulevard Sur Garza,"Prolongación Urrutia 930 103, Nueva Islas Marshall, COAH 47382",6,2022-03-26,Ing. Mario Guerra,631.165.6670x106
+6,Sucursal 06 - Boulevard Michoacán de Ocampo,"Calle Norte Elizondo 731 Interior 781, Nueva Bosnia y Herzegovina, MICH 67736",1,2019-06-19,Daniel Ojeda Acevedo,474-687-2343x098
+7,Sucursal 07 - Continuación Báez,"Andador Palau 219 136, Nueva República Federal Democrática de Nepal, BCS 69985",1,2010-09-02,Emilia Yolanda Martínez Griego,624-751-0799
+8,Sucursal 08 - Avenida Terrazas,"Corredor Belarús 542 784, Vieja Suecia, CHIS 41182",1,2014-11-27,Guillermina Salma Gaitán Montalvo,1-487-401-6400
+9,Sucursal 09 - Calle Morelos,"Privada Sur Carrasco 280 598, Vieja Camerún, BCS 50533-1586",2,2021-05-02,Dr. Eva Curiel,(602)563-4216
+10,Sucursal 10 - Peatonal Garibay,"Circunvalación México 036 541, San Jerónimo los altos, SON 01429-4019",5,2010-08-06,Jaime Martínez,(981)693-4060x883
+11,Sucursal 11 - Eje vial Coahuila de Zaragoza,"Circunvalación Sarabia 656 Interior 482, Vieja Suiza, SIN 99468",5,2014-06-17,Hernán Llamas Gaitán,(995)777-3872x148
+12,Sucursal 12 - Avenida Michoacán de Ocampo,"Calle Arabia Saudita 379 176, Vieja Nueva Zelandia, SON 20163",6,2022-03-23,Norma Marisol Arteaga,(317)278-8957x9868
+13,Sucursal 13 - Callejón Norte Rascón,"Periférico Zacatecas 347 Edif. 143 , Depto. 455, Nueva Colombia, MEX 23166-5876",4,2014-12-11,Emiliano Peres Ordóñez,1-096-705-4668x8937
+14,Sucursal 14 - Circuito Mauricio,"Continuación Norte de Jesús 298 Interior 069, Nueva Somalia, TAMPS 72046",4,2016-03-28,Eric María Elena Mena Miranda,464-170-8053x100
+15,Sucursal 15 - Calzada Antigua y Barbuda,"Peatonal Suriname 937 452, Nueva Indonesia, CHIS 49663",7,2010-02-23,Rosalia Guerra Canales,1-491-905-8651x85067

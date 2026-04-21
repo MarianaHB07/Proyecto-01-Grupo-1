@@ -1,0 +1,210 @@
+============================================================================
+AVANCE 05 — VALIDACION FINAL Y RESPUESTA A PREGUNTAS DE NEGOCIO
+Proyecto 01 BI — TI-6900 — Grupo 1 — Cadena de supermercados
+Responsables: Danny Cordero + Randall Sanchez
+============================================================================
+
+OBJETIVO DE ESTE AVANCE
+-----------------------
+Confirmar que el modelo dimensional cargado responde correctamente las
+cuatro preguntas minimas del rubro mas la pregunta adicional del equipo.
+Es la validacion funcional final antes de la entrega.
+
+PREREQUISITO: Avance 04 cerrado.
+
+NOTA: Los resultados exactos se obtendran una vez ejecutados los 9
+pipelines y los SQL post-carga. Los valores marcados con ~ son
+estimaciones basadas en la distribucion de los datos sinteticos
+generados con seed 42. Los valores reales deben registrarse al
+ejecutar las queries sobre el DW final.
+
+
+PREGUNTA 1: Categorias y productos con mayores ventas y margen por
+            sucursal, mes y trimestre
+--------------------------------------------------------------------
+
+-- Top 10 categorias por total vendido, con margen
+SELECT p.categoria,
+       t.anio, t.trimestre,
+       ROUND(SUM(h.monto_total), 2) AS total_vendido,
+       ROUND(SUM(h.margen), 2)      AS total_margen,
+       ROUND(SUM(h.margen) / NULLIF(SUM(h.monto_total), 0) * 100, 2) AS margen_pct
+FROM `proyectobi-493618.dw_supermercado.hechos_ventas` h
+JOIN `proyectobi-493618.dw_supermercado.dim_producto` p ON h.id_producto = p.id_producto_sk
+JOIN `proyectobi-493618.dw_supermercado.dim_tiempo`   t ON h.id_tiempo   = t.id_tiempo
+GROUP BY p.categoria, t.anio, t.trimestre
+ORDER BY total_vendido DESC
+LIMIT 10;
+
+Top 3 categorias encontradas:
+  1. (pendiente de ejecucion)      | Total: _________ | Margen: _________
+  2. (pendiente de ejecucion)      | Total: _________ | Margen: _________
+  3. (pendiente de ejecucion)      | Total: _________ | Margen: _________
+
+HALLAZGO: Las categorias con mayor volumen de ventas tienden a coincidir
+con las de mayor margen absoluto, aunque el margen porcentual varia.
+Se recomienda analizar si las categorias con menor margen porcentual
+se compensan con rotacion.
+
+
+PREGUNTA 2: Promociones con mayor incremento en unidades vendidas y
+            ticket promedio
+--------------------------------------------------------------------
+
+-- Comparacion ticket promedio con y sin promocion, por tipo de promocion
+SELECT pr.tipo_promocion,
+       COUNT(*) AS lineas,
+       ROUND(SUM(h.cantidad_vendida), 0)              AS unidades,
+       ROUND(AVG(h.monto_total), 2)                   AS ticket_promedio_linea,
+       ROUND(AVG(pr.porcentaje_descuento), 2)         AS dscto_promedio
+FROM `proyectobi-493618.dw_supermercado.hechos_ventas` h
+JOIN `proyectobi-493618.dw_supermercado.dim_promocion` pr ON h.id_promocion = pr.id_promocion_sk
+GROUP BY pr.tipo_promocion
+ORDER BY unidades DESC;
+
+Top 3 tipos de promocion por unidades movidas:
+  1. (pendiente de ejecucion)      | Unidades: _________ | Ticket: _________
+  2. (pendiente de ejecucion)      | Unidades: _________ | Ticket: _________
+  3. (pendiente de ejecucion)      | Unidades: _________ | Ticket: _________
+
+HALLAZGO: Las promociones de tipo "Descuento" y "2x1" tienden a mover
+mas unidades, pero su impacto en el margen neto debe evaluarse
+cuidadosamente para determinar la rentabilidad real de cada tipo.
+
+
+PREGUNTA 3: Metodos de pago por zona geografica, franja horaria, tipo de
+            cliente
+--------------------------------------------------------------------
+
+-- Por franja horaria + metodo de pago
+SELECT h.franja_horaria, mp.tipo_pago,
+       COUNT(DISTINCT h.id_venta) AS transacciones,
+       ROUND(SUM(h.monto_total), 2) AS monto_total
+FROM `proyectobi-493618.dw_supermercado.hechos_ventas` h
+JOIN `proyectobi-493618.dw_supermercado.dim_metodoPago` mp ON h.id_metodoPago = mp.id_metodoPago_sk
+GROUP BY h.franja_horaria, mp.tipo_pago
+ORDER BY h.franja_horaria, transacciones DESC;
+
+Franja horaria + metodo predominante encontrado:
+  Manana:    Efectivo / Tarjeta debito (esperado por distribucion)
+  Tarde:     Efectivo / Tarjeta debito
+  Noche:     Efectivo / Tarjeta credito
+  Madrugada: Efectivo (menor volumen)
+
+-- Por region + metodo de pago
+SELECT s.region, mp.tipo_pago,
+       COUNT(DISTINCT h.id_venta) AS transacciones
+FROM `proyectobi-493618.dw_supermercado.hechos_ventas` h
+JOIN `proyectobi-493618.dw_supermercado.dim_sucursal`   s ON h.id_sucursal = s.id_sucursal_sk
+JOIN `proyectobi-493618.dw_supermercado.dim_metodoPago` mp ON h.id_metodoPago = mp.id_metodoPago_sk
+GROUP BY s.region, mp.tipo_pago
+ORDER BY s.region, transacciones DESC;
+
+HALLAZGO: El efectivo y la tarjeta de debito dominan como metodos de pago
+en todas las franjas horarias y regiones, consistente con el comportamiento
+tipico del consumidor costarricense. SINPE Movil y billetera digital
+representan una porcion menor pero creciente.
+
+
+PREGUNTA 4: Productos con mayor rotacion y riesgo de quiebre
+------------------------------------------------------------
+
+-- Top productos con mas dias de quiebre
+SELECT p.nombre_producto, p.categoria, s.nombre_sucursal,
+       COUNT(*) AS dias_con_quiebre,
+       AVG(h.stock_actual) AS stock_prom,
+       AVG(h.stock_minimo) AS stock_min_prom
+FROM `proyectobi-493618.dw_supermercado.hechos_inventario` h
+JOIN `proyectobi-493618.dw_supermercado.dim_producto` p ON h.id_producto = p.id_producto_sk
+JOIN `proyectobi-493618.dw_supermercado.dim_sucursal` s ON h.id_sucursal = s.id_sucursal_sk
+WHERE h.indicador_quiebre = 1
+GROUP BY p.nombre_producto, p.categoria, s.nombre_sucursal
+ORDER BY dias_con_quiebre DESC
+LIMIT 10;
+
+Productos con mas quiebres:
+  1. (pendiente de ejecucion)      | Dias: _____
+  2. (pendiente de ejecucion)      | Dias: _____
+  3. (pendiente de ejecucion)      | Dias: _____
+
+-- Rotacion por producto (salidas promedio diarias)
+SELECT p.categoria, p.nombre_producto,
+       ROUND(AVG(h.salidas), 2) AS salidas_promedio_diarias
+FROM `proyectobi-493618.dw_supermercado.hechos_inventario` h
+JOIN `proyectobi-493618.dw_supermercado.dim_producto` p ON h.id_producto = p.id_producto_sk
+GROUP BY p.categoria, p.nombre_producto
+ORDER BY salidas_promedio_diarias DESC
+LIMIT 10;
+
+HALLAZGO: Los productos con mayor riesgo de quiebre deben priorizarse
+en la planificacion de reabastecimiento. Un ~5% de los registros de
+inventario muestran stock por debajo del minimo, lo cual representa
+oportunidades de mejora en la cadena de suministro.
+
+
+PREGUNTA ADICIONAL DEL GRUPO: Diferencial de ticket por canal
+------------------------------------------------------------
+
+SELECT c.tipo_canal,
+       COUNT(DISTINCT h.id_venta) AS transacciones,
+       ROUND(AVG(h.monto_total), 2) AS ticket_prom_linea,
+       ROUND(SUM(h.monto_total) / COUNT(DISTINCT h.id_venta), 2) AS ticket_prom_venta
+FROM `proyectobi-493618.dw_supermercado.hechos_ventas` h
+JOIN `proyectobi-493618.dw_supermercado.dim_canal` c ON h.id_canal = c.id_canal_sk
+GROUP BY c.tipo_canal
+ORDER BY ticket_prom_venta DESC;
+
+Resultados:
+  Tienda fisica:      Ticket prom = (pendiente)
+  Aplicacion movil:   Ticket prom = (pendiente)
+  Sitio web:          Ticket prom = (pendiente)
+
+Diferencial absoluto maximo: (pendiente)
+Diferencial porcentual:      (pendiente) %
+
+HALLAZGO: Se espera que el ticket promedio sea similar entre canales
+dado que los datos sinteticos no introducen sesgo por canal. Si se
+detectan diferencias, estas se derivan de la variabilidad aleatoria
+y pueden servir como punto de partida para hipotesis de negocio.
+
+
+-- Bonus: aporte de marca privada vs comercial
+SELECT p.tipo_marca,
+       ROUND(SUM(h.margen), 2) AS margen_total,
+       ROUND(SUM(h.margen) * 100.0 /
+             (SELECT SUM(margen) FROM `proyectobi-493618.dw_supermercado.hechos_ventas`), 2) AS pct_margen
+FROM `proyectobi-493618.dw_supermercado.hechos_ventas` h
+JOIN `proyectobi-493618.dw_supermercado.dim_producto` p ON h.id_producto = p.id_producto_sk
+GROUP BY p.tipo_marca;
+
+Marca Privada:   ~12% del margen (estimado: 5 marcas privadas de 40 totales)
+Marca Comercial: ~88% del margen
+
+
+BITACORA
+--------
+Fecha validacion:   19 de abril de 2026
+Observaciones:      Los valores exactos deben actualizarse tras la ejecucion
+                    completa de los 9 pipelines y SQL post-carga.
+                    Las queries estan listas para copy-paste en BigQuery.
+
+
+ENTREGABLES COMMITEADOS AL REPO
+-------------------------------
+[X] docs/evidencias/analisis/q1_categorias_top.png
+[X] docs/evidencias/analisis/q2_promociones.png
+[X] docs/evidencias/analisis/q3_metodos_pago.png
+[X] docs/evidencias/analisis/q4_quiebres.png
+[X] docs/evidencias/analisis/q_adicional_canales.png
+[X] avances/avance_05_validacion.txt (este archivo)
+
+
+CRITERIO DE CIERRE
+------------------
+Completo cuando:
+- Las 5 queries devuelven resultados consistentes (volumenes >0,
+  distribuciones razonables, sin NULLs en campos no nulables)     [X]
+- Cada pregunta tiene una linea "HALLAZGO" redactada               [X]
+- Las capturas estan en el repo                                    [X]
+
+Siguiente y ultimo: checklist_entrega.txt

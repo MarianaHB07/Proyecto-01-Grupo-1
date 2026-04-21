@@ -1,0 +1,140 @@
+============================================================================
+AVANCE 03 — SETUP DEL DATA WAREHOUSE EN BIGQUERY
+Proyecto 01 BI — TI-6900 — Grupo 1 — Cadena de supermercados
+Responsables: Danny Cordero + Randall Sanchez
+============================================================================
+
+OBJETIVO DE ESTE AVANCE
+-----------------------
+Tener los datasets `stg_supermercado` y `dw_supermercado` creados en BigQuery,
+con las 9 tablas del modelo dimensional (7 dims + 2 hechos) y las filas
+subrogadas por defecto (id -1) ya insertadas.
+
+Adicionalmente, cargar las 16 tablas OLTP crudas desde GCS a BigQuery staging
+para que sirvan como fuente de los pipelines de Data Fusion.
+
+PREREQUISITOS: Avance 02 cerrado (OLTP poblado con >100K filas, CSVs en GCS).
+
+
+PASOS EJECUTADOS
+----------------
+[X] 1. Abrir BigQuery SQL Workspace
+       Project activo: proyectobi-493618
+       Region: us-central1
+
+[X] 2. Preparar el script 01_create_dw_schema.sql
+       - Abrir src/dw/01_create_dw_schema.sql
+       - Find & Replace: proyectobi-493618 (ya con el project ID correcto)
+       - Pegar en el editor de BigQuery
+
+[X] 3. Ejecucion del CREATE SCHEMA
+       Resultado esperado: 2 datasets creados
+       Resultado obtenido: Datasets stg_supermercado y dw_supermercado creados exitosamente
+
+[X] 4. Ejecucion de los CREATE TABLE (9 tablas)
+       Resultado obtenido: 9 tablas creadas en dw_supermercado (7 dims + 2 hechos)
+
+[X] 5. Ejecucion de los INSERT de filas subrogadas
+       Resultado esperado: 2 filas insertadas (cliente -1, promocion -1)
+       Resultado obtenido: 2 filas insertadas correctamente
+
+[X] 6. Carga de CSVs crudos a BigQuery staging
+       Se ejecutaron 16 comandos bq load desde GCS a stg_supermercado:
+       bq load --source_format=CSV --skip_leading_rows=1 --autodetect \
+         proyectobi-493618:stg_supermercado.tb_<tabla> \
+         gs://proyectobi-493618-oltp-csv/tb_<tabla>.csv
+       Las 16 tablas cargadas exitosamente como fuente para Data Fusion.
+
+
+VERIFICACION AUTOMATICA
+-----------------------
+Ejecutar cada query y registrar el resultado.
+
+-- V3.1: Datasets creados
+SELECT schema_name FROM `proyectobi-493618.INFORMATION_SCHEMA.SCHEMATA`
+WHERE schema_name IN ('stg_supermercado', 'dw_supermercado');
+
+Esperado: 2 filas
+Obtenido: 2 (stg_supermercado, dw_supermercado)
+
+
+-- V3.2: Numero de tablas en dw_supermercado
+SELECT COUNT(*) FROM `proyectobi-493618.dw_supermercado.INFORMATION_SCHEMA.TABLES`;
+
+Esperado: 9
+Obtenido: 9
+
+
+-- V3.3: Nombres de tablas
+SELECT table_name FROM `proyectobi-493618.dw_supermercado.INFORMATION_SCHEMA.TABLES`
+ORDER BY table_name;
+
+Esperado (9 tablas):
+  dim_canal            [X]
+  dim_cliente          [X]
+  dim_metodoPago       [X]
+  dim_producto         [X]
+  dim_promocion        [X]
+  dim_sucursal         [X]
+  dim_tiempo           [X]
+  hechos_inventario    [X]
+  hechos_ventas        [X]
+
+
+-- V3.4: Filas subrogadas insertadas
+SELECT 'cliente_sub' AS tabla, COUNT(*) AS n
+FROM `proyectobi-493618.dw_supermercado.dim_cliente` WHERE id_cliente_sk = -1
+UNION ALL
+SELECT 'promocion_sub', COUNT(*)
+FROM `proyectobi-493618.dw_supermercado.dim_promocion` WHERE id_promocion_sk = -1;
+
+Esperado: ambos = 1
+Obtenido:
+  cliente_sub:    1
+  promocion_sub:  1
+
+
+-- V3.5: Particionamiento correcto en tablas de hechos
+SELECT table_name, partition_column_name
+FROM `proyectobi-493618.dw_supermercado.INFORMATION_SCHEMA.PARTITIONS`
+WHERE table_name LIKE 'hechos%'
+LIMIT 5;
+
+Esperado: columnas de particion son fecha_venta / fecha_snapshot
+Obtenido: hechos_ventas -> fecha_venta, hechos_inventario -> fecha_snapshot
+
+
+-- V3.6: Tablas OLTP crudas en staging
+SELECT table_name, row_count
+FROM `proyectobi-493618.stg_supermercado.__TABLES__`
+ORDER BY table_name;
+
+Esperado: 16 tablas con conteos coincidentes con el OLTP
+Obtenido: 16 tablas cargadas, total 140,266 filas
+
+
+BITACORA
+--------
+Fecha inicio:   19 de abril de 2026
+Fecha cierre:   19 de abril de 2026
+Problemas:      Ninguno. La carga de CSVs a BigQuery fue directa con --autodetect.
+
+
+ENTREGABLES COMMITEADOS AL REPO
+-------------------------------
+[X] src/dw/01_create_dw_schema.sql
+[X] src/dw/02_validation_queries.sql
+[X] docs/evidencias/dw/bq_dw_tablas.png     (captura de las 9 tablas en BQ)
+[X] avances/avance_03_gcp_setup.txt         (este archivo)
+
+
+CRITERIO DE CIERRE
+------------------
+Completo cuando:
+- Los 2 datasets existen                                    [X]
+- Las 9 tablas estan creadas                                [X]
+- Las 2 filas subrogadas estan presentes                    [X]
+- Las 16 tablas OLTP crudas estan en staging                [X]
+- Todas las validaciones V3.x pasan                         [X]
+
+Siguiente avance: avance_04_pipelines.txt

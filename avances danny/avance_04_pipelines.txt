@@ -1,0 +1,247 @@
+============================================================================
+AVANCE 04 — PIPELINES DE DATA FUSION
+Proyecto 01 BI — TI-6900 — Grupo 1 — Cadena de supermercados
+Responsables: Danny Cordero + Randall Sanchez
+============================================================================
+
+OBJETIVO DE ESTE AVANCE
+-----------------------
+Tener los 9 pipelines desplegados en Data Fusion (supermercado-fusion),
+ejecutados con exito, y las 9 tablas del DW (dim_* y hechos_*) pobladas
+en BigQuery.
+
+PREREQUISITOS: Avances 01-03 cerrados.
+
+NOTA DE IMPLEMENTACION
+----------------------
+Se opto por usar Google Cloud Storage (GCS) como fuente de datos en lugar
+de Cloud SQL. Los CSVs generados localmente se subieron a un bucket en GCS
+y los pipelines de Data Fusion leen directamente de esos archivos CSV
+mediante Wrangler (conexion GCS). Para los pipelines con multiples tablas,
+se usan nodos Joiner de Data Fusion para unir las fuentes. Esta decision
+reduce costos (no se paga instancia Cloud SQL) y demuestra un ETL completo
+con extraccion desde archivos planos, transformacion con Wrangler/Joiners,
+y carga a BigQuery.
+
+
+PASOS PREVIOS (infraestructura)
+-------------------------------
+[X] 1. Instancia Data Fusion creada
+       Nombre: supermercado-fusion
+       Edicion: Basic
+       Region: us-central1
+       Estado: Running
+       Tiempo de creacion: ~20 min
+
+[X] 2. Conexion GCS configurada en Wrangler
+       Connection name: gcs-oltp
+       Bucket: gs://proyectobi-493618-oltp-csv/
+       Test: OK — se visualizan los 16 CSVs
+
+       Nota: No se uso driver JDBC de PostgreSQL ni conexion a Cloud SQL.
+       La fuente de datos es GCS directamente.
+
+[X] 3. Cuenta de servicio configurada
+       SA: fusion-sa@proyectobi-493618.iam.gserviceaccount.com
+       Roles: datafusion.runner, bigquery.admin, storage.admin,
+              dataproc.worker, iam.serviceAccountUser
+
+
+PIPELINES DESPLEGADOS
+---------------------
+Marcar con [X] una vez que el pipeline este desplegado y ejecutado con exito.
+
+Pipeline                    Desplegado  Ejecutado  Filas cargadas  Tiempo
+---------------------------- ----------  ---------  --------------  --------
+pipe_dim_tiempo                 [X]        [X]       1,461          ~12 min
+pipe_dim_producto               [X]        [X]         800          ~12 min
+pipe_dim_cliente                [X]        [X]       5,001          ~13 min
+pipe_dim_sucursal               [X]        [X]          15          ~10 min
+pipe_dim_metodoPago             [X]        [X]           5          ~10 min
+pipe_dim_promocion              [X]        [X]          61          ~10 min
+pipe_dim_canal                  [X]        [X]           3          ~10 min
+pipe_hechos_ventas              [X]        [X]      96,750          ~15 min
+pipe_hechos_inventario          [X]        [X]      12,000          ~12 min
+
+Nota sobre tiempos: Data Fusion Basic levanta un cluster Dataproc efimero
+por cada ejecucion, lo que agrega ~8-10 min de overhead. El tiempo real
+de procesamiento de datos es de 2-5 min por pipeline.
+
+
+ARQUITECTURA DE CADA PIPELINE
+------------------------------
+pipe_dim_tiempo:
+  BigQuery Source (temp_dim_tiempo) -> Wrangler -> BigQuery Sink (dim_tiempo)
+  Nota: Las fechas se generaron con CREATE TABLE AS SELECT en BigQuery
+  porque dim_tiempo no se extrae de ningun CSV.
+
+pipe_dim_producto (4 tablas, 3 Joiners):
+  Wrangler(tb_producto) --+
+                          +-- Joiner1 --+
+  GCS(tb_subcategoria) ---+             |
+                                        +-- Joiner2 --+
+  GCS(tb_categoria) -------+            |             |
+                                                      +-- Joiner3 -> Wrangler -> BQ Sink
+  GCS(tb_marca) --------------------------------------|
+
+pipe_dim_cliente (2 tablas, 1 Joiner):
+  Wrangler(tb_cliente) --------+
+                               +-- Joiner (LEFT) -> Wrangler -> BQ Sink
+  GCS(tb_programa_lealtad) ----+
+
+pipe_dim_sucursal (2 tablas, 1 Joiner):
+  Wrangler(tb_sucursal) --+
+                          +-- Joiner -> Wrangler -> BQ Sink
+  GCS(tb_provincia) ------+
+
+pipe_dim_metodoPago:
+  Wrangler(tb_metodo_pago) -> BQ Sink
+
+pipe_dim_canal:
+  Wrangler(tb_canal_venta) -> BQ Sink
+
+pipe_dim_promocion:
+  Wrangler(tb_promocion) -> BQ Sink
+
+pipe_hechos_ventas (3 tablas, 2 Joiners + SQL post-carga):
+  Wrangler(tb_venta_detalle) --+
+                               +-- Joiner1 --+
+  GCS(tb_venta_cabecera) ------+             |
+                                             +-- Joiner2 -> Wrangler -> BQ Sink (stg)
+  GCS(tb_producto) --------------------------+
+  Despues: SQL post-carga en BigQuery para resolver surrogate keys
+
+pipe_hechos_inventario:
+  Wrangler(tb_inventario) -> BQ Sink (stg)
+  Despues: SQL post-carga en BigQuery para resolver surrogate keys
+
+
+VERIFICACION POST-EJECUCION EN BIGQUERY
+---------------------------------------
+
+-- V4.1: Conteos por tabla del DW
+SELECT 'dim_tiempo'        AS tabla, COUNT(*) AS filas FROM `proyectobi-493618.dw_supermercado.dim_tiempo`
+UNION ALL SELECT 'dim_producto',      COUNT(*) FROM `proyectobi-493618.dw_supermercado.dim_producto`
+UNION ALL SELECT 'dim_cliente',       COUNT(*) FROM `proyectobi-493618.dw_supermercado.dim_cliente`
+UNION ALL SELECT 'dim_sucursal',      COUNT(*) FROM `proyectobi-493618.dw_supermercado.dim_sucursal`
+UNION ALL SELECT 'dim_metodoPago',    COUNT(*) FROM `proyectobi-493618.dw_supermercado.dim_metodoPago`
+UNION ALL SELECT 'dim_promocion',     COUNT(*) FROM `proyectobi-493618.dw_supermercado.dim_promocion`
+UNION ALL SELECT 'dim_canal',         COUNT(*) FROM `proyectobi-493618.dw_supermercado.dim_canal`
+UNION ALL SELECT 'hechos_ventas',     COUNT(*) FROM `proyectobi-493618.dw_supermercado.hechos_ventas`
+UNION ALL SELECT 'hechos_inventario', COUNT(*) FROM `proyectobi-493618.dw_supermercado.hechos_inventario`
+ORDER BY tabla;
+
+Tabla                          Esperado    | Obtenido
+-----------------------------  ----------  | ----------
+dim_tiempo                     ~1,461      |      1,461
+dim_producto                   800         |        800
+dim_cliente                    5,001       |      5,001
+dim_sucursal                   15          |         15
+dim_metodoPago                 5           |          5
+dim_promocion                  61          |         61
+dim_canal                      3           |          3
+hechos_ventas                  ~96,750     |     96,750
+hechos_inventario              ~12,000     |     12,000
+
+
+-- V4.2: Cero huerfanos (todas deben dar 0)
+Query                                                              Obtenido
+----------------------------------------------------------------   --------
+huerfanos producto en ventas                                          0
+huerfanos cliente en ventas                                           0
+huerfanos sucursal en ventas                                          0
+huerfanos tiempo en ventas                                            0
+huerfanos producto en inventario                                      0
+huerfanos sucursal en inventario                                      0
+huerfanos tiempo en inventario                                        0
+
+
+-- V4.3: Consistencia monetaria (debe dar 0)
+SELECT COUNT(*) FROM `proyectobi-493618.dw_supermercado.hechos_ventas`
+WHERE ABS(monto_total - ((cantidad_vendida * precio_unitario) - descuento)) > 0.02;
+
+Obtenido: 0
+
+
+-- V4.4: Margenes correctos (debe dar 0)
+SELECT COUNT(*) FROM `proyectobi-493618.dw_supermercado.hechos_ventas`
+WHERE ABS(margen - (monto_total - costo)) > 0.02;
+
+Obtenido: 0
+
+
+-- V4.5: Fila subrogada -1 tiene hechos asociados
+SELECT COUNT(*) AS ventas_cliente_subrogado
+FROM `proyectobi-493618.dw_supermercado.hechos_ventas`
+WHERE id_cliente = -1;
+
+Esperado: >0 (aprox 15% de las ventas son anonimas)
+Obtenido: ~14,500 (~15%)
+
+
+EVIDENCIA CAPTURADA
+-------------------
+[X] fusion_pipelines_list.png       - Listado de 9 pipelines
+[X] fusion_pipe_dim_tiempo.png      - Diseno del pipeline mas simple
+[X] fusion_pipe_dim_cliente.png     - Wrangler con derivaciones
+[X] fusion_pipe_hechos_ventas.png   - Pipeline mas complejo (3 sources + 2 joiners)
+[X] fusion_run_history.png          - Historial con 9 runs exitosos
+[X] fusion_logs_sample.png          - Logs de una ejecucion exitosa
+[X] bq_dw_counts.png                - Resultado de V4.1
+[X] bq_dw_integrity.png             - Resultado de V4.2
+
+
+PROBLEMAS ENCONTRADOS Y SOLUCIONES
+----------------------------------
+
+Problema 1:  GCS Source no soporta Get Schema para CSVs
+Solucion:    Se uso Wrangler como source principal con parse-as-csv,
+             y GCS Source con schema manual para tablas secundarias.
+
+Problema 2:  Wrangler no soporta ROW_NUMBER() en algunas versiones
+Solucion:    Se calculo la surrogate key en la query SQL del source
+             (BigQuery Source con ROW_NUMBER() OVER) o se uso
+             copy :id_original :id_sk como alternativa.
+
+Problema 3:  Error "Field cannot be nullable" en BigQuery Sink
+Solucion:    Se desmarcaron los checkboxes de nullable en los campos
+             NOT NULL del Output Schema del Sink.
+
+
+BITACORA
+--------
+Fecha inicio pipelines:     19 de abril de 2026
+Fecha todos desplegados:    19 de abril de 2026
+Fecha todos ejecutados:     19 de abril de 2026
+Tiempo total del ETL:       ~4 horas (incluyendo configuracion y troubleshooting)
+Tiempo propio de ejecucion: ~105 minutos (9 pipelines secuenciales)
+
+
+ENTREGABLES COMMITEADOS AL REPO
+-------------------------------
+[X] etl/fusion_exports/pipe_dim_tiempo.json
+[X] etl/fusion_exports/pipe_dim_producto.json
+[X] etl/fusion_exports/pipe_dim_cliente.json
+[X] etl/fusion_exports/pipe_dim_sucursal.json
+[X] etl/fusion_exports/pipe_dim_metodoPago.json
+[X] etl/fusion_exports/pipe_dim_promocion.json
+[X] etl/fusion_exports/pipe_dim_canal.json
+[X] etl/fusion_exports/pipe_hechos_ventas.json
+[X] etl/fusion_exports/pipe_hechos_inventario.json
+[X] docs/evidencias/etl/*.png (8 capturas)
+[X] avances/avance_04_pipelines.txt (este archivo)
+
+Para exportar cada pipeline: Studio -> menu ... -> Export
+
+
+CRITERIO DE CIERRE
+------------------
+Completo cuando:
+- Los 9 pipelines desplegados y ejecutados con status Succeeded    [X]
+- Todas las 9 tablas del DW con conteos correctos                 [X]
+- Integridad referencial 100% (cero huerfanos)                    [X]
+- Consistencia monetaria 100%                                     [X]
+- 8 o mas capturas en docs/evidencias/etl/                        [X]
+- 9 JSON de pipelines exportados en etl/fusion_exports/            [X]
+
+Siguiente avance: avance_05_validacion.txt

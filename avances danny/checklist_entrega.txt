@@ -1,0 +1,230 @@
+============================================================================
+CHECKLIST FINAL DE ENTREGA
+Proyecto 01 BI — TI-6900 — Grupo 1 — Cadena de supermercados
+Fecha limite: 21 de abril de 2026, 23:45
+Valor: 20% de la nota final del curso
+============================================================================
+
+Este archivo centraliza TODO lo que debe estar listo antes de la entrega.
+Marca con [X] cada item completado. Revisa en conjunto con todo el grupo
+al menos 24 horas antes del deadline.
+
+
+============================================================================
+A. CONTENIDO DEL INFORME (PDF)
+============================================================================
+
+Rubro Comprension del caso (10%) — Responsable: Mariana Herrera
+  [ ] 1.1 Descripcion del caso de supermercado
+  [ ] 1.2 Objetivo general del proyecto
+  [ ] 1.3 Preguntas de negocio (4 obligatorias + 1 adicional)
+  [ ] 1.4 Indicadores derivados de cada pregunta
+  [ ] 1.5 Alcance y supuestos del proyecto
+
+Rubro Fuente de datos transaccional (parte del 10% base) — Danny Cordero
+  [X] 2.1 Enfoque general y herramienta elegida
+  [X] 2.2 Justificacion de PostgreSQL local + exportacion a GCS
+  [X] 2.3 Diagrama ER con 16 tablas
+  [X] 2.4 Captura del diagrama ER insertada en el docx
+  [X] 2.5 Tabla inventario de entidades y volumenes
+  [X] 2.6 Restricciones y supuestos
+  [X] 2.7 Estrategia de generacion sintetica (Faker, seed 42, 140,266 filas)
+  [X] 2.8 Trazabilidad OLTP -> dimensional
+
+Rubro Modelo dimensional (20%) — Responsable: Raquel Gomez
+  [ ] 3.1 Esquema estrella con 7 dims + 2 hechos
+  [ ] 3.2 Diagrama dimensional
+  [ ] 3.3 Descripcion de cada dimension
+  [ ] 3.4 Granularidad y medidas de cada tabla de hechos
+  [ ] 3.5 Justificacion de estrella vs copo de nieve
+
+Rubro Diseno e implementacion del ETL (20%) — Danny + Randall
+  [X] 4.1 Herramienta (Data Fusion) y justificacion
+  [X] 4.2 Arquitectura GCP completa (GCS -> Data Fusion -> BigQuery)
+  [X] 4.3 Diagrama de arquitectura (05_diagramas/arquitectura_etl.png)
+  [X] 4.4 Los 9 pipelines documentados
+  [X] 4.5 Cuadro maestro de mapeo ETL (con 7 tablas de reglas)
+  [X] 4.6 Reglas transversales de calidad de datos
+  [X] 4.7 Estrategia de carga (truncate para dims sin subrogada, insert para dims con -1)
+  [X] 4.8 Orquestacion (dim_tiempo primero, dims en paralelo, hechos al final)
+  [X] 4.9 Evidencia: 8 capturas minimas pegadas en el docx
+  [X] 4.10 Conciliacion de volumenes (140,266 filas OLTP -> DW)
+  [X] 4.11 Limitaciones y mejoras futuras
+
+Rubro Solucion analitica (20%) — Responsable: Randall Sanchez
+  [ ] 5.1 Descripcion de la herramienta de visualizacion (Looker Studio)
+  [ ] 5.2 Mockups/capturas del dashboard principal
+  [ ] 5.3 Respuesta visual a las 4 preguntas obligatorias
+  [ ] 5.4 Respuesta a la pregunta adicional del grupo
+  [ ] 5.5 Interpretacion de cada visualizacion
+  [ ] 5.6 Hallazgos y recomendaciones de negocio
+
+Rubro Documentacion tecnica (5%) — Todo el grupo
+  [X] 6.1 README maestro en el repo
+  [ ] 6.2 Instrucciones de reproduccion paso a paso
+  [X] 6.3 Diccionario de datos del DW (06_diccionario/Diccionario_Datos.pdf)
+  [ ] 6.4 Referencias bibliograficas
+
+
+============================================================================
+B. CONTENIDO DEL REPOSITORIO GITHUB (10% de la nota)
+============================================================================
+
+Estructura minima esperada:
+
+  /
+  ├── README.md
+  ├── docs/
+  │   ├── informe.pdf
+  │   ├── presentacion.pdf
+  │   ├── diagramas/
+  │   │   ├── er_oltp.png
+  │   │   ├── arquitectura_etl.png
+  │   │   ├── estrella_dw.png
+  │   │   └── pipelines_orquestacion.png
+  │   ├── diccionario/
+  │   │   ├── Diccionario_Datos.docx
+  │   │   └── Diccionario_Datos.pdf
+  │   └── evidencias/
+  │       ├── oltp/        (capturas del OLTP local)
+  │       ├── etl/         (capturas de Data Fusion y BigQuery)
+  │       └── analisis/    (capturas del dashboard)
+  ├── src/
+  │   ├── oltp/
+  │   │   ├── 01_create_schema.sql
+  │   │   └── 02_drop_all.sql
+  │   ├── data_generation/
+  │   │   ├── generate_oltp_data.py
+  │   │   └── requirements.txt
+  │   └── dw/
+  │       ├── 01_create_dw_schema.sql
+  │       └── 02_validation_queries.sql
+  ├── csv_exports/             (16 archivos CSV)
+  ├── etl/
+  │   ├── DATA_FUSION_GUIDE.md
+  │   ├── wrangler_recipes.txt
+  │   └── fusion_exports/      (JSON de los 9 pipelines)
+  └── avances/                 (archivos .txt de este paquete)
+
+Checks del repo:
+  [X] Repo creado en GitHub con los 4 integrantes como colaboradores
+  [X] README.md presente y completo
+  [X] .gitignore (ignorar venv/, __pycache__/, *.log, credenciales)
+  [X] NO hay passwords ni claves hardcodeadas en ningun archivo
+  [ ] informe.pdf en docs/
+  [ ] presentacion.pdf en docs/
+
+Distribucion de commits (CRITICO — lo evalua la rubrica):
+  [ ] Danny tiene >= 10 commits propios
+  [ ] Randall tiene >= 10 commits propios
+  [ ] Raquel tiene >= 10 commits propios
+  [ ] Mariana tiene >= 10 commits propios
+  [ ] Ningun integrante tiene 0 o 1 commits
+
+
+============================================================================
+C. ENTREGABLES EN FORMATO FISICO
+============================================================================
+
+En la plataforma TEC Digital / Google Classroom:
+  [ ] Informe en PDF (un solo archivo, no enlaces externos)
+  [ ] Link al repositorio GitHub
+  [ ] Presentacion PDF/PPT (separada del informe)
+
+Portada oficial TEC verificada:
+  [X] Logo TEC arriba izquierda
+  [X] Escuela de Computacion
+  [X] Carrera: Administracion de Tecnologia de Informacion
+  [X] Curso: TI-6900 Inteligencia de Negocios
+  [X] Profesor: Lic. Michael Lizandro Sanchez Soto
+  [X] Titulo del proyecto
+  [X] Nombres y carnes de los 4 integrantes
+  [X] Grupo: 1
+  [X] Fecha: 21 de abril de 2026
+  [X] I Semestre 2026
+
+
+============================================================================
+D. PRESENTACION ORAL (15% de la nota)
+============================================================================
+
+  [ ] Fecha asignada por el profesor: ___________________
+  [ ] Hora asignada: ___________________
+  [ ] Presentacion creada (15-20 slides)
+  [ ] Ensayo grupal 1 realizado (fecha): ___________________
+  [ ] Ensayo grupal 2 realizado (fecha): ___________________
+  [ ] Ensayo grupal 3 realizado (fecha): ___________________
+  [ ] Tiempo total: 20-25 minutos (verificar con cronometro)
+
+Division de partes en la presentacion:
+  [ ] Introduccion y caso         — Mariana
+  [ ] OLTP y generacion datos     — Danny
+  [ ] Modelo dimensional          — Raquel
+  [ ] ETL y arquitectura          — Danny + Randall
+  [ ] Dashboard y hallazgos       — Randall
+  [ ] Cierre y conclusiones       — Mariana
+
+Requisitos del dia de la exposicion:
+  [ ] Camara prendida en los 4 integrantes
+  [ ] Audio probado en los 4
+  [ ] Acceso a Looker Studio funcionando en vivo (opcional pero suma)
+  [ ] Slides cargadas antes de iniciar
+  [ ] Link de respaldo del repo a la mano
+
+
+============================================================================
+E. AVANCES ESCRITOS COMPLETADOS
+============================================================================
+
+  [X] avance_01_oltp.txt           (Danny — verificado por Danny)
+  [X] avance_02_datos.txt          (Danny — verificado por Danny)
+  [X] avance_03_gcp_setup.txt      (Danny + Randall)
+  [X] avance_04_pipelines.txt      (Danny + Randall)
+  [X] avance_05_validacion.txt     (Danny + Randall — pendiente valores finales)
+  [X] checklist_entrega.txt        (este archivo)
+
+
+============================================================================
+F. ULTIMA REVISION (48 horas antes de entrega)
+============================================================================
+
+  [ ] Correr validaciones V1-V6 una vez mas sobre BigQuery
+  [ ] Revisar que la instancia de Data Fusion sigue activa
+  [ ] Revisar que BigQuery tiene los datos (no se han borrado)
+  [ ] Leer el informe completo en voz alta (detecta errores)
+  [ ] Validar que la portada tiene los carnes correctos
+  [ ] Validar que todos los diagramas se ven en el PDF
+  [ ] Validar que no hay capturas en baja resolucion
+  [ ] Revisar ortografia con el corrector del Word
+  [ ] Confirmar que el repo esta publico o con acceso al profesor
+
+
+============================================================================
+G. DESPUES DE LA ENTREGA (ahorro de costos GCP)
+============================================================================
+
+  [ ] Data Fusion instancia borrada (cuesta por hora incluso parada)
+  [ ] Cloud Storage bucket limpio o borrado
+  [ ] BigQuery datasets archivados (baratos, se pueden dejar)
+  Nota: No hay instancia Cloud SQL que borrar (se uso PostgreSQL local)
+
+
+============================================================================
+NOTAS FINALES
+============================================================================
+
+Responsable de este checklist: Danny Cordero Arrieta
+Fecha ultima actualizacion: 19 de abril de 2026
+Estado global: ~65% completo (pendiente: informe final, presentacion,
+               dashboard Looker Studio, commits de todo el equipo)
+
+Cambios respecto al plan original:
+  - Se uso PostgreSQL local en lugar de Cloud SQL (ahorro de costos)
+  - La fuente de Data Fusion es GCS (CSVs) en vez de conexion JDBC a Cloud SQL
+  - Se usan Wrangler + Joiners en Data Fusion para demostrar ETL completo
+  - Los SQL post-carga de hechos se ejecutan en BigQuery Console
+
+Dudas o bloqueos:
+  - Confirmar con el grupo que Mariana y Raquel tienen sus secciones listas
+  - Verificar que Randall tiene Looker Studio conectado al DW
+  - Asegurar que los 4 integrantes tienen >= 10 commits antes de la entrega

@@ -1,0 +1,189 @@
+{
+    "name": "pipe_dim_promocion",
+    "description": "Data Pipeline Application",
+    "artifact": {
+        "name": "cdap-data-pipeline",
+        "version": "6.11.1",
+        "scope": "SYSTEM"
+    },
+    "config": {
+        "resources": {
+            "memoryMB": 2048,
+            "virtualCores": 1
+        },
+        "driverResources": {
+            "memoryMB": 2048,
+            "virtualCores": 1
+        },
+        "connections": [
+            {
+                "from": "GCSFile",
+                "to": "Wrangler"
+            },
+            {
+                "from": "Wrangler",
+                "to": "BigQuery"
+            }
+        ],
+        "postActions": [],
+        "properties": {},
+        "processTimingEnabled": true,
+        "stageLoggingEnabled": true,
+        "stages": [
+            {
+                "name": "GCSFile",
+                "plugin": {
+                    "name": "GCSFile",
+                    "type": "batchsource",
+                    "label": "GCSFile",
+                    "artifact": {
+                        "name": "google-cloud",
+                        "version": "0.24.1",
+                        "scope": "SYSTEM"
+                    },
+                    "properties": {
+                        "copyHeader": "true",
+                        "path": "gs://supermercado_grupo1/tb_promocion.csv",
+                        "fileEncoding": "UTF-8",
+                        "useConnection": "true",
+                        "format": "csv",
+                        "enableQuotedValues": "false",
+                        "connection": "${conn(Cloud Storage Default)}",
+                        "skipHeader": "true",
+                        "referenceName": "scr_dim_promocion",
+                        "schema": "{\"type\":\"record\",\"name\":\"text\",\"fields\":[{\"name\":\"id_promocion\",\"type\":\"int\"},{\"name\":\"descripcion\",\"type\":\"string\"},{\"name\":\"tipo_promocion\",\"type\":\"string\"},{\"name\":\"porcentaje_descuento\",\"type\":\"string\"},{\"name\":\"fecha_inicio\",\"type\":\"string\"},{\"name\":\"fecha_fin\",\"type\":\"string\"}]}",
+                        "sampleSize": "1000",
+                        "filenameOnly": "false",
+                        "recursive": "false",
+                        "ignoreNonExistingFolders": "false",
+                        "encrypted": "false"
+                    }
+                },
+                "outputSchema": [
+                    {
+                        "name": "etlSchemaBody",
+                        "schema": "{\"type\":\"record\",\"name\":\"text\",\"fields\":[{\"name\":\"id_promocion\",\"type\":\"int\"},{\"name\":\"descripcion\",\"type\":\"string\"},{\"name\":\"tipo_promocion\",\"type\":\"string\"},{\"name\":\"porcentaje_descuento\",\"type\":\"string\"},{\"name\":\"fecha_inicio\",\"type\":\"string\"},{\"name\":\"fecha_fin\",\"type\":\"string\"}]}"
+                    }
+                ],
+                "id": "GCSFile",
+                "type": "batchsource",
+                "label": "GCSFile",
+                "icon": "fa-plug",
+                "$$hashKey": "object:32",
+                "isPluginAvailable": true,
+                "_uiPosition": {
+                    "left": "560px",
+                    "top": "356.5px"
+                }
+            },
+            {
+                "name": "Wrangler",
+                "plugin": {
+                    "name": "Wrangler",
+                    "type": "transform",
+                    "label": "Wrangler",
+                    "artifact": {
+                        "name": "wrangler-transform",
+                        "version": "4.11.1",
+                        "scope": "SYSTEM"
+                    },
+                    "properties": {
+                        "directives": "parse-as-csv :body ',' true\r\ndrop :body\r\nrename :id_promocion :id_promocion_nk\r\ncopy :id_promocion_nk :id_promocion_sk force\r\ntrim :descripcion",
+                        "field": "*",
+                        "precondition": "false",
+                        "workspaceId": "c0dc3982-7ae4-49b5-acf1-215e37089aaa",
+                        "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"id_promocion_nk\",\"type\":[\"long\",\"null\"]},{\"name\":\"descripcion\",\"type\":[\"string\",\"null\"]},{\"name\":\"tipo_promocion\",\"type\":[\"string\",\"null\"]},{\"name\":\"porcentaje_descuento\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":77,\"scale\":38},\"null\"]},{\"name\":\"fecha_inicio\",\"type\":[\"string\",\"null\"]},{\"name\":\"fecha_fin\",\"type\":[\"string\",\"null\"]},{\"name\":\"id_promocion_sk\",\"type\":[\"long\",\"null\"]}]}",
+                        "expressionLanguage": "jexl",
+                        "on-error": "fail-pipeline"
+                    }
+                },
+                "outputSchema": [
+                    {
+                        "name": "etlSchemaBody",
+                        "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"id_promocion_nk\",\"type\":[\"long\",\"null\"]},{\"name\":\"descripcion\",\"type\":[\"string\",\"null\"]},{\"name\":\"tipo_promocion\",\"type\":[\"string\",\"null\"]},{\"name\":\"porcentaje_descuento\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":77,\"scale\":38},\"null\"]},{\"name\":\"fecha_inicio\",\"type\":[\"string\",\"null\"]},{\"name\":\"fecha_fin\",\"type\":[\"string\",\"null\"]},{\"name\":\"id_promocion_sk\",\"type\":[\"long\",\"null\"]}]}"
+                    }
+                ],
+                "inputSchema": [
+                    {
+                        "name": "GCSFile",
+                        "schema": "{\"type\":\"record\",\"name\":\"text\",\"fields\":[{\"name\":\"id_promocion\",\"type\":\"int\"},{\"name\":\"descripcion\",\"type\":\"string\"},{\"name\":\"tipo_promocion\",\"type\":\"string\"},{\"name\":\"porcentaje_descuento\",\"type\":\"string\"},{\"name\":\"fecha_inicio\",\"type\":\"string\"},{\"name\":\"fecha_fin\",\"type\":\"string\"}]}"
+                    }
+                ],
+                "id": "Wrangler",
+                "type": "transform",
+                "label": "Wrangler",
+                "icon": "icon-DataPreparation",
+                "$$hashKey": "object:33",
+                "isPluginAvailable": true,
+                "_uiPosition": {
+                    "left": "860px",
+                    "top": "356.5px"
+                }
+            },
+            {
+                "name": "BigQuery",
+                "plugin": {
+                    "name": "BigQueryTable",
+                    "type": "batchsink",
+                    "label": "BigQuery",
+                    "artifact": {
+                        "name": "google-cloud",
+                        "version": "0.24.1",
+                        "scope": "SYSTEM"
+                    },
+                    "properties": {
+                        "useConnection": "true",
+                        "connection": "${conn(BigQuery Default)}",
+                        "referenceName": "sink_dim_promocion",
+                        "dataset": "dw_supermercado",
+                        "table": "dim_promocion",
+                        "operation": "insert",
+                        "truncateTable": "false",
+                        "allowSchemaRelaxation": "false",
+                        "readTimeout": "120",
+                        "location": "US",
+                        "createPartitionedTable": "false",
+                        "partitioningType": "TIME",
+                        "timePartitioningType": "DAY",
+                        "partitionFilterRequired": "false",
+                        "schema": "{\"name\":\"etlSchemaBody\",\"type\":\"record\",\"fields\":[{\"name\":\"id_promocion_sk\",\"type\":\"long\"},{\"name\":\"id_promocion_nk\",\"type\":[\"long\",\"null\"]},{\"name\":\"tipo_promocion\",\"type\":\"string\"},{\"name\":\"descripcion\",\"type\":\"string\"},{\"name\":\"fecha_inicio\",\"type\":[\"string\",\"null\"]},{\"name\":\"fecha_fin\",\"type\":[\"string\",\"null\"]}]}"
+                    }
+                },
+                "outputSchema": [
+                    {
+                        "name": "etlSchemaBody",
+                        "schema": "{\"name\":\"etlSchemaBody\",\"type\":\"record\",\"fields\":[{\"name\":\"id_promocion_sk\",\"type\":\"long\"},{\"name\":\"id_promocion_nk\",\"type\":[\"long\",\"null\"]},{\"name\":\"tipo_promocion\",\"type\":\"string\"},{\"name\":\"descripcion\",\"type\":\"string\"},{\"name\":\"fecha_inicio\",\"type\":[\"string\",\"null\"]},{\"name\":\"fecha_fin\",\"type\":[\"string\",\"null\"]}]}"
+                    }
+                ],
+                "inputSchema": [
+                    {
+                        "name": "Wrangler",
+                        "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"id_promocion_nk\",\"type\":[\"long\",\"null\"]},{\"name\":\"descripcion\",\"type\":[\"string\",\"null\"]},{\"name\":\"tipo_promocion\",\"type\":[\"string\",\"null\"]},{\"name\":\"porcentaje_descuento\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":77,\"scale\":38},\"null\"]},{\"name\":\"fecha_inicio\",\"type\":[\"string\",\"null\"]},{\"name\":\"fecha_fin\",\"type\":[\"string\",\"null\"]},{\"name\":\"id_promocion_sk\",\"type\":[\"long\",\"null\"]}]}"
+                    }
+                ],
+                "id": "BigQuery",
+                "type": "batchsink",
+                "label": "BigQuery",
+                "icon": "fa-plug",
+                "$$hashKey": "object:34",
+                "isPluginAvailable": true,
+                "_uiPosition": {
+                    "left": "1160px",
+                    "top": "356.5px"
+                }
+            }
+        ],
+        "schedule": "0 1 */1 * *",
+        "engine": "spark",
+        "numOfRecordsPreview": 100,
+        "rangeRecordsPreview": {
+            "min": 1,
+            "max": "5000"
+        },
+        "description": "Data Pipeline Application",
+        "maxConcurrentRuns": 1,
+        "pushdownEnabled": false,
+        "transformationPushdown": {}
+    },
+    "version": "a51db80b-3db1-11f1-ae2a-52d867d39b15"
+}

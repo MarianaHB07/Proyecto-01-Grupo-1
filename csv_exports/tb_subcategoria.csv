@@ -1,0 +1,46 @@
+id_subcategoria,nombre_subcategoria,id_categoria
+1,Arroz y granos,1
+2,Aceites,1
+3,Azucar y endulzantes,1
+4,Pastas,1
+5,Salsas,1
+6,Leche liquida,2
+7,Leche en polvo,2
+8,Quesos,2
+9,Yogurt,2
+10,Res,3
+11,Cerdo,3
+12,Pollo,3
+13,Embutidos,3
+14,Pan fresco,4
+15,Galletas,4
+16,Reposteria,4
+17,Frutas,5
+18,Verduras,5
+19,Hierbas,5
+20,Gaseosas,6
+21,Jugos,6
+22,Agua,6
+23,Cervezas,6
+24,Vinos,6
+25,Chips,7
+26,Chocolates,7
+27,Caramelos,7
+28,Higiene bucal,8
+29,Cabello,8
+30,Corporal,8
+31,Detergentes,9
+32,Desinfectantes,9
+33,Papel higienico,9
+34,Alimento perro,10
+35,Alimento gato,10
+36,Accesorios,10
+37,Panales,11
+38,Formulas,11
+39,Helados,12
+40,Comidas preparadas,12
+41,Nueva Carnes y embutidos 40,3
+42,Extra Snacks y confiteria 41,7
+43,Premium Frutas y verduras 42,5
+44,Extra Panaderia 43,4
+45,Premium Lacteos 44,2

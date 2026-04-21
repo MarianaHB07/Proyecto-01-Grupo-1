@@ -1,0 +1,189 @@
+{
+    "name": "fact_inventario",
+    "description": "Data Pipeline Application",
+    "artifact": {
+        "name": "cdap-data-pipeline",
+        "version": "6.11.1",
+        "scope": "SYSTEM"
+    },
+    "config": {
+        "resources": {
+            "memoryMB": 2048,
+            "virtualCores": 1
+        },
+        "driverResources": {
+            "memoryMB": 2048,
+            "virtualCores": 1
+        },
+        "connections": [
+            {
+                "from": "BigQuery",
+                "to": "Wrangler"
+            },
+            {
+                "from": "Wrangler",
+                "to": "BigQuery2"
+            }
+        ],
+        "comments": [],
+        "postActions": [],
+        "properties": {},
+        "processTimingEnabled": true,
+        "stageLoggingEnabled": false,
+        "stages": [
+            {
+                "name": "BigQuery",
+                "plugin": {
+                    "name": "BigQueryTable",
+                    "type": "batchsource",
+                    "label": "BigQuery",
+                    "artifact": {
+                        "name": "google-cloud",
+                        "version": "0.24.1",
+                        "scope": "SYSTEM"
+                    },
+                    "properties": {
+                        "useConnection": "true",
+                        "dataset": "stg_supermercado",
+                        "table": "temp_hechos_inventario",
+                        "readTimeout": "120",
+                        "enableQueryingViews": "false",
+                        "schema": "{\"type\":\"record\",\"name\":\"output\",\"fields\":[{\"name\":\"id_inventario\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_tiempo\",\"type\":[\"long\",\"null\"]},{\"name\":\"fecha_snapshot\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"id_producto\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_sucursal\",\"type\":[\"long\",\"null\"]},{\"name\":\"stock_actual\",\"type\":[\"long\",\"null\"]},{\"name\":\"stock_minimo\",\"type\":[\"long\",\"null\"]},{\"name\":\"entradas\",\"type\":[\"long\",\"null\"]},{\"name\":\"salidas\",\"type\":[\"long\",\"null\"]},{\"name\":\"indicador_quiebre\",\"type\":[\"long\",\"null\"]}]}",
+                        "connection": "${conn(BigQuery Default)}"
+                    }
+                },
+                "outputSchema": [
+                    {
+                        "name": "etlSchemaBody",
+                        "schema": "{\"type\":\"record\",\"name\":\"output\",\"fields\":[{\"name\":\"id_inventario\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_tiempo\",\"type\":[\"long\",\"null\"]},{\"name\":\"fecha_snapshot\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"id_producto\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_sucursal\",\"type\":[\"long\",\"null\"]},{\"name\":\"stock_actual\",\"type\":[\"long\",\"null\"]},{\"name\":\"stock_minimo\",\"type\":[\"long\",\"null\"]},{\"name\":\"entradas\",\"type\":[\"long\",\"null\"]},{\"name\":\"salidas\",\"type\":[\"long\",\"null\"]},{\"name\":\"indicador_quiebre\",\"type\":[\"long\",\"null\"]}]}"
+                    }
+                ],
+                "id": "BigQuery",
+                "type": "batchsource",
+                "label": "BigQuery",
+                "icon": "fa-plug",
+                "$$hashKey": "object:33",
+                "isPluginAvailable": true,
+                "_uiPosition": {
+                    "left": "560px",
+                    "top": "356.5px"
+                }
+            },
+            {
+                "name": "Wrangler",
+                "plugin": {
+                    "name": "Wrangler",
+                    "type": "transform",
+                    "label": "Wrangler",
+                    "artifact": {
+                        "name": "wrangler-transform",
+                        "version": "4.11.1",
+                        "scope": "SYSTEM"
+                    },
+                    "properties": {
+                        "field": "*",
+                        "expressionLanguage": "jexl",
+                        "precondition": "false",
+                        "on-error": "fail-pipeline",
+                        "schema": "{\"type\":\"record\",\"name\":\"output\",\"fields\":[{\"name\":\"id_inventario\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_tiempo\",\"type\":[\"long\",\"null\"]},{\"name\":\"fecha_snapshot\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"id_producto\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_sucursal\",\"type\":[\"long\",\"null\"]},{\"name\":\"stock_actual\",\"type\":[\"long\",\"null\"]},{\"name\":\"stock_minimo\",\"type\":[\"long\",\"null\"]},{\"name\":\"entradas\",\"type\":[\"long\",\"null\"]},{\"name\":\"salidas\",\"type\":[\"long\",\"null\"]},{\"name\":\"indicador_quiebre\",\"type\":[\"long\",\"null\"]}]}"
+                    }
+                },
+                "outputSchema": [
+                    {
+                        "name": "etlSchemaBody",
+                        "schema": "{\"type\":\"record\",\"name\":\"output\",\"fields\":[{\"name\":\"id_inventario\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_tiempo\",\"type\":[\"long\",\"null\"]},{\"name\":\"fecha_snapshot\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"id_producto\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_sucursal\",\"type\":[\"long\",\"null\"]},{\"name\":\"stock_actual\",\"type\":[\"long\",\"null\"]},{\"name\":\"stock_minimo\",\"type\":[\"long\",\"null\"]},{\"name\":\"entradas\",\"type\":[\"long\",\"null\"]},{\"name\":\"salidas\",\"type\":[\"long\",\"null\"]},{\"name\":\"indicador_quiebre\",\"type\":[\"long\",\"null\"]}]}"
+                    }
+                ],
+                "inputSchema": [
+                    {
+                        "name": "BigQuery",
+                        "schema": "{\"type\":\"record\",\"name\":\"output\",\"fields\":[{\"name\":\"id_inventario\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_tiempo\",\"type\":[\"long\",\"null\"]},{\"name\":\"fecha_snapshot\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"id_producto\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_sucursal\",\"type\":[\"long\",\"null\"]},{\"name\":\"stock_actual\",\"type\":[\"long\",\"null\"]},{\"name\":\"stock_minimo\",\"type\":[\"long\",\"null\"]},{\"name\":\"entradas\",\"type\":[\"long\",\"null\"]},{\"name\":\"salidas\",\"type\":[\"long\",\"null\"]},{\"name\":\"indicador_quiebre\",\"type\":[\"long\",\"null\"]}]}"
+                    }
+                ],
+                "id": "Wrangler",
+                "type": "transform",
+                "label": "Wrangler",
+                "icon": "icon-DataPreparation",
+                "$$hashKey": "object:34",
+                "isPluginAvailable": true,
+                "_uiPosition": {
+                    "left": "860px",
+                    "top": "356.5px"
+                }
+            },
+            {
+                "name": "BigQuery2",
+                "plugin": {
+                    "name": "BigQueryTable",
+                    "type": "batchsink",
+                    "label": "BigQuery2",
+                    "artifact": {
+                        "name": "google-cloud",
+                        "version": "0.24.1",
+                        "scope": "SYSTEM"
+                    },
+                    "properties": {
+                        "useConnection": "true",
+                        "dataset": "dw_supermercado",
+                        "table": "hechos_inventario",
+                        "operation": "insert",
+                        "truncateTable": "true",
+                        "allowSchemaRelaxation": "false",
+                        "readTimeout": "120",
+                        "location": "US",
+                        "createPartitionedTable": "false",
+                        "partitioningType": "TIME",
+                        "timePartitioningType": "DAY",
+                        "partitionFilterRequired": "false",
+                        "schema": "{\"name\":\"etlSchemaBody\",\"type\":\"record\",\"fields\":[{\"name\":\"id_inventario\",\"type\":\"long\"},{\"name\":\"id_tiempo\",\"type\":\"long\"},{\"name\":\"fecha_snapshot\",\"type\":{\"type\":\"int\",\"logicalType\":\"date\"}},{\"name\":\"id_producto\",\"type\":\"long\"},{\"name\":\"id_sucursal\",\"type\":\"long\"},{\"name\":\"stock_actual\",\"type\":\"long\"},{\"name\":\"stock_minimo\",\"type\":\"long\"},{\"name\":\"entradas\",\"type\":\"long\"},{\"name\":\"salidas\",\"type\":\"long\"},{\"name\":\"indicador_quiebre\",\"type\":\"long\"}]}",
+                        "connection": "${conn(BigQuery Default)}"
+                    }
+                },
+                "information": {
+                    "comments": {
+                        "list": [
+                            {
+                                "content": "",
+                                "createDate": 1776643804396
+                            }
+                        ]
+                    }
+                },
+                "outputSchema": [
+                    {
+                        "name": "etlSchemaBody",
+                        "schema": "{\"name\":\"etlSchemaBody\",\"type\":\"record\",\"fields\":[{\"name\":\"id_inventario\",\"type\":\"long\"},{\"name\":\"id_tiempo\",\"type\":\"long\"},{\"name\":\"fecha_snapshot\",\"type\":{\"type\":\"int\",\"logicalType\":\"date\"}},{\"name\":\"id_producto\",\"type\":\"long\"},{\"name\":\"id_sucursal\",\"type\":\"long\"},{\"name\":\"stock_actual\",\"type\":\"long\"},{\"name\":\"stock_minimo\",\"type\":\"long\"},{\"name\":\"entradas\",\"type\":\"long\"},{\"name\":\"salidas\",\"type\":\"long\"},{\"name\":\"indicador_quiebre\",\"type\":\"long\"}]}"
+                    }
+                ],
+                "inputSchema": [
+                    {
+                        "name": "Wrangler",
+                        "schema": "{\"type\":\"record\",\"name\":\"output\",\"fields\":[{\"name\":\"id_inventario\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_tiempo\",\"type\":[\"long\",\"null\"]},{\"name\":\"fecha_snapshot\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"id_producto\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_sucursal\",\"type\":[\"long\",\"null\"]},{\"name\":\"stock_actual\",\"type\":[\"long\",\"null\"]},{\"name\":\"stock_minimo\",\"type\":[\"long\",\"null\"]},{\"name\":\"entradas\",\"type\":[\"long\",\"null\"]},{\"name\":\"salidas\",\"type\":[\"long\",\"null\"]},{\"name\":\"indicador_quiebre\",\"type\":[\"long\",\"null\"]}]}"
+                    }
+                ],
+                "id": "BigQuery2",
+                "type": "batchsink",
+                "label": "BigQuery2",
+                "icon": "fa-plug",
+                "$$hashKey": "object:35",
+                "isPluginAvailable": true,
+                "_uiPosition": {
+                    "left": "1160px",
+                    "top": "356.5px"
+                }
+            }
+        ],
+        "schedule": "0 1 */1 * *",
+        "engine": "spark",
+        "numOfRecordsPreview": 100,
+        "rangeRecordsPreview": {
+            "min": 1,
+            "max": "5000"
+        },
+        "description": "Data Pipeline Application",
+        "maxConcurrentRuns": 1,
+        "pushdownEnabled": false,
+        "transformationPushdown": {}
+    },
+    "version": "7149e82f-3c82-11f1-a6f9-52d867d39b15"
+}

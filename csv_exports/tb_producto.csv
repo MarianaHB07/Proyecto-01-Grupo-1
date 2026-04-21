@@ -1,0 +1,801 @@
+id_producto,codigo_barras,nombre_producto,id_subcategoria,id_marca,id_proveedor,precio_unitario,costo_unitario,unidad_medida,peso_gramos,activo
+1,5242962370884,conjunto de instrucciones 6ta generación enfocado a ganancias,5,14,19,18290.92,13170.24,ML,1019.30,True
+2,4225258329500,adaptador no-volátil configurable,8,10,21,4129.65,2567.73,GR,205.64,True
+3,9598076526144,groupware tangible proactivo,17,33,25,4970.20,2844.05,LT,2112.09,True
+4,1319995413982,productividad multimedia preventivo,16,37,3,2189.17,1467.67,UN,2446.06,True
+5,1691569976736,función coherente persistente,24,29,17,9282.04,6881.99,UN,878.31,True
+6,2206298026219,adaptador interactiva expandido,37,37,16,5632.98,3796.36,ML,516.50,True
+7,4447690438214,solución no-volátil optimizado,28,12,9,12153.73,7046.90,UN,1135.67,True
+8,5098998142403,array basado en necesidades descentralizado,25,17,15,7154.10,4421.69,GR,1671.58,True
+9,1207030495058,extranet basado en necesidades versátil,5,39,3,13670.26,10193.15,UN,2356.91,True
+10,5006532632164,interfaz secundaria multiplataforma,5,1,15,14444.77,9393.16,UN,229.49,True
+11,2988318769608,conjunto de instrucciones incremental de arquitectura abierta,20,7,5,7133.14,4114.10,GR,430.85,True
+12,2368529068031,emulación intermedia expandido,17,11,24,10940.37,6739.17,GR,73.69,True
+13,8958511387882,archivo regional digitalizado,16,7,12,20325.74,11745.72,ML,2435.90,True
+14,9217141974672,paralelismo regional enfocado,11,7,13,22482.38,13108.07,KG,538.95,True
+15,3882632073568,jerarquía logística en toda la empresa,22,2,4,17881.92,13180.17,GR,2408.21,True
+16,1473653527095,encriptar cliente-servidor en toda la empresa,43,13,12,11647.82,6583.20,LT,1576.73,True
+17,1956365163715,firmware dinámica extendido,26,36,1,6229.20,4697.35,GR,1536.32,True
+18,4657976266092,línea segura basado en contenido configurable,20,15,7,2923.02,2380.84,ML,1547.62,True
+19,4857331688872,contingencia tolerancia cero reducido,45,34,15,1272.91,943.23,UN,1168.33,True
+20,6959867585874,migración sistémica centrado en el usuario,17,16,21,7173.42,4304.21,ML,1585.53,True
+21,0223512670454,metodologías sistémica en red,14,27,13,21073.08,13591.61,UN,2148.99,True
+22,3037894756224,estandarización intangible ergonómico,2,25,11,16955.62,10099.33,KG,2109.24,True
+23,9595604812343,matrices asíncrona reactivo,25,18,25,20744.80,14277.82,UN,1202.25,True
+24,0920900286241,matrices tolerancia cero multicanal,14,30,23,5674.56,3992.41,GR,1537.76,True
+25,1891036937066,previsión transicional clonado,7,20,22,11563.26,9086.09,GR,1967.46,True
+26,4353881968747,conjunto recíproca configurable,42,18,20,18520.57,12161.35,ML,1188.94,True
+27,5329247563434,interfaz gráfica orientado a objetos progresivo,23,17,11,6758.75,4338.95,LT,1411.69,True
+28,1245247402426,alianza asimétrica opcional,24,31,18,11726.30,8057.64,GR,860.44,True
+29,2211157124795,base de trabajo monitorizada por red enfocado al cliente,19,7,7,6494.00,4584.45,LT,84.66,True
+30,2956184854410,software uniforme con ingeniería inversa,31,8,3,7629.06,6130.47,UN,421.73,True
+31,9025456739254,instalación orientado a objetos centrado en el usuario,37,40,2,15162.35,9222.54,KG,1582.51,True
+32,0251464022802,estructura de precios 6ta generación progresivo,17,38,22,15953.27,12097.80,UN,1384.18,True
+33,9801375216695,productividad discreta en red,32,29,3,15691.20,9050.94,LT,1529.10,True
+34,2685078571542,línea segura óptima con ingeniería inversa,38,28,21,21824.03,12250.83,ML,902.50,True
+35,6836298543394,complejidad asimétrica progresivo,33,1,22,19301.86,13066.64,UN,509.58,True
+36,7672594619621,medición local multiplataforma,36,1,18,8326.96,6238.26,UN,1180.55,True
+37,8475289253958,sistema abierto didáctica enfocado al negocio,5,18,25,17231.23,11892.09,GR,704.57,False
+38,7856844373989,extranet neutral programable,16,37,13,6089.63,3656.72,UN,829.53,True
+39,9397619193180,paralelismo escalable exclusivo,30,1,24,4019.59,2333.50,KG,233.33,True
+40,2630365968456,implementación misión crítica mandatorio,16,19,8,16432.43,11252.14,UN,1912.91,True
+41,1120303424611,instalación multiestado de arquitectura abierta,40,25,20,15451.15,10310.39,GR,400.64,True
+42,2208961435642,sinergia uniforme centralizado,20,13,13,16216.21,12829.36,ML,1451.21,True
+43,9296256706492,estandarización intermedia compatible,15,39,12,4522.10,3441.27,LT,1710.52,True
+44,6869634570271,hardware generada por el cliente total,9,35,12,14083.71,8056.62,KG,679.58,True
+45,4873191987998,sinergia modular mandatorio,24,6,13,617.91,406.00,ML,953.03,True
+46,2363646936664,firmware valor añadido ergonómico,45,20,21,8014.89,6242.78,UN,795.69,True
+47,0814679471404,hardware bidireccional centrado en el usuario,27,18,2,13857.25,10416.15,ML,2378.86,True
+48,0659331184665,superestructura basado en el contexto open-source,2,4,11,4853.25,3804.82,GR,552.75,True
+49,5582775299571,interfaz gráfica motivadora diverso,2,9,1,9205.15,5501.99,GR,843.24,True
+50,0757475159078,protocolo bidireccional multilateral,34,20,15,11847.43,9721.44,ML,2125.88,True
+51,1748311657352,proceso de mejora móvil basado en objetos,33,39,14,2703.68,1667.84,GR,1816.06,True
+52,4234404631908,desafío secundaria enfocado al cliente,6,28,4,15972.54,11219.92,KG,1413.11,True
+53,5313678796352,estructura nacional de tamaño adecuado,43,31,8,17963.81,12739.67,GR,950.52,True
+54,5889866098217,implementación 3ra generación optimizado,20,22,12,499.99,290.37,GR,1660.49,True
+55,7905341339581,interfaz gráfica direccional basado en funcionalidad,40,4,22,2063.08,1407.41,ML,1239.87,True
+56,2714264603503,soporte radical enfocado,14,9,25,5561.92,3981.69,UN,1268.59,True
+57,1525633744034,emulación sensible al contexto ergonómico,26,27,10,2309.32,1904.57,LT,471.09,True
+58,4634144087270,archivo homogénea personalizable,41,8,17,13507.82,7747.29,LT,910.19,True
+59,6112117096455,sistema abierto estable seguro,44,37,21,15121.06,9602.42,LT,419.85,True
+60,4320534080886,alianza local diverso,33,25,15,15578.63,8788.88,UN,1151.85,True
+61,6341018375124,protocolo móvil ergonómico,29,34,17,13084.35,9225.12,LT,999.17,True
+62,6063353289610,concepto direccional expandido,43,10,12,7635.78,4791.43,ML,365.93,True
+63,0563179990650,fuerza de trabajo neutral enfocado al negocio,20,12,7,8726.07,5257.64,KG,605.03,True
+64,0817880371318,intranet metódica implementado,40,11,24,9659.21,6677.57,KG,2425.49,True
+65,7722979165477,matrices vía web mandatorio,33,34,14,24508.26,14500.77,GR,389.08,True
+66,6851882729149,metodologías explícita compartible,15,29,12,20243.09,13970.98,ML,1279.92,True
+67,9309867128617,encriptar incremental reactivo,29,40,1,16483.18,13606.69,KG,2095.66,True
+68,7512304741950,fidelidad misión crítica actualizable,33,37,8,14894.82,10834.46,UN,1556.28,True
+69,4609055953469,matrices orientado a objetos mandatorio,17,2,12,16699.82,11870.10,UN,1940.18,True
+70,3058174668074,iniciativa recíproca seguro,19,13,2,20619.12,11908.42,LT,2336.76,True
+71,9527137831387,base del conocimiento dedicada de primera línea,25,22,6,11304.51,7543.81,GR,703.47,True
+72,4491213247144,línea segura sensible al contexto integrado,23,40,14,7623.06,4263.42,UN,233.85,True
+73,3869167007335,aplicación optimizada opcional,39,10,22,9757.25,6858.85,ML,1919.56,True
+74,5362174352249,estructura de precios cliente-servidor robusto,19,32,7,3449.12,2015.03,ML,473.01,True
+75,9899675221771,capacidad holística multiplataforma,24,33,8,2636.11,1996.16,KG,630.00,True
+76,3549180374445,concepto heurística progresivo,9,21,21,1919.86,1297.64,GR,894.06,True
+77,7619490111373,orquestar basado en el contexto enfocado a ganancias,34,19,3,6180.20,3908.96,GR,722.41,True
+78,6065516939080,array ejecutiva progresivo,42,37,9,16330.68,9836.72,ML,1564.37,True
+79,8563284461443,jerarquía 4ta generación preventivo,10,21,23,8831.19,4925.88,LT,2439.67,True
+80,3534220236281,aplicación motivadora con ingeniería inversa,21,37,24,8004.51,4828.18,ML,2490.13,True
+81,8403425025862,infraestructura tolerante a fallos organizado,1,7,14,2964.97,2182.24,LT,1921.45,True
+82,4515057296193,inteligencia artificial misión crítica fundamental,22,36,12,15006.56,11373.48,GR,1033.40,True
+83,0785181933685,algoritmo intangible personalizable,33,33,18,11455.86,7449.73,ML,2048.58,True
+84,6957760497757,website intermedia en toda la empresa,38,31,6,12994.15,7958.64,ML,412.05,True
+85,0910316479870,circuito 5ta generación mandatorio,9,34,7,15292.44,8501.12,ML,1337.42,True
+86,1933776661252,modelo sensible al contexto reactivo,20,19,23,5303.47,3267.71,LT,1225.52,True
+87,9725583371090,metodologías vía web adaptativo,29,17,24,9632.33,7290.37,GR,714.28,True
+88,2172092213461,inteligencia artificial 3ra generación integrado,36,11,14,17046.77,9862.81,ML,1219.75,True
+89,9369055799181,definición basado en contenido orientado a equipos,3,26,16,4877.96,2957.41,LT,2198.02,False
+90,5192954984111,línea segura secundaria proactivo,30,17,23,4853.26,2955.75,LT,1441.06,True
+91,1888506113222,gestión presupuestaria holística implementado,18,22,10,13616.32,8820.42,LT,1651.52,True
+92,0134587319262,funcionalidad cohesiva centralizado,9,31,5,12434.19,6933.68,LT,1068.82,True
+93,4562278047050,encriptar multitarea llave pública,36,33,7,11191.25,8675.98,LT,2143.49,True
+94,6748401455630,arquitectura coherente reducido,17,1,24,4260.00,3424.94,ML,894.10,True
+95,9909047796493,protocolo orientada a soluciones asimilado,25,25,3,16456.92,10304.41,GR,375.83,True
+96,1931987947432,estandarización regional actualizable,30,23,5,7542.60,4279.62,UN,128.93,True
+97,6982054682045,encriptar basado en el contexto monitoreado,4,9,17,19978.16,14903.55,GR,831.31,True
+98,6331623098964,red de area local 24 horas operativo,32,4,12,22656.43,14135.48,GR,830.90,True
+99,1374837895951,encriptar tangible preventivo,16,17,7,6346.85,5087.89,ML,2125.48,True
+100,7126681775483,núcleo bidireccional seguro,1,14,7,18342.84,14438.75,ML,2290.38,True
+101,7323246338487,implementación asíncrona seguro,21,14,12,5930.02,4831.25,KG,1866.07,False
+102,5572125259374,portal recíproca con ingeniería inversa,42,32,15,4510.86,2689.86,KG,392.90,True
+103,1899580800160,estructura de precios 3ra generación organizado,10,1,7,10942.61,7684.85,GR,1612.44,True
+104,9605407525649,modelo 6ta generación organizado,12,7,4,10704.08,7960.90,GR,1339.82,True
+105,2334592686870,infraestructura amplio abanico asimilado,25,25,18,11461.75,7244.88,KG,252.58,True
+106,6399892965296,conjunto asíncrona open-source,18,35,19,12997.70,9940.02,LT,88.36,True
+107,1889255865377,encriptar tolerancia cero descentralizado,45,6,17,15810.29,11232.76,UN,1120.87,True
+108,3793702943946,proyecto intermedia mejorado,43,25,3,16014.51,11628.08,KG,1797.12,True
+109,1767310332114,analista maximizada sincronizado,36,33,14,2167.44,1728.74,GR,278.01,True
+110,3323099951313,soporte didáctica enfocado a la calidad,32,10,3,3652.47,2674.67,LT,1236.37,True
+111,2265113936833,caja de herramientas optimizada cara a cara,42,39,5,7257.40,4646.44,KG,1223.57,True
+112,3376973273919,circuito asíncrona llave pública,12,36,1,21127.32,14304.47,KG,1124.21,True
+113,6874462677094,alianza homogénea de primera línea,26,35,17,23877.20,13867.74,ML,1381.93,True
+114,3856076360963,analista dinámica enfocado al negocio,22,28,4,482.62,356.11,GR,1879.79,True
+115,6234661942908,groupware incremental de tamaño adecuado,10,23,10,8816.21,5277.39,GR,1233.17,True
+116,4633818661921,conjunto de instrucciones estable reactivo,11,22,18,9617.18,6510.27,ML,1592.91,True
+117,6378440227757,firmware 5ta generación enfocado,35,12,12,7408.90,5024.58,LT,1693.22,True
+118,9333134168956,base de trabajo maximizada centralizado,21,8,8,6181.88,4719.62,KG,1301.52,True
+119,1316669541340,éxito intermedia inverso,23,1,16,3751.07,2220.71,GR,1288.32,True
+120,6484007225147,capacidad misión crítica enfocado a ganancias,32,36,17,2379.14,1875.52,GR,2067.04,True
+121,8075918729438,interfaz neutral organizado,29,8,25,16197.47,12215.96,GR,1738.38,True
+122,6467885551925,soporte direccional reducido,33,7,5,24150.32,14449.03,UN,2481.59,True
+123,1827876452446,marco de tiempo tiempo real opcional,6,26,17,18265.37,11297.08,LT,1164.00,True
+124,5880966873984,paradigma heurística multiplataforma,21,19,11,10610.62,8300.20,ML,1981.34,True
+125,7068091494998,red de area local bidireccional enfocado a ganancias,20,11,9,2239.72,1581.43,UN,961.02,True
+126,1336267041260,línea segura direccional sincronizado,45,22,4,21546.03,14824.69,KG,1220.37,True
+127,0813238866056,función interactiva descentralizado,11,29,12,17175.01,10891.99,KG,2303.74,True
+128,4281173472626,inteligencia artificial interactiva monitoreado,39,19,25,17184.55,14130.93,LT,553.34,True
+129,1367723260803,interfaz gráfica nueva generación visionario,21,9,13,19940.98,12940.05,LT,1388.57,True
+130,4905029932774,website nacional expandido,26,6,21,12778.59,8141.16,LT,254.81,True
+131,9913576634922,marco de tiempo neutral open-source,28,8,15,11420.19,9261.99,KG,342.64,True
+132,7195771172870,metodologías 6ta generación operativo,28,18,17,1863.87,1145.31,GR,1587.46,True
+133,5081178617080,software basado en necesidades administrado,3,31,12,7570.15,5868.10,UN,1404.52,True
+134,7434720359189,estrategia asimétrica configurable,26,5,15,21662.27,13017.28,LT,851.89,True
+135,0253645471972,soporte multimedia optimizado,1,27,1,5136.37,3648.37,UN,2379.93,False
+136,6871524097098,orquestar dedicada automatizado,34,27,23,19846.47,13454.55,UN,1472.89,True
+137,6350612893834,colaboración valor añadido programable,15,5,7,3680.63,2214.46,UN,430.76,True
+138,4459232116860,alianza compuesto compatible,21,10,3,19101.89,10725.13,ML,1307.98,True
+139,2904472481089,encriptar metódica optimizado,9,13,13,9010.06,5709.15,UN,1476.69,True
+140,8009419830415,instalación sistémica balanceado,26,32,1,8538.56,5864.40,LT,576.05,True
+141,2806224502118,línea segura basado en contenido progresivo,34,16,21,22759.35,14912.49,UN,2474.04,True
+142,3549531328709,infraestructura misión crítica programable,34,23,25,11846.64,8843.04,KG,295.33,True
+143,2890928738815,archivo tangible mejorado,45,23,19,1000.49,617.46,GR,1430.84,True
+144,1984340225092,paralelismo metódica perseverante,9,22,23,4752.48,2826.41,LT,195.91,True
+145,7115307653397,groupware alto nivel innovador,28,32,21,7952.28,4895.79,GR,1749.22,True
+146,7251361799399,gestión presupuestaria 4ta generación cara a cara,3,12,20,8274.09,4909.61,GR,591.19,True
+147,9172918076842,arquitectura abierta escalable organizado,16,5,12,5057.44,3998.54,UN,167.96,True
+148,4148338757247,proceso de mejora cohesiva intuitivo,3,19,1,8708.01,4917.01,UN,887.43,True
+149,1099398746640,flexibilidad nueva generación basado en funcionalidad,22,14,7,9589.17,6257.34,GR,699.90,True
+150,2058134266101,software holística recontextualizado,19,6,16,17572.73,12687.78,ML,1203.81,True
+151,2633310428516,base de datos cohesiva mejorado,7,6,22,8063.68,5288.11,GR,607.41,True
+152,3596952238055,archivo nueva generación extendido,37,40,5,3275.82,1980.17,KG,2375.20,True
+153,2100628153780,website neutral enfocado al cliente,36,26,18,6865.04,5026.68,ML,2297.05,False
+154,7571155911778,mediante intangible open-source,23,27,9,8752.80,5869.04,GR,1208.96,True
+155,4664386042337,utilización asíncrona orientado a equipos,20,18,16,20783.77,12901.87,KG,379.24,True
+156,4824612877885,portal homogénea multicanal,11,5,10,15432.08,10701.63,GR,2204.36,True
+157,1882497285610,concepto didáctica optimizado,24,32,20,12083.06,6802.33,ML,1487.86,True
+158,1876231598662,orquestar ejecutiva distribuido,27,33,1,23137.48,12996.52,UN,1211.54,True
+159,1826977288423,base de datos sensible al contexto implementado,34,40,13,10659.51,8850.41,LT,1425.57,True
+160,2643232696152,arquitectura abierta 4ta generación optimizado,4,39,13,16045.69,9975.85,UN,1655.73,True
+161,2430751725796,estructura de precios tangible opcional,33,20,6,21817.84,12641.45,KG,769.77,True
+162,7759986228483,migración estática diverso,38,19,15,18970.71,12797.97,GR,1471.77,True
+163,4116548193989,software bifurcada compatible,10,21,23,3582.26,2869.28,LT,1596.03,True
+164,6027174706649,interfaz gráfica motivadora realineado,25,1,2,13270.97,8099.98,UN,2235.42,True
+165,5007283153009,paralelismo multiestado polarizado,30,34,20,11618.72,7956.94,KG,889.70,True
+166,3199427175136,productividad monitorizada por red diverso,3,25,21,6061.58,3985.68,UN,1505.11,True
+167,1801412726041,groupware monitorizada por red progresivo,34,18,20,11750.20,9163.39,UN,1303.38,True
+168,2746789341596,migración escalable open-source,31,22,8,385.55,240.52,UN,2096.32,True
+169,1057122924010,desafío estática versátil,19,24,22,7933.12,4828.07,UN,2135.55,True
+170,0163892733144,núcleo compuesto enfocado a ganancias,25,31,14,16450.75,9802.93,UN,374.65,True
+171,9819454676887,sistema abierto asimétrica distribuido,9,31,16,2707.59,1871.47,UN,205.17,True
+172,0857729856647,paradigma basado en contenido multicanal,31,23,22,14608.57,10209.17,GR,2235.55,True
+173,0954417332553,conglomeración dedicada en red,16,6,15,10457.84,6774.00,UN,2148.64,True
+174,1461450066352,utilización ejecutiva open-source,43,30,11,6874.60,5577.47,KG,2118.58,True
+175,7573406036753,paradigma holística multiplataforma,7,3,6,12677.70,7487.85,ML,312.06,True
+176,1934771498574,firmware dinámica orientado a equipos,43,38,17,3287.37,2192.61,GR,1853.72,True
+177,4597961816638,previsión compuesto multicanal,27,39,23,15664.81,11483.14,LT,2427.70,True
+178,1477278796262,software orientada a soluciones enfocado al cliente,23,9,23,17432.73,9821.28,GR,1379.10,True
+179,7755976858401,sistema abierto generado por la demanda versátil,25,10,2,13357.49,10119.76,KG,2459.65,True
+180,1072534665263,proyecto basado en contenido expandido,33,19,23,17619.49,10034.50,ML,1070.59,True
+181,6907288426735,superestructura defectos cero visionario,39,13,25,14383.29,10928.73,ML,484.69,True
+182,1153451523711,soporte sistémica enfocado al negocio,21,39,2,18351.60,11650.18,LT,1251.85,True
+183,3732105450223,algoritmo bidireccional enfocado al negocio,24,19,7,22409.17,14264.56,ML,2491.75,True
+184,9064966963993,estructura tangible intuitivo,35,19,1,23177.03,13687.77,LT,1310.06,True
+185,4263009756262,éxito potenciada actualizable,44,28,4,5503.47,3242.58,ML,1634.07,True
+186,7143007552236,base del conocimiento defectos cero automatizado,28,21,1,7580.95,5964.63,UN,1621.49,True
+187,7570917307436,arquitectura abierta tolerancia cero sincronizado,31,11,18,5692.39,3454.01,GR,772.70,True
+188,2898690810535,función híbrida realineado,6,20,7,19642.13,11274.79,LT,568.76,True
+189,8116216507956,extranet multimedia multicanal,5,19,22,1506.89,1196.97,GR,1243.62,True
+190,1616934635533,middleware monitorizada por red clonado,28,11,1,8082.17,4835.58,ML,727.87,True
+191,6344741602881,concepto neutral preventivo,41,5,24,1593.81,1315.92,GR,1597.48,True
+192,5720285613858,moderador orientado a objetos totalmente configurable,9,30,17,11150.95,7754.10,GR,75.95,True
+193,9967115581790,soporte valor añadido en toda la empresa,32,15,3,5512.43,4112.49,KG,1318.82,True
+194,3980619627553,groupware intangible open-source,25,24,19,16790.59,9869.38,GR,666.39,True
+195,2483780842521,interfaz compuesto opcional,11,24,20,13747.22,10816.08,KG,1065.80,True
+196,1645642151581,orquestar sistemática descentralizado,11,17,6,11324.33,7846.28,GR,1612.18,True
+197,7892644241576,groupware tolerante a fallos enfocado a la calidad,33,17,6,15346.31,10917.96,ML,1511.51,True
+198,3105968619585,capacidad heurística progresivo,8,6,16,17340.54,9959.01,GR,2077.43,True
+199,7653052873577,extranet basado en el contexto personalizable,45,37,4,8788.89,6497.24,KG,2279.71,True
+200,5520705532841,aplicación homogénea organizado,28,38,9,6189.03,4067.28,GR,945.83,True
+201,6747435233778,software multitarea innovador,43,8,24,6012.55,3600.62,KG,295.68,True
+202,7866036884602,concepto interactiva actualizable,24,6,20,1085.51,758.78,ML,1554.22,True
+203,7598642682055,fuerza de trabajo intangible enfocado,15,40,6,14407.01,10175.56,UN,2440.33,True
+204,2364207957553,concepto tiempo real de tamaño adecuado,18,15,20,21287.55,14453.25,ML,1458.52,True
+205,4102989885695,migración tiempo real multilateral,16,22,25,10321.68,6990.96,GR,2161.96,True
+206,2372784357223,arquitectura abierta 3ra generación enfocado al cliente,22,5,18,20780.27,13984.66,LT,585.49,True
+207,1791722228837,conjunto de instrucciones recíproca llave pública,8,6,22,21455.17,14345.54,UN,1922.40,True
+208,0464988499225,encriptar acompasada centrado en el usuario,4,34,14,11096.76,7279.14,GR,900.86,True
+209,7415306313812,conjunto analizada centralizado,18,31,20,6915.80,5277.83,ML,565.80,True
+210,3821152022431,base de trabajo tiempo real virtual,10,31,1,4220.01,2813.79,GR,1358.26,True
+211,4280012280723,éxito óptima mandatorio,36,17,12,628.17,493.56,GR,537.45,True
+212,6173647832611,política 24/7 descentralizado,22,27,21,13364.08,9262.19,UN,243.82,True
+213,3676387975418,aprovechar sensible al contexto intuitivo,9,16,22,6460.81,3924.38,UN,565.90,True
+214,0940759160932,implementación multimedia optimizado,19,29,21,3139.56,2070.89,KG,120.00,True
+215,8349524961566,analista multimedia centralizado,37,28,17,14699.25,9668.84,LT,1230.05,True
+216,0341057125647,producto sistemática enfocado,20,1,25,9039.31,6570.44,KG,2002.08,True
+217,1842768206576,implementación estática mandatorio,45,18,10,14883.52,9797.16,LT,1061.61,True
+218,1266261005112,archivo modular con ingeniería inversa,29,1,8,1855.46,1534.92,KG,887.69,True
+219,7947389070418,metodologías estática administrado,25,1,4,23819.81,14624.06,ML,1939.50,True
+220,7047594633609,solución vía web distribuido,34,8,9,10099.42,7322.20,LT,2224.42,True
+221,2163121700745,desafío generada por el cliente perseverante,24,6,8,3179.69,2533.94,GR,879.13,True
+222,7031514356387,infraestructura local total,2,25,12,14748.06,10921.11,UN,1238.99,True
+223,2611372895012,implementación basado en el contexto de primera línea,17,35,12,11526.23,6920.37,GR,978.66,True
+224,0872765354563,línea segura regional persistente,42,21,4,2591.76,1624.59,UN,2096.22,True
+225,8240586572360,sistema abierto 6ta generación enfocado al negocio,14,32,3,11284.98,7127.28,LT,1417.15,True
+226,4378200399075,alianza sensible al contexto basado en objetos,13,13,17,15299.53,9921.77,KG,1418.14,True
+227,7756741755655,modelo escalable llave pública,23,21,18,20745.65,14873.65,LT,1060.24,True
+228,8325357349002,complejidad valor añadido de tamaño adecuado,2,34,5,20581.92,14902.50,LT,2461.77,True
+229,3798955504128,circuito interactiva multi-capas,16,15,9,15317.64,12203.90,ML,1444.21,True
+230,0344878060837,concepto motivadora multicanal,22,23,14,10951.42,6364.52,KG,1881.81,True
+231,9660535361699,proyección local con ingeniería inversa,39,37,17,2237.23,1533.23,ML,412.63,True
+232,4752346741355,orquestar orientada a soluciones recontextualizado,34,16,8,2099.79,1260.33,LT,1727.61,True
+233,1431367138864,utilización sistémica multicanal,15,13,22,9485.31,5732.55,UN,325.31,True
+234,9988061402525,modelo 3ra generación opcional,17,36,16,16914.32,9421.02,UN,972.69,True
+235,5202624906693,hardware coherente preventivo,7,2,10,20725.29,13037.67,KG,2450.49,True
+236,7945019570934,proyecto incremental automatizado,11,2,12,14595.54,10327.81,LT,628.70,True
+237,5868880521860,protocolo óptima intuitivo,25,34,22,14594.09,9264.24,KG,1072.47,True
+238,4364165621689,éxito terciaria actualizable,28,10,21,24519.21,14008.84,LT,216.14,True
+239,7181039937867,codificar analizada centrado en el usuario,10,13,4,2610.00,2146.88,GR,1561.52,True
+240,6520071846134,moderador generado por la demanda seguro,11,13,8,1122.96,677.00,UN,2317.32,True
+241,2622194668847,estandarización defectos cero orgánico,39,25,24,7569.52,4830.88,GR,1504.82,True
+242,8754809537556,colaboración innovadora balanceado,4,13,10,11604.62,6705.40,LT,1180.30,True
+243,6051847179614,productividad coherente enfocado,29,2,6,12017.14,6914.47,KG,2212.24,True
+244,3671707607796,adaptador neutral multi-capas,11,25,18,9688.32,5832.98,LT,1435.45,True
+245,1817437461126,base del conocimiento basado en contenido polarizado,17,1,15,11341.17,7564.89,UN,1539.56,True
+246,2644608268210,marco de tiempo potenciada polarizado,23,3,5,20541.21,12836.67,GR,781.18,True
+247,0416665714590,sistema abierto vía web reactivo,20,21,12,22816.12,13483.44,ML,2116.11,True
+248,4183422059507,enfoque sensible al contexto robusto,39,19,14,12802.17,9210.90,GR,1459.10,True
+249,9647488221147,data-warehouse sistemática en red,14,40,14,8860.68,6327.81,GR,2024.81,True
+250,6620357133598,superestructura optimizada seguro,13,22,11,20601.00,13849.74,ML,2003.27,True
+251,4685374782735,iniciativa intangible extendido,14,37,22,8940.07,5109.45,LT,212.22,True
+252,8335161173872,middleware orientada a soluciones de arquitectura abierta,6,32,8,9675.79,5699.44,LT,579.54,True
+253,1779404519757,portal maximizada intuitivo,10,7,17,13071.96,10215.42,UN,1175.45,True
+254,5096504056353,software optimizada enfocado,14,21,7,4165.83,3049.68,LT,1943.33,True
+255,2119515529851,extranet alto nivel total,20,40,11,10090.24,8200.54,UN,1203.30,True
+256,1041558663876,funcionalidad ejecutiva multicanal,35,6,25,17738.61,11513.54,UN,2041.48,True
+257,4467422869366,base de trabajo potenciada recontextualizado,21,30,16,962.28,647.91,LT,1222.70,True
+258,2355471503452,groupware optimizada open-source,16,36,6,20901.68,14613.60,LT,560.18,True
+259,4953616778153,proceso de mejora alto nivel mandatorio,7,29,6,6869.40,4758.93,GR,316.42,True
+260,7346088960115,capacidad tangible sincronizado,25,40,19,9022.87,6817.96,LT,784.35,True
+261,6997995658809,iniciativa motivadora open-source,4,1,23,15170.71,8488.45,UN,2160.06,True
+262,2733335641398,colaboración homogénea enfocado al negocio,10,19,22,2484.08,2058.13,UN,402.79,True
+263,6911888696448,base de trabajo bidireccional open-source,25,23,8,4609.64,2949.71,GR,1270.48,True
+264,7295004359075,matrices amplio abanico realineado,18,30,17,2354.48,1357.87,UN,650.82,True
+265,6665569504953,definición dinámica compartible,23,19,10,4332.22,2679.12,GR,1886.09,True
+266,5041098620582,focus group sistemática inverso,9,40,9,5786.67,4273.21,UN,1529.36,True
+267,7631721509958,circuito cliente-servidor versátil,32,27,25,9372.26,5870.87,KG,566.60,True
+268,3671133775374,encriptar innovadora centralizado,10,34,14,659.63,375.57,ML,985.91,True
+269,5905386622825,soporte secundaria fundamental,30,16,24,16862.30,10143.97,GR,876.65,True
+270,1568001422100,estrategia explícita centralizado,39,14,20,15669.40,9643.63,UN,261.65,True
+271,3768111260497,actitud multiestado basado en objetos,45,21,9,3231.83,2597.10,UN,987.86,True
+272,0924496141726,website óptima personalizable,29,17,4,889.37,715.94,LT,1954.23,False
+273,4600313307744,mediante sensible al contexto adaptativo,5,35,8,441.26,248.95,ML,346.95,True
+274,9330963838722,estructura de precios dedicada polarizado,36,3,13,13764.06,9978.86,ML,2246.33,True
+275,3067117540535,éxito óptima realineado,29,2,2,7323.73,5221.42,UN,1043.49,True
+276,6598572074096,éxito dinámica mandatorio,16,9,1,3381.56,2749.29,LT,2060.81,True
+277,6808156023874,interfaz gráfico de usuario holística clonado,8,37,18,3799.36,2232.48,KG,1922.36,True
+278,3114654900867,array tangible horizontal,2,32,3,384.41,293.97,UN,1781.52,True
+279,2674112421657,política 5ta generación extendido,40,6,21,17165.05,12431.96,ML,61.20,True
+280,1503752762176,base del conocimiento didáctica balanceado,31,32,6,4497.01,2564.44,UN,1629.91,True
+281,4387079174187,conjunto de instrucciones tiempo real cara a cara,38,38,11,10552.41,6402.18,LT,613.65,True
+282,2241805042613,función 5ta generación avanzado,30,13,21,7499.70,5507.13,LT,361.67,True
+283,0184138676619,funcionalidad sistémica visionario,15,6,14,19241.44,12883.21,KG,1499.37,True
+284,2772358515090,medición intermedia mandatorio,31,33,2,9338.32,6500.33,UN,1158.48,True
+285,5079126043787,middleware estable seguro,2,30,15,20044.37,11623.16,ML,503.12,True
+286,6706365276652,arquitectura abierta sensible al contexto con ingeniería inversa,44,6,20,21727.20,13236.54,UN,1311.10,True
+287,3034036757135,migración heurística enfocado,42,31,24,21826.87,14099.39,KG,1895.28,True
+288,3854034584588,gestión presupuestaria intermedia exclusivo,29,40,12,21274.81,12038.58,UN,511.47,True
+289,0319011112904,middleware amplio abanico cara a cara,44,35,5,10474.99,7213.79,UN,764.22,True
+290,8296436356843,acceso local monitoreado,9,20,6,15874.05,11881.16,LT,2428.27,True
+291,0341972986612,producto discreta extendido,3,21,19,2809.88,2071.81,KG,552.63,True
+292,6914951097991,software multimedia proactivo,35,33,11,13469.24,9779.21,LT,2425.53,True
+293,9677931406106,orquestar interactiva enfocado al cliente,15,29,12,1934.26,1568.72,KG,1479.41,True
+294,9205460513699,interfaz generada por el cliente cara a cara,24,26,5,15725.66,10796.26,ML,963.44,True
+295,3980749828948,circuito optimizada en red,9,38,20,1952.50,1473.95,ML,2471.54,True
+296,3953062145918,extranet 24 horas intuitivo,19,36,16,1399.08,825.05,GR,794.59,True
+297,4002984684462,instalación tolerante a fallos progresivo,8,18,16,18496.52,14916.13,LT,1473.61,True
+298,8646155810381,focus group intermedia multicanal,11,4,9,8771.14,5545.22,LT,169.35,True
+299,6016751338726,proyecto tangible avanzado,24,7,18,14881.17,8784.69,UN,385.53,True
+300,7491258756987,flexibilidad metódica implementado,45,8,14,8739.91,7015.27,KG,2312.35,True
+301,3388573708281,enfoque cohesiva enfocado a la calidad,15,20,5,5912.70,3305.65,ML,1742.50,True
+302,0770175012067,interfaz gráfica dedicada persistente,8,39,7,11743.55,8896.53,LT,121.68,True
+303,7253876508757,mediante recíproca multilateral,19,11,25,14539.86,8149.47,UN,2314.37,True
+304,8461618945473,marco de tiempo cohesiva monitoreado,30,8,17,3665.26,2211.50,LT,1414.97,True
+305,3126394528108,infraestructura vía web fundamental,31,24,6,624.52,389.23,UN,1021.11,True
+306,6136978131284,emulación sensible al contexto realineado,15,28,24,12585.72,7586.83,GR,1504.44,True
+307,8936995141429,complejidad no-volátil visionario,2,7,24,1218.87,982.22,UN,2431.58,True
+308,6160077726423,infraestructura multitarea orientado a equipos,35,35,1,17428.91,14298.19,ML,2206.31,True
+309,4840167814337,modelo orientada a soluciones basado en funcionalidad,37,32,22,12792.44,8396.00,ML,1215.98,True
+310,5349639300837,extranet uniforme multiplataforma,2,22,13,2308.72,1640.78,LT,1059.23,True
+311,2230681150645,paralelismo nueva generación seguro,27,18,1,16304.63,10500.19,LT,975.46,True
+312,5816357363448,utilización metódica configurable,5,35,7,5470.42,4452.86,GR,1034.97,True
+313,7080308427638,producto coherente clonado,28,35,11,4556.41,3161.14,GR,1312.65,True
+314,5865146892688,estructura de precios recíproca de primera línea,28,37,24,14340.66,9476.03,LT,1183.09,True
+315,7784896822162,productividad orientada a soluciones ergonómico,16,8,5,4096.44,3040.36,LT,1187.19,True
+316,4601128618940,conglomeración interactiva robusto,6,21,20,5707.98,4610.09,ML,2247.09,True
+317,8388255165754,matrices coherente totalmente configurable,6,16,20,3384.36,2009.70,LT,2089.22,True
+318,8792122480561,website terciaria recontextualizado,35,28,16,18321.34,10304.53,KG,939.35,True
+319,8096869672539,array regional progresivo,24,8,18,22342.63,13030.90,ML,69.27,True
+320,9939728143867,enfoque no-volátil diverso,18,6,25,20934.09,14119.33,ML,2319.92,True
+321,4911204753676,orquestar multitarea llave pública,12,29,21,3189.27,2214.16,LT,818.62,True
+322,1598786734726,producto asimétrica total,21,19,7,2058.53,1449.10,ML,2197.16,True
+323,8299669917144,migración incremental asimilado,17,10,3,18722.37,14378.89,GR,337.51,True
+324,4946171872418,conjunto de instrucciones amplio abanico adaptativo,39,14,10,14391.05,10955.28,KG,1050.88,True
+325,2269364013667,definición terciaria configurable,28,39,9,1965.65,1281.22,UN,865.51,True
+326,9999570263339,analista nacional open-source,36,3,19,3716.60,2854.71,ML,2329.30,True
+327,1351101887928,caja de herramientas asíncrona sincronizado,40,17,17,8387.39,4832.55,LT,1855.33,True
+328,9596410141418,enfoque asíncrona reactivo,32,3,15,8901.60,5476.50,ML,1171.51,True
+329,7132287856290,alianza holística polarizado,37,12,14,18627.99,13822.12,ML,1708.43,True
+330,0663598108649,núcleo sensible al contexto preventivo,39,1,11,23192.53,14552.60,ML,846.04,True
+331,7952063009331,infraestructura móvil progresivo,26,6,1,16630.49,12814.72,ML,748.09,True
+332,6144836168548,iniciativa móvil multiplataforma,31,18,19,11393.85,9085.04,ML,2036.94,True
+333,4403426146524,mediante estable mejorado,31,20,5,23781.88,14765.96,LT,2111.77,True
+334,2000140652205,éxito logística distribuido,8,30,6,20188.22,11835.42,UN,254.06,True
+335,2546629811768,contingencia orientada a soluciones perseverante,7,28,18,668.40,465.15,UN,470.75,True
+336,6896469366331,paralelismo compuesto fundamental,1,13,4,19858.43,12276.33,KG,2154.58,True
+337,6646713440117,habilidad 3ra generación multicanal,32,31,1,20048.41,12924.99,KG,772.34,True
+338,3318444579035,migración estable proactivo,40,32,8,16340.21,10771.50,ML,1462.19,True
+339,2681664417445,política móvil horizontal,38,22,20,20903.43,12831.12,ML,371.34,True
+340,7986777862761,extranet no-volátil open-source,13,11,20,12544.44,7484.35,ML,793.95,True
+341,0083188004612,complejidad alto nivel enfocado,17,22,12,19257.80,11586.73,GR,705.35,True
+342,6567944811679,fuerza de trabajo coherente balanceado,36,3,17,2777.33,1760.08,KG,2281.92,True
+343,2457063184472,superestructura multitarea asimilado,31,22,10,9601.68,7674.34,LT,1802.24,True
+344,6275714989569,encriptar potenciada compatible,29,10,25,584.66,347.24,UN,257.71,True
+345,9107669067652,actitud uniforme balanceado,26,36,10,15102.36,10878.96,LT,69.36,True
+346,5974257668741,metodologías uniforme centralizado,20,6,2,11692.83,8154.02,KG,1325.15,True
+347,2533608528345,extranet 6ta generación persistente,4,24,9,13391.47,9479.45,UN,1903.57,True
+348,4503275796822,matrices explícita sincronizado,43,37,22,3240.63,2271.58,KG,307.81,True
+349,1741440412064,definición asimétrica mejorado,36,34,25,8207.40,6042.78,ML,1609.33,True
+350,6974154495564,sistema abierto homogénea horizontal,3,11,18,10035.21,5666.11,GR,2138.18,True
+351,3251332017493,productividad intangible actualizable,19,14,6,18401.72,12323.05,UN,1391.47,True
+352,0434338811676,protocolo interactiva implementado,10,21,3,19243.90,12037.21,ML,998.73,True
+353,3064201067366,funcionalidad basado en el contexto robusto,6,13,20,13599.15,8219.15,GR,1328.30,True
+354,5065922885053,emulación multiestado multicanal,38,3,16,15729.52,12957.22,ML,492.24,True
+355,5309521719609,previsión asimétrica total,12,2,23,1528.36,1065.83,LT,399.03,True
+356,2980252559235,proyección didáctica proactivo,5,31,1,8350.94,6230.91,UN,709.44,True
+357,6257340629397,proceso de mejora tiempo real centralizado,35,28,18,8267.07,6885.78,ML,2404.73,True
+358,6109226982821,jerarquía móvil seguro,35,37,3,6682.11,4649.45,UN,2084.72,True
+359,9825889697263,groupware multitarea polarizado,14,30,20,8849.01,5061.17,KG,1633.79,False
+360,4964877576008,complejidad híbrida orgánico,43,29,22,3613.79,2026.55,ML,2077.29,True
+361,1760494202930,núcleo orientada a soluciones reactivo,40,20,23,6209.95,3472.99,LT,140.15,True
+362,7609612511766,encriptar ejecutiva multicanal,12,5,19,2599.55,2098.05,LT,2337.23,True
+363,8728096668046,utilización basado en el contexto enfocado a la calidad,42,4,11,11863.69,6601.71,LT,348.21,True
+364,4507095333889,enfoque sistemática polarizado,15,28,3,18152.61,13771.53,LT,811.47,True
+365,0485632123037,base del conocimiento sistemática seguro,5,39,20,8412.32,6690.24,ML,1468.39,True
+366,0038019436065,circuito modular innovador,19,25,13,2672.08,1618.29,KG,2168.23,True
+367,6444616605510,firmware potenciada basado en objetos,5,38,7,17328.47,13584.68,GR,677.90,True
+368,7427034973871,estructura bidireccional progresivo,20,39,11,8033.54,4507.75,GR,1486.78,True
+369,0588412973669,infraestructura bifurcada compartible,39,22,19,12021.50,8578.23,LT,1075.80,True
+370,4702022627937,fuerza de trabajo discreta centralizado,14,26,6,14961.40,12426.05,UN,230.64,True
+371,1215700118735,focus group móvil visionario,12,13,1,3807.88,2805.95,UN,101.43,True
+372,3719328699988,línea segura 6ta generación configurable,5,8,5,16958.10,13264.30,KG,519.62,True
+373,3592061573078,fidelidad transicional total,33,38,16,4117.09,3296.72,ML,1987.94,True
+374,1387351754945,definición optimizada totalmente configurable,41,38,21,987.80,741.75,KG,1157.60,True
+375,2431820725205,hardware híbrida avanzado,22,28,15,10290.68,7119.75,ML,826.70,True
+376,1263085679000,definición discreta distribuido,13,22,7,13758.79,10191.59,LT,517.07,True
+377,1875272399870,moderador innovadora visionario,42,33,25,24554.82,14282.04,KG,605.97,True
+378,4577747317624,utilización potenciada perseverante,36,2,12,3890.70,2256.46,LT,2361.22,False
+379,8834647530791,encriptar estática en red,22,37,21,21026.85,12027.36,GR,2174.01,True
+380,2351154801506,base de trabajo móvil enfocado a la calidad,32,2,6,5494.02,3145.18,ML,745.35,True
+381,6005184115409,política maximizada multilateral,14,9,7,8089.18,4784.41,ML,439.01,True
+382,3274294862354,flexibilidad metódica de tamaño adecuado,30,37,2,15253.83,11111.90,ML,899.62,True
+383,7388416436606,arquitectura abierta orientado a objetos personalizable,3,16,6,6704.59,4251.89,LT,1683.31,True
+384,7994713757412,fuerza de trabajo óptima multi-capas,3,30,1,2074.68,1283.29,ML,983.83,True
+385,8301937405291,data-warehouse misión crítica multi-capas,18,11,6,19724.07,12609.74,KG,770.65,True
+386,3076132062688,intranet 6ta generación universal,42,7,13,15275.60,10417.13,GR,61.43,True
+387,7932049316287,emulación basado en el contexto asimilado,43,11,24,3873.25,2672.30,UN,2048.28,True
+388,6693421306022,flexibilidad estática centrado en el usuario,43,18,21,11569.34,9433.86,KG,1057.19,True
+389,4977952036397,proyecto multitarea monitoreado,9,22,6,16617.24,9603.23,LT,2446.15,True
+390,0094575700712,complejidad dinámica basado en objetos,28,16,20,1763.44,1374.97,ML,776.71,True
+391,2095973267596,codificar móvil universal,19,2,8,17812.73,12734.64,KG,554.25,True
+392,9986285160490,extranet tiempo real orientado a equipos,10,14,5,2423.65,1558.04,KG,628.96,True
+393,7372122462709,éxito local integrado,26,25,6,10417.44,7166.56,GR,1850.57,True
+394,8703879517244,monitorizar radical llave pública,25,36,20,10242.66,7316.50,ML,529.50,True
+395,0873443733908,conglomeración maximizada expandido,8,25,19,4315.11,2602.96,LT,1939.61,True
+396,3763034249370,circuito estable recontextualizado,43,10,9,16182.48,9160.45,KG,673.01,True
+397,9807693595148,núcleo estable clonado,17,20,17,23163.46,14521.71,ML,1485.90,True
+398,7981578227601,paralelismo 5ta generación configurable,32,1,4,1995.79,1233.65,GR,1071.26,True
+399,4111451522781,soporte analizada adaptativo,27,29,21,17352.75,13711.98,KG,245.53,True
+400,1002470296702,intranet sensible al contexto horizontal,1,25,20,14035.00,7897.10,LT,2333.71,True
+401,3438989630331,arquitectura basado en contenido avanzado,30,26,24,22050.50,12564.23,UN,1524.68,True
+402,2683664419980,definición recíproca llave pública,24,3,24,7358.98,5017.77,GR,1237.11,True
+403,7399466136788,infraestructura asimétrica realineado,33,3,5,9478.67,7569.29,GR,2468.69,True
+404,8945219619093,superestructura radical asimilado,25,18,8,17345.29,10843.79,UN,1680.42,True
+405,6473259039776,habilidad orientada a soluciones orientado a equipos,36,28,8,4453.80,3508.55,UN,322.89,True
+406,5195133735134,intranet 24/7 asimilado,24,9,17,15581.01,10023.39,UN,1018.52,True
+407,4198446168753,paralelismo alto nivel compartible,45,8,9,24282.96,14953.36,ML,1596.14,True
+408,2908178927978,base de trabajo 3ra generación con ingeniería inversa,26,20,22,17752.68,13703.17,UN,1392.46,True
+409,6973526183175,caja de herramientas basado en necesidades extendido,4,20,15,15290.66,9888.58,ML,1755.09,True
+410,1277075691948,medición generada por el cliente seguro,4,7,12,19116.54,14617.55,UN,337.50,True
+411,3417213351779,complejidad tolerante a fallos enfocado,43,6,25,11941.88,7062.37,ML,724.28,True
+412,3104650552771,solución secundaria integrado,31,28,10,10904.99,8657.06,UN,1798.73,True
+413,5473875085867,conjunto heurística perseverante,14,8,6,20954.20,12957.65,UN,1409.07,True
+414,1121580953549,inteligencia artificial misión crítica persistente,1,16,10,1561.14,883.26,LT,1664.94,True
+415,5659352082128,middleware sistémica innovador,9,39,18,4808.80,3397.39,KG,1836.31,True
+416,5261496912626,caja de herramientas ejecutiva multicanal,42,13,23,9100.32,5707.71,GR,1532.11,True
+417,1940601150633,mediante bidireccional balanceado,18,10,8,5349.73,4249.97,KG,977.65,True
+418,9173845785681,array multimedia orgánico,25,12,12,19489.21,12130.06,GR,1401.60,True
+419,4526761529637,iniciativa estática reactivo,44,39,14,13963.71,10660.44,LT,2006.25,True
+420,2498838943007,enfoque 24/7 expandido,6,11,19,1727.84,1049.69,GR,2327.49,True
+421,0969146651018,inteligencia artificial tiempo real enfocado a ganancias,1,28,23,11408.27,8108.01,GR,1725.99,True
+422,4197913130419,estructura intermedia universal,22,16,18,21933.38,12791.50,LT,782.99,True
+423,2752396804643,actitud secundaria enfocado al negocio,40,30,11,5835.48,4615.59,LT,2230.98,True
+424,3140511416232,codificar acompasada universal,28,12,18,15449.37,12210.85,ML,1657.89,True
+425,1708712143069,modelo heurística enfocado al negocio,43,18,4,9841.76,6432.21,KG,845.97,True
+426,8598311015726,archivo alto nivel sincronizado,22,28,20,16233.06,11113.99,LT,741.45,True
+427,4671212764471,producto 5ta generación extendido,33,40,6,5125.58,2992.30,KG,611.99,True
+428,0994600436234,groupware 3ra generación totalmente configurable,33,28,21,1221.09,964.50,LT,737.36,True
+429,4300072491193,proyección basado en el contexto perseverante,20,8,4,16259.42,10100.42,KG,861.47,True
+430,3753623817159,archivo híbrida exclusivo,42,13,7,18657.04,10628.97,UN,2357.45,True
+431,3475114787853,producto tolerante a fallos universal,24,29,21,18890.98,10816.42,UN,1232.91,True
+432,9712929091845,instalación estable basado en objetos,33,5,6,10055.13,6678.63,GR,1959.46,True
+433,2112687475327,instalación sensible al contexto multiplataforma,36,8,6,5342.01,3514.16,LT,145.77,True
+434,8927628503630,sistema abierto logística centralizado,36,17,24,3786.59,2177.45,LT,845.36,True
+435,8829195977173,actitud basado en necesidades horizontal,42,17,21,14674.26,9587.72,ML,590.57,True
+436,5871273901181,archivo local visionario,32,12,21,6063.13,4374.25,KG,2052.87,True
+437,1144647170031,software uniforme perseverante,1,3,5,4844.96,3875.48,KG,2349.57,True
+438,7075880178834,interfaz gráfico de usuario 4ta generación inverso,16,4,18,16462.06,10442.21,UN,101.96,True
+439,5184022332966,metodologías radical horizontal,8,32,6,19838.34,14863.37,LT,925.40,True
+440,1998615561638,conjunto estática orgánico,23,7,9,21975.69,13760.27,LT,2036.26,True
+441,0091633774059,aprovechar direccional centrado en el usuario,18,10,3,6358.60,4981.19,ML,913.89,True
+442,4966199355452,superestructura móvil multiplataforma,6,38,23,9965.93,6443.24,KG,1772.58,True
+443,0905990388821,solución homogénea innovador,36,27,8,4429.92,3318.91,KG,337.23,True
+444,1764015451112,website monitorizada por red multiplataforma,1,37,14,3163.39,2415.81,KG,1882.86,True
+445,2437621807508,focus group basado en contenido orgánico,44,30,18,14535.76,10728.82,GR,1279.59,True
+446,4195912621758,website basado en contenido organizado,45,30,16,7664.46,4835.21,ML,453.82,True
+447,6110680250573,groupware metódica descentralizado,36,13,21,18754.55,13952.19,UN,2442.82,True
+448,5703903231779,array 24 horas multilateral,45,7,11,10243.99,6227.84,UN,1280.33,True
+449,0748016069226,matrices metódica inverso,10,11,17,12837.95,7841.25,GR,2329.06,True
+450,7338487326016,medición compuesto enfocado al cliente,32,7,1,3979.85,2310.81,GR,2175.46,True
+451,8441205307499,núcleo basado en necesidades progresivo,29,9,4,21768.59,14580.87,LT,2154.56,True
+452,8913893652866,proceso de mejora sistemática de tamaño adecuado,42,4,24,19277.38,11900.74,GR,69.46,True
+453,2130340469407,intranet cliente-servidor automatizado,26,28,7,7608.61,6142.50,LT,2491.27,True
+454,7420146306393,array maximizada orientado a equipos,28,31,7,1721.41,1000.35,ML,711.13,True
+455,0042785628093,array uniforme virtual,20,11,7,7793.31,5369.29,ML,1361.99,True
+456,9495858175168,interfaz gráfico de usuario modular avanzado,21,1,5,23708.00,13468.22,ML,2167.54,True
+457,9450481490294,función multiestado organizado,35,11,20,8154.21,5787.84,KG,2430.77,True
+458,0808586644355,inteligencia artificial sistemática innovador,22,8,6,9953.71,6990.59,GR,1507.48,True
+459,3864269898166,productividad escalable expandido,27,7,16,17788.23,11299.17,GR,294.27,True
+460,5024243141994,mediante móvil expandido,42,26,1,23547.95,14106.33,GR,744.83,True
+461,2874294013885,circuito heurística multicanal,22,11,19,20033.72,14893.87,ML,522.02,True
+462,8851691954085,focus group tiempo real en toda la empresa,41,37,13,19983.67,12676.85,LT,2101.48,True
+463,3000716595079,arquitectura generado por la demanda enfocado a ganancias,41,23,6,6516.61,3747.88,LT,524.88,True
+464,7832001098191,previsión multitarea multicanal,10,19,9,16876.34,13440.15,ML,2119.33,True
+465,2174462486412,moderador monitorizada por red optimizado,12,37,21,11187.39,9178.49,LT,2484.66,True
+466,6517910051812,firmware innovadora reducido,21,9,8,2317.39,1434.95,KG,705.60,True
+467,9352745311682,protocolo vía web de primera línea,26,7,19,18535.35,11938.67,KG,1995.54,True
+468,4847866453601,middleware cliente-servidor mejorado,3,33,9,12227.42,8885.66,GR,913.02,True
+469,1373063713034,funcionalidad 24 horas perseverante,21,15,18,1617.18,1180.28,KG,1341.79,True
+470,2688084733184,hardware defectos cero orgánico,18,27,4,2653.01,2036.57,LT,1498.37,True
+471,0075041905530,hardware neutral basado en objetos,31,7,14,14882.03,10904.15,LT,1030.84,True
+472,3636489136000,aprovechar uniforme mejorado,7,21,23,14585.59,10918.95,UN,518.34,True
+473,3999827190368,funcionalidad interactiva visionario,18,11,5,11237.74,8835.11,LT,2161.64,True
+474,8944155693722,marco de tiempo dinámica realineado,19,6,12,14593.09,8466.03,KG,1752.66,True
+475,4264343875397,groupware didáctica perseverante,42,10,17,2254.17,1763.78,LT,994.66,True
+476,6240469514110,groupware homogénea recontextualizado,30,12,9,995.14,623.08,ML,912.29,True
+477,5323434303911,productividad innovadora en red,12,39,9,12025.51,8037.53,ML,317.50,True
+478,2118525286432,iniciativa alto nivel perseverante,45,18,16,5422.88,3244.44,LT,1610.40,True
+479,2019678616134,implementación coherente universal,1,31,14,6720.68,5144.00,LT,2209.08,True
+480,7034084006225,base de datos transicional sincronizado,10,7,4,7729.36,4708.11,ML,1252.12,True
+481,5624833568842,núcleo estática automatizado,34,2,5,25164.55,14683.83,KG,925.13,True
+482,5642093126599,migración potenciada programable,34,12,9,19269.23,13672.84,LT,1008.01,True
+483,9305364497294,función asíncrona polarizado,44,10,15,15559.47,10277.66,LT,1578.30,True
+484,3270025034602,sinergia tiempo real mejorado,23,19,17,16691.10,10046.82,KG,2386.53,True
+485,1749209263398,estrategia híbrida implementado,20,39,10,4040.83,2764.87,LT,2020.73,True
+486,7241329417805,firmware basado en contenido proactivo,45,21,17,22844.78,14036.22,ML,917.77,True
+487,9490701975368,iniciativa monitorizada por red progresivo,19,4,25,16209.31,12707.59,UN,1183.88,True
+488,5802915856815,protocolo optimizada centrado en el usuario,33,4,23,4161.73,3234.95,ML,384.19,True
+489,6167986201852,interfaz orientada a soluciones con ingeniería inversa,7,31,1,18364.32,12524.35,UN,2318.81,True
+490,4128264611017,marco de tiempo multitarea sincronizado,16,11,17,17078.00,11176.64,ML,1227.14,True
+491,1532374812135,alianza metódica compartible,3,40,15,1449.37,830.95,KG,1196.37,True
+492,2938537306373,protocolo bidireccional descentralizado,9,18,25,17444.33,9944.97,UN,2294.59,True
+493,3465975139364,extranet maximizada expandido,3,2,24,3215.08,2555.86,UN,1273.61,True
+494,3279718739902,estructura vía web enfocado al negocio,3,5,15,17981.34,11497.61,UN,2312.70,True
+495,6395124221881,producto multimedia basado en objetos,38,2,21,18118.16,14405.52,UN,2034.52,True
+496,3450179648543,aprovechar cliente-servidor avanzado,40,36,5,17653.02,12063.62,ML,2191.24,True
+497,1514050828338,actitud global fundamental,11,19,3,10905.93,8109.47,GR,2332.93,True
+498,3061492032371,orquestar escalable total,36,22,25,17299.62,10017.37,KG,1259.21,True
+499,5688304798417,proyecto tangible fundamental,7,3,16,12264.50,7712.54,ML,1220.10,True
+500,8290716360433,metodologías misión crítica perseverante,9,28,23,8359.29,6517.14,ML,339.08,True
+501,9339200478508,migración transicional con ingeniería inversa,16,4,3,1519.45,1038.49,LT,157.11,True
+502,6226410254739,complejidad logística automatizado,15,29,23,6646.69,4680.24,GR,767.07,True
+503,5265097622192,moderador cliente-servidor monitoreado,36,14,4,9651.23,5711.37,KG,137.88,True
+504,4790825390830,base del conocimiento bidireccional digitalizado,25,25,15,1134.65,857.35,KG,1666.82,True
+505,6079973827207,colaboración logística multilateral,40,28,14,20703.80,11782.67,UN,2028.12,True
+506,9929547729492,soporte no-volátil totalmente configurable,1,18,22,17861.77,14274.32,KG,1939.78,True
+507,5022267036884,paradigma optimizada open-source,2,29,1,12640.54,7103.30,ML,1612.47,True
+508,4508594272421,modelo generada por el cliente programable,40,4,8,2316.32,1893.81,GR,2158.40,True
+509,0707226837630,fuerza de trabajo nueva generación multi-capas,29,8,17,1780.33,1346.26,GR,959.83,True
+510,4681373464961,arquitectura híbrida enfocado al negocio,3,19,5,16644.70,13695.72,GR,568.13,True
+511,7777935617699,utilización coherente asimilado,15,37,17,23621.83,14967.63,ML,1370.47,True
+512,8766531593792,soporte cliente-servidor expandido,21,8,23,6177.47,3767.49,ML,936.61,True
+513,5966445815745,extranet escalable extendido,9,39,9,16829.35,11978.67,UN,249.69,True
+514,9567880125971,estructura de precios dedicada basado en objetos,3,28,1,18679.95,10412.69,KG,1311.50,True
+515,3416223836170,proceso de mejora nacional enfocado a la calidad,23,29,14,15681.68,9536.31,ML,758.76,True
+516,1179908536345,codificar multimedia cara a cara,38,18,25,2252.46,1634.10,LT,168.31,True
+517,5592379098742,núcleo basado en necesidades perseverante,40,21,4,6939.49,5340.72,LT,720.93,True
+518,8299796128709,algoritmo vía web de primera línea,35,35,7,507.54,298.64,UN,955.37,True
+519,9441497918401,metodologías transicional proactivo,18,8,12,19913.39,12093.89,KG,1832.04,True
+520,5265773949738,instalación 24 horas basado en funcionalidad,43,3,21,12779.90,9483.82,GR,971.71,True
+521,6218721898700,data-warehouse alto nivel compatible,36,40,7,13098.79,10707.86,LT,1552.78,True
+522,2359888646552,productividad cliente-servidor compartible,15,8,25,16704.29,11506.26,ML,847.22,True
+523,1431677484422,núcleo metódica en red,33,14,14,1829.20,1099.89,LT,1703.72,True
+524,8420426042857,base de datos no-volátil digitalizado,8,40,20,7938.87,5079.33,UN,2378.18,True
+525,3733700259837,flexibilidad radical seguro,19,11,12,6788.06,5106.23,KG,2353.03,True
+526,0913413272217,estrategia intangible virtual,42,26,5,21248.07,12310.78,UN,237.49,True
+527,7707590538874,instalación vía web perseverante,2,20,9,8808.32,6991.80,GR,1204.93,True
+528,0954952043351,proyección coherente open-source,15,37,1,8143.78,6080.76,LT,1218.18,True
+529,3160529504858,conjunto no-volátil extendido,15,4,25,10857.10,7502.58,LT,2094.09,True
+530,6582254492445,sinergia híbrida versátil,6,7,14,15036.64,10548.98,UN,447.13,True
+531,1490418475324,inteligencia artificial sensible al contexto multi-capas,19,18,17,8618.89,4971.31,GR,1643.04,True
+532,5267524997815,capacidad tolerante a fallos multilateral,31,1,11,8207.38,6361.28,UN,2483.61,False
+533,7104065068301,gestión presupuestaria direccional opcional,19,28,19,15615.46,10993.98,ML,2339.05,True
+534,6251215156358,marco de tiempo basado en el contexto de tamaño adecuado,39,18,24,20967.63,13095.78,ML,562.80,False
+535,2296140091844,instalación multitarea virtual,20,33,25,2973.85,1935.99,ML,1946.10,True
+536,3830621621446,circuito tangible organizado,17,8,18,21508.17,13516.48,KG,111.97,True
+537,4672599317045,red de area local direccional recontextualizado,1,38,10,8839.81,5061.08,LT,1281.84,False
+538,2663972050746,estrategia orientada a soluciones extendido,30,32,6,12431.87,7207.04,GR,2028.21,True
+539,0817814806005,proceso de mejora generado por la demanda recontextualizado,13,40,24,760.58,446.78,LT,2249.45,True
+540,9730646017121,base de trabajo sensible al contexto cara a cara,3,18,20,4721.06,3140.51,KG,1606.48,True
+541,9351480909103,groupware nueva generación centralizado,41,2,25,3264.35,2706.17,LT,1177.86,True
+542,9369877332254,conjunto 24/7 recontextualizado,13,18,7,3884.76,2821.26,ML,698.14,True
+543,5364680835273,circuito discreta organizado,44,19,7,9376.18,5264.28,GR,2083.15,True
+544,0724016115335,proceso de mejora recíproca reducido,3,21,23,2474.38,1748.27,UN,438.94,True
+545,3913157465674,intranet radical preventivo,16,17,24,8028.62,5723.58,ML,785.42,True
+546,8795479405989,utilización neutral recontextualizado,34,13,19,14475.65,11327.38,LT,1982.00,True
+547,0713346213184,conglomeración bidireccional universal,16,10,22,14020.96,8419.15,UN,1219.49,True
+548,4669687701717,algoritmo ejecutiva monitoreado,19,28,20,7494.00,6028.99,ML,1691.20,True
+549,0812350530240,alianza alto nivel fundamental,20,28,3,8321.83,5225.88,ML,419.33,True
+550,6429135183764,política holística expandido,1,11,11,3166.82,2105.34,ML,78.39,True
+551,6404718957789,middleware sistémica reducido,8,12,14,11539.81,8069.33,UN,418.45,True
+552,9518740214386,estructura de precios regional digitalizado,17,28,11,16916.32,10189.94,UN,1379.73,True
+553,3036530720076,productividad coherente inverso,28,18,12,23528.82,14583.42,KG,2301.00,True
+554,9850306781573,portal metódica sincronizado,41,20,14,8033.74,6130.95,LT,1817.91,True
+555,0997596576052,analista neutral sincronizado,28,18,24,13632.53,10395.18,GR,1695.03,True
+556,9624041259320,definición nacional descentralizado,21,15,3,15138.89,9248.52,GR,2076.09,True
+557,6339033447266,éxito innovadora multicanal,17,26,2,15394.46,9978.34,UN,1596.89,True
+558,3293236061349,alianza nueva generación intuitivo,2,19,18,20112.12,11211.97,ML,2306.88,True
+559,6802951177447,jerarquía bifurcada programable,27,39,9,6986.26,4927.17,UN,1677.37,True
+560,6655247291840,capacidad tolerante a fallos totalmente configurable,22,30,21,4796.33,2749.61,ML,1471.39,True
+561,4102650540616,proyección logística proactivo,44,6,12,836.98,536.25,ML,1402.54,True
+562,8138199328242,conglomeración vía web mejorado,39,29,8,21389.84,11991.95,GR,1621.38,True
+563,8892707645437,data-warehouse potenciada clonado,17,35,4,16883.45,10793.76,GR,1801.17,True
+564,8088703964718,producto logística compartible,38,8,24,3909.63,2700.51,LT,397.78,True
+565,4236477736342,previsión uniforme compartible,18,39,2,14779.58,11467.58,LT,113.55,True
+566,5737537618168,conglomeración interactiva monitoreado,17,15,1,19829.29,12793.60,KG,1481.38,True
+567,7794613183384,función tangible inverso,11,34,16,4859.76,2795.73,UN,1688.42,True
+568,2216711456078,orquestar generada por el cliente mejorado,34,15,24,5111.26,3197.44,ML,1584.68,True
+569,5298507452719,intranet asimétrica administrado,16,15,23,14132.26,10817.23,GR,701.12,True
+570,7799132274080,éxito compuesto diverso,41,5,7,10664.50,7278.83,ML,533.62,True
+571,2455818718640,extranet basado en el contexto en red,27,39,9,9782.07,7490.56,GR,1234.04,True
+572,6253656171085,extranet motivadora recontextualizado,32,11,6,1707.68,1170.28,LT,281.69,True
+573,3681123374692,colaboración tangible inverso,44,10,11,4173.73,2514.54,KG,2138.28,True
+574,1996772948313,estandarización multitarea orgánico,23,21,15,7318.67,4758.65,ML,63.90,True
+575,0461428262804,metodologías monitorizada por red enfocado al cliente,25,21,18,11200.83,8487.59,KG,1563.01,True
+576,2017959973972,interfaz regional administrado,39,38,13,1329.76,1077.89,LT,726.31,True
+577,9117374112102,marco de tiempo misión crítica llave pública,37,35,25,15306.64,9978.22,LT,1739.45,True
+578,7867937723231,monitorizar interactiva centrado en el usuario,17,17,20,13674.66,11265.22,UN,1623.49,True
+579,8780935998352,habilidad bifurcada llave pública,22,5,24,1654.69,1318.18,GR,1962.44,True
+580,7809697742487,estrategia maximizada compatible,42,22,3,4463.54,2888.77,ML,1342.90,True
+581,8405080242263,política motivadora basado en funcionalidad,30,13,25,21691.93,12358.57,GR,423.88,True
+582,2106875933223,red de area local acompasada reducido,28,18,8,18700.97,14057.27,LT,116.88,True
+583,9190882041751,focus group interactiva mandatorio,12,33,19,13905.06,10922.87,KG,344.88,True
+584,6731973214084,soporte estática actualizable,7,23,12,24161.88,14196.83,ML,2367.55,True
+585,2768809780810,desafío sistémica recontextualizado,34,10,5,17380.93,10487.04,UN,1510.70,True
+586,7268415186397,soporte analizada enfocado al negocio,2,32,7,7450.26,4729.76,LT,1573.69,True
+587,0047145771132,actitud tolerancia cero llave pública,27,5,4,21495.59,14537.21,ML,2147.54,True
+588,1663491636747,adaptador cohesiva exclusivo,37,13,5,4403.33,3445.80,KG,602.60,True
+589,0481216396558,matrices no-volátil adaptativo,9,21,14,7396.65,5746.61,UN,1882.44,True
+590,6790682304818,red de area local dinámica diverso,37,26,15,21919.69,14891.94,LT,1387.40,True
+591,2793828456635,éxito híbrida exclusivo,5,24,14,17265.41,9705.93,KG,281.73,True
+592,8171345999188,previsión bifurcada optimizado,33,13,5,16840.15,12632.19,UN,536.76,True
+593,5755055691166,firmware bidireccional opcional,40,15,25,16461.58,10798.07,GR,1088.84,True
+594,0943544372076,soporte generado por la demanda centralizado,14,40,20,17788.32,14397.28,ML,393.74,True
+595,1999314523291,conjunto de instrucciones tolerancia cero multilateral,26,8,24,19692.15,11146.89,KG,554.29,True
+596,2365575248561,fuerza de trabajo explícita proactivo,22,18,2,10141.28,5846.23,UN,1585.90,True
+597,1784250798284,éxito bifurcada personalizable,45,28,14,1311.69,1038.46,LT,2113.70,True
+598,9636230745242,habilidad acompasada realineado,32,36,20,17952.24,12593.70,GR,2182.46,True
+599,0186009257687,archivo compuesto versátil,3,23,21,20304.05,11864.42,GR,2165.36,True
+600,3874921632404,emulación escalable programable,17,23,22,9441.60,5291.94,KG,727.75,True
+601,3667158677714,acceso 24/7 de arquitectura abierta,6,22,12,15325.83,9322.76,KG,825.51,True
+602,9046672843431,capacidad nacional diverso,11,21,1,2865.71,1849.91,GR,1765.56,True
+603,7536105842753,moderador monitorizada por red horizontal,25,7,24,21232.61,12255.68,LT,1552.88,True
+604,3282190262848,instalación bifurcada descentralizado,10,1,10,4615.21,3806.47,GR,1234.02,True
+605,5911535932738,medición intangible opcional,28,24,12,23825.69,13520.78,LT,1373.90,True
+606,6387750997518,funcionalidad sensible al contexto orgánico,15,23,23,18915.74,10591.74,KG,1189.95,True
+607,0644915503816,circuito basado en el contexto compatible,5,18,19,6829.63,3929.78,UN,1798.35,True
+608,7992456358915,paralelismo sistémica avanzado,44,38,11,23116.71,12968.46,UN,1794.68,True
+609,1965772671164,software generado por la demanda programable,8,22,3,2298.17,1593.59,ML,2022.04,True
+610,4813142022360,jerarquía acompasada ergonómico,29,7,17,6936.17,4014.96,UN,2455.92,True
+611,3195030958916,intranet vía web programable,12,35,7,18421.58,14641.46,KG,1519.31,True
+612,8781180059983,definición bifurcada personalizable,19,7,12,16020.64,10308.87,KG,2255.56,True
+613,6999953415332,circuito cohesiva versátil,32,13,13,1007.33,815.54,ML,2036.72,True
+614,7805635553523,instalación logística proactivo,29,13,10,20635.64,14174.86,ML,973.81,True
+615,4343472608108,groupware sensible al contexto innovador,37,35,6,15919.14,9685.80,GR,118.51,True
+616,3358645856024,previsión bidireccional innovador,12,15,23,8045.38,4940.60,ML,556.51,True
+617,0926902889983,estructura de precios uniforme virtual,26,3,5,3095.29,2296.71,LT,2210.76,True
+618,5862872644298,fuerza de trabajo valor añadido mandatorio,32,17,20,572.47,354.36,UN,1755.20,True
+619,6261941392693,marco de tiempo 4ta generación multicanal,35,19,10,17451.79,12861.52,UN,1017.52,True
+620,2082504103060,data-warehouse escalable visionario,28,40,12,8593.33,6684.01,GR,1934.36,True
+621,5977001821490,orquestar discreta perseverante,25,10,10,10257.62,7682.80,KG,872.93,True
+622,0486215310507,función analizada implementado,21,24,2,2933.02,2323.60,KG,64.46,False
+623,0358705084536,arquitectura abierta modular digitalizado,25,29,24,5555.20,3717.50,LT,895.61,True
+624,4915316199830,encriptar tiempo real virtual,20,10,2,11396.25,7006.99,GR,2136.62,True
+625,1624844943615,archivo secundaria avanzado,16,14,23,3984.89,3026.28,GR,940.37,True
+626,8733345499841,implementación intangible diverso,22,36,6,17557.25,9962.84,ML,491.77,True
+627,6362751471448,instalación sistémica preventivo,9,32,11,15309.14,9233.30,GR,1851.53,True
+628,6700808392128,implementación estable extendido,24,40,11,14992.65,8835.04,ML,879.62,True
+629,3818119456628,modelo monitorizada por red asimilado,16,8,22,24772.20,14191.95,UN,1901.40,True
+630,3310689518995,proyección asíncrona avanzado,22,6,12,1562.23,1219.57,LT,1709.56,True
+631,1991627739465,flexibilidad acompasada enfocado al negocio,11,24,9,4161.82,3041.94,GR,2265.49,True
+632,3167293296630,enfoque motivadora con ingeniería inversa,40,1,24,12006.42,8690.06,KG,2266.11,True
+633,0663887439754,base de trabajo tolerancia cero con ingeniería inversa,18,6,15,17259.47,13797.89,LT,2160.62,True
+634,0172105200773,base del conocimiento nacional persistente,40,5,5,15702.68,8824.77,ML,1595.96,True
+635,6601991704627,inteligencia artificial orientada a soluciones compartible,25,21,21,11935.73,8034.14,KG,1785.18,True
+636,7475845092851,software basado en contenido administrado,8,5,7,4134.39,2968.31,KG,447.94,True
+637,5652487569270,inteligencia artificial incremental multiplataforma,5,32,12,16763.27,13559.86,ML,245.88,True
+638,7070593660284,orquestar potenciada ergonómico,31,24,16,6935.09,4643.66,GR,2497.79,True
+639,5034498948417,política interactiva perseverante,27,2,5,16955.50,11866.33,KG,1028.57,False
+640,7615103130339,proyección asíncrona multilateral,36,18,8,4709.80,3011.20,ML,1110.50,True
+641,1909034229840,caja de herramientas basado en necesidades implementado,20,11,11,15348.71,9530.79,ML,1548.49,True
+642,5336154032969,enfoque innovadora enfocado al cliente,21,31,9,13010.74,8413.94,LT,1760.91,True
+643,9759768258383,aprovechar coherente llave pública,10,40,11,2097.40,1403.35,GR,2256.05,True
+644,7031773742036,software valor añadido clonado,36,10,9,21406.19,14358.68,LT,1531.69,True
+645,8695177172748,interfaz gráfica didáctica distribuido,1,20,9,4439.86,3222.75,UN,1646.51,True
+646,0491655712274,acceso sensible al contexto avanzado,11,38,5,6023.64,4977.50,UN,2175.96,True
+647,3375663380255,concepto tiempo real open-source,33,4,24,13834.45,10815.60,UN,2321.02,True
+648,1170330304047,paradigma escalable intuitivo,45,10,18,20901.92,12378.12,ML,439.70,True
+649,8206066407991,conglomeración misión crítica diverso,21,21,13,18245.77,11388.25,UN,1300.11,True
+650,0740202430858,focus group cohesiva automatizado,26,14,5,14231.19,8136.20,GR,739.47,True
+651,5126332120665,hardware nacional inverso,26,14,6,2675.66,1867.86,UN,1869.89,True
+652,2578688306582,paralelismo asíncrona intuitivo,33,2,10,650.12,382.93,LT,555.56,True
+653,3396145298268,website tangible configurable,2,40,2,22783.49,12886.06,UN,793.44,True
+654,5102148040783,arquitectura abierta no-volátil de tamaño adecuado,17,30,7,3133.69,1980.81,UN,2206.71,True
+655,1174862050623,implementación asimétrica reducido,25,2,2,12842.10,7561.87,ML,478.81,False
+656,8698772269168,producto generado por la demanda opcional,42,3,19,18358.32,12563.81,ML,1990.31,True
+657,7203853975364,concepto amplio abanico descentralizado,38,26,12,10026.52,7118.77,LT,411.70,True
+658,8649021964568,productividad coherente horizontal,22,33,21,3297.16,2346.75,KG,2135.19,True
+659,9783889555259,orquestar 24 horas enfocado al negocio,15,22,16,3164.21,1930.44,LT,1393.70,True
+660,6357692616778,acceso innovadora enfocado al negocio,33,7,16,2904.98,2336.46,LT,642.49,True
+661,8508001170294,modelo metódica organizado,23,26,1,14529.60,10527.71,ML,968.54,True
+662,6965694324777,complejidad didáctica balanceado,28,38,20,23416.17,13233.41,ML,2486.86,True
+663,9702028603364,estructura de precios multitarea fundamental,21,20,18,20043.05,11702.02,KG,1553.61,True
+664,6560501258572,interfaz gráfico de usuario innovadora preventivo,8,34,16,4080.65,2774.00,KG,147.55,True
+665,4690423761332,fuerza de trabajo intangible inverso,44,38,16,5258.83,3585.24,UN,298.77,True
+666,7954360566142,archivo tangible opcional,36,28,3,1581.14,1164.60,LT,1212.83,True
+667,2910011655496,capacidad recíproca centralizado,38,27,4,11361.79,8483.07,KG,785.84,True
+668,3350525383242,contingencia ejecutiva robusto,43,31,16,9175.27,7285.27,ML,1404.93,True
+669,8068174901646,analista multimedia compatible,15,17,14,1580.46,1083.16,LT,1962.55,True
+670,6936871678671,migración holística multilateral,39,34,10,9409.44,7557.58,GR,125.74,True
+671,0816334893533,interfaz gráfico de usuario bifurcada orientado a equipos,31,33,16,10188.35,5914.19,GR,1753.36,True
+672,6654043562222,middleware 24/7 opcional,33,15,11,19407.14,13916.93,KG,1436.74,True
+673,3854246781726,base de datos homogénea universal,24,35,18,8315.04,4952.91,GR,1324.28,True
+674,7225638833794,funcionalidad defectos cero innovador,22,10,9,12391.51,9168.56,ML,2042.13,True
+675,0199495251049,migración misión crítica versátil,39,7,16,9257.40,6670.15,KG,493.71,True
+676,8082527962850,arquitectura abierta dinámica sincronizado,22,40,24,6272.05,4302.17,KG,590.07,True
+677,7932057193501,extranet basado en contenido adaptativo,37,40,9,15528.02,12181.34,KG,2121.19,True
+678,4112123553210,intranet 4ta generación horizontal,29,29,5,15937.31,11139.63,GR,1889.20,True
+679,7264830534210,portal logística avanzado,45,25,6,15710.50,11863.44,LT,915.50,True
+680,7838965607053,hardware 24 horas orgánico,2,32,14,19057.23,10917.84,UN,1121.54,True
+681,2921255510302,interfaz gráfica cliente-servidor totalmente configurable,11,6,20,12903.88,10490.63,UN,1336.87,True
+682,1148141086578,paralelismo tolerante a fallos preventivo,12,19,18,10409.88,7159.68,KG,628.80,True
+683,1701811477192,monitorizar asimétrica en toda la empresa,1,21,6,17404.69,11541.97,UN,1277.24,True
+684,3148263744771,website alto nivel enfocado al cliente,39,3,3,18897.97,14746.27,LT,1178.89,True
+685,6354599367775,analista explícita robusto,27,11,17,16453.68,12897.32,UN,556.89,True
+686,3264333104618,intranet misión crítica llave pública,9,20,13,4619.70,3818.48,KG,2263.98,True
+687,3732192161339,inteligencia artificial terciaria personalizable,42,28,3,12791.94,9053.90,GR,1401.44,True
+688,9803350175056,sistema abierto sensible al contexto perseverante,24,2,15,10360.93,6170.50,ML,899.97,True
+689,3858745657591,archivo transicional universal,25,22,22,17652.61,10771.21,LT,402.68,True
+690,1622001417845,enfoque basado en necesidades diverso,14,1,3,3200.68,2618.19,ML,1978.18,True
+691,9161683734955,encriptar homogénea intuitivo,22,21,17,4027.54,2502.86,GR,1324.12,True
+692,5820435474938,groupware motivadora en red,7,10,18,5861.42,3509.65,KG,1187.65,True
+693,0537430149038,groupware nueva generación inverso,28,26,14,3679.91,2479.88,UN,867.78,True
+694,3499324228355,codificar monitorizada por red de primera línea,6,7,3,2329.32,1418.19,KG,1373.91,True
+695,0986901193683,circuito terciaria descentralizado,37,6,2,3665.99,2645.28,UN,145.41,True
+696,9681139156582,complejidad cliente-servidor expandido,5,30,20,16588.79,12815.45,GR,285.49,True
+697,6086683527482,metodologías orientado a objetos multi-capas,20,21,7,4850.20,3762.08,KG,140.15,True
+698,8191723324496,intranet cohesiva compartible,43,36,24,15681.56,8897.53,KG,2244.19,True
+699,3330883849784,conjunto potenciada progresivo,21,28,22,8499.60,4858.87,GR,2176.93,True
+700,8120830154221,interfaz gráfica orientado a objetos intuitivo,3,1,21,7786.28,5538.77,GR,963.91,False
+701,4852367558966,capacidad bifurcada exclusivo,28,3,15,22493.77,14469.31,LT,1370.04,True
+702,0346748996235,mediante híbrida visionario,29,17,10,22921.82,13394.40,KG,1687.66,True
+703,3022820008589,analista acompasada en red,2,33,24,18945.60,11960.52,LT,1933.81,True
+704,4555789371604,colaboración bifurcada innovador,22,16,16,646.92,506.23,LT,464.11,True
+705,2147372966011,conjunto motivadora de tamaño adecuado,1,16,3,19657.52,11724.24,LT,2414.60,True
+706,4177416207331,aplicación híbrida intuitivo,17,2,20,20287.39,12104.75,UN,2480.70,True
+707,3561973337158,contingencia 4ta generación persistente,14,11,7,13994.45,9391.91,GR,1881.95,True
+708,9269473610403,metodologías sistemática orientado a equipos,43,24,21,8600.84,5213.14,UN,2425.48,True
+709,0855114973608,extranet generada por el cliente enfocado a la calidad,21,16,10,11859.65,8148.81,UN,2153.71,True
+710,3912313405032,medición sensible al contexto distribuido,2,2,10,8217.99,5050.76,KG,2331.96,True
+711,8302381282285,acceso asimétrica fundamental,35,6,23,12872.78,8324.26,GR,778.16,True
+712,2870946200951,desafío dinámica persistente,31,3,16,17583.85,12180.61,UN,697.49,True
+713,5701658602719,infraestructura tolerancia cero multiplataforma,44,33,8,17863.22,14846.77,GR,2193.93,True
+714,7842463821945,proyecto transicional intuitivo,18,16,20,16407.65,12870.87,ML,674.75,True
+715,0157658592722,archivo 3ra generación compatible,3,5,22,10749.23,6041.84,LT,2400.53,True
+716,6780121778346,base de datos neutral diverso,44,18,15,17170.83,10014.17,KG,556.61,True
+717,8864942417875,array intermedia distribuido,14,27,4,17009.99,13243.34,LT,483.80,True
+718,4704322889244,analista orientado a objetos centralizado,9,2,25,5473.11,3669.43,KG,2466.91,True
+719,6123208534091,conglomeración tangible enfocado a ganancias,19,17,8,18275.41,11414.51,GR,2146.83,True
+720,9969093655011,fuerza de trabajo motivadora reducido,20,28,9,14314.87,10501.20,KG,1590.68,True
+721,9533683837544,algoritmo móvil proactivo,36,2,23,2045.10,1328.77,KG,616.70,True
+722,2490694172029,contingencia maximizada basado en funcionalidad,27,8,9,16847.57,9716.68,KG,279.03,True
+723,6025792421779,núcleo alto nivel administrado,32,14,14,16802.26,13334.53,GR,1478.05,True
+724,2433460060211,metodologías basado en contenido balanceado,3,12,7,16408.11,12443.71,LT,1179.10,True
+725,2119268261094,software defectos cero innovador,1,11,12,939.54,719.92,ML,315.88,True
+726,2112825569989,estructura homogénea reducido,22,29,6,19403.91,12465.88,GR,578.19,True
+727,1843697812740,intranet estática realineado,38,8,23,2558.61,2076.33,GR,2376.43,True
+728,4957155219568,enfoque bifurcada administrado,16,35,18,2176.82,1436.80,UN,686.16,True
+729,1148282656075,instalación sensible al contexto preventivo,21,30,6,18466.15,10283.82,LT,123.40,True
+730,7768701760648,base de datos secundaria innovador,29,35,21,9531.09,5698.78,GR,113.31,True
+731,3319672086544,estandarización estable asimilado,5,10,6,17030.65,12400.48,GR,1981.36,True
+732,4540068360721,iniciativa maximizada realineado,25,37,4,4758.32,3689.87,LT,1303.62,True
+733,3031575044266,portal radical open-source,30,40,12,14329.38,11840.54,GR,1957.60,True
+734,8510898258972,producto recíproca en red,17,12,18,21342.22,14236.99,KG,1313.38,True
+735,7502106621567,instalación heurística cara a cara,27,20,6,875.06,506.50,KG,952.23,True
+736,5237088293377,algoritmo intangible virtual,3,12,13,19383.36,11872.15,LT,882.83,True
+737,2990034225859,emulación 4ta generación administrado,15,7,12,6106.97,3773.36,GR,487.21,True
+738,3948060608292,enfoque óptima seguro,23,13,17,5575.92,4014.21,UN,1017.06,True
+739,1105577561561,conjunto terciaria horizontal,14,9,13,17513.67,9731.62,UN,2211.84,True
+740,7996573345458,concepto generada por el cliente innovador,1,1,6,3999.00,3288.81,UN,1485.92,True
+741,4585063647859,superestructura tolerante a fallos inverso,27,1,20,14731.99,10265.79,GR,1990.60,True
+742,0301572523485,política asimétrica fundamental,27,13,6,15873.45,12261.21,KG,1536.09,True
+743,0434096825478,productividad modular operativo,41,2,25,16006.46,11922.08,ML,1100.24,True
+744,7507489980833,contingencia didáctica implementado,39,6,25,780.08,603.59,ML,228.06,True
+745,2972304541647,proyección intangible operativo,42,10,20,5029.86,3320.71,LT,761.48,True
+746,1357973289754,proyección 4ta generación operativo,14,15,21,9380.44,5739.68,UN,301.06,True
+747,6085950259742,producto sistémica en toda la empresa,11,26,25,13967.44,9048.19,ML,1928.24,True
+748,3725667694825,producto discreta reducido,24,38,13,14833.52,9624.30,KG,859.37,True
+749,0536911117821,portal incremental extendido,28,26,19,14956.30,8485.76,ML,1574.43,True
+750,5164486125926,monitorizar 5ta generación enfocado al cliente,21,39,12,17082.98,9822.81,GR,389.38,True
+751,7898898116635,enfoque explícita visionario,10,26,19,17547.83,11493.96,KG,1113.66,True
+752,7334080446611,emulación 3ra generación seguro,34,21,19,9096.76,5185.42,UN,667.23,True
+753,2527356009420,moderador 24 horas basado en objetos,33,28,20,10355.61,5981.96,UN,2496.19,True
+754,9320168809306,software dinámica diverso,6,19,21,15735.31,9176.70,LT,183.09,True
+755,1615441722044,soporte didáctica en red,19,26,6,1873.63,1061.09,KG,1828.75,True
+756,4110774643016,enfoque 3ra generación en toda la empresa,39,5,25,14212.40,11710.55,GR,1702.85,True
+757,9140193929449,proyección basado en el contexto digitalizado,30,1,7,22218.70,12773.27,KG,1711.18,True
+758,1324893459314,paralelismo metódica configurable,43,35,10,7381.08,4745.05,KG,2168.17,True
+759,1359029222141,infraestructura motivadora versátil,10,30,24,19053.73,11905.86,KG,2292.17,True
+760,8688581159157,actitud local multicanal,32,39,15,5329.27,3661.19,KG,2193.10,True
+761,8816302790757,interfaz gráfico de usuario sensible al contexto exclusivo,28,26,22,17699.32,13921.16,ML,1765.27,True
+762,9247173050816,aprovechar radical multi-capas,21,11,3,23922.01,14883.83,LT,86.34,True
+763,9964106905334,contingencia sistemática operativo,39,3,18,14874.33,8941.36,LT,626.29,True
+764,5789198796284,emulación transicional extendido,39,17,17,23107.83,14542.17,LT,2212.10,True
+765,7566245489643,iniciativa incremental monitoreado,12,16,18,8813.00,6144.47,KG,1371.21,True
+766,1943067646458,desafío didáctica adaptativo,37,28,17,12905.45,7558.95,KG,834.28,True
+767,4775606673686,caja de herramientas tangible perseverante,24,25,13,15348.12,10969.79,ML,1444.52,True
+768,1257332935138,producto 5ta generación cara a cara,19,12,21,6818.38,3850.05,GR,1861.43,True
+769,7829595142691,línea segura intangible fundamental,22,31,6,19299.63,13726.52,KG,2423.14,True
+770,9263661891730,estrategia sistémica descentralizado,42,32,17,5856.17,4090.17,GR,844.72,True
+771,7722036888089,arquitectura abierta basado en el contexto basado en objetos,39,31,6,1352.51,893.97,LT,1475.84,True
+772,0823343317388,archivo tolerante a fallos open-source,31,34,4,5422.09,3724.60,LT,162.19,True
+773,2866197034691,groupware generado por la demanda enfocado al cliente,38,34,16,13301.48,8509.99,KG,1906.52,False
+774,3255748959749,utilización intermedia progresivo,38,33,14,17529.60,11925.97,ML,734.87,True
+775,1759826743878,acceso global totalmente configurable,19,12,17,3740.70,2107.67,UN,2420.70,True
+776,4318808326291,extranet asíncrona open-source,8,21,11,1473.84,1224.79,LT,1227.30,True
+777,6476225636719,firmware cliente-servidor adaptativo,45,15,14,10831.89,6845.26,ML,1812.43,True
+778,4718979290287,aplicación modular programable,7,9,7,16046.48,12577.81,GR,400.87,True
+779,0303002217401,base del conocimiento generado por la demanda polarizado,31,26,17,17032.39,10651.27,KG,1977.96,True
+780,4373643893657,arquitectura abierta móvil open-source,43,30,13,20708.52,13514.84,UN,1011.61,True
+781,1414061779699,portal móvil personalizable,2,21,6,4257.11,2753.65,GR,2278.62,True
+782,4114380351833,moderador tangible fundamental,16,37,18,4918.39,3207.16,LT,703.61,True
+783,7474132038594,concepto nueva generación configurable,8,12,15,15606.83,9133.39,GR,1125.05,True
+784,1002945414835,alianza homogénea asimilado,36,34,8,2596.62,2133.89,UN,380.05,True
+785,7701007486458,groupware global descentralizado,29,23,22,5452.57,3316.67,LT,1685.00,True
+786,2597978009230,archivo local expandido,37,37,11,2256.91,1820.32,KG,2387.53,True
+787,5907619976012,iniciativa dedicada configurable,33,13,2,12201.23,9258.79,UN,1462.55,True
+788,0646136711899,estructura de precios bifurcada de arquitectura abierta,27,30,25,12284.93,9970.71,GR,1939.87,True
+789,1319060137542,protocolo vía web realineado,40,14,2,5979.40,4545.46,ML,876.42,True
+790,6488717212766,utilización 4ta generación enfocado a ganancias,9,22,1,12188.56,8731.16,KG,417.81,True
+791,1857397807682,éxito generado por la demanda visionario,43,37,20,8853.81,5309.53,GR,1266.57,False
+792,0912433339209,aprovechar dedicada centralizado,10,2,5,26114.07,14853.48,ML,351.63,True
+793,4521647045418,actitud intermedia totalmente configurable,34,7,11,8730.54,4927.64,KG,2078.03,True
+794,6272216944963,fidelidad multiestado orientado a equipos,20,40,3,8841.34,5689.14,LT,961.33,True
+795,1241824157750,fuerza de trabajo estable intuitivo,2,27,18,5293.17,3601.79,LT,1920.44,True
+796,1555864107974,superestructura holística multicanal,13,33,2,7877.58,6247.09,UN,1181.77,True
+797,0083523817051,encriptar generada por el cliente centralizado,35,34,22,7945.73,5458.94,ML,1510.59,True
+798,2539876189988,conjunto de instrucciones tangible orientado a equipos,28,10,3,6722.10,5427.86,KG,2085.20,True
+799,4094433577056,monitorizar basado en contenido centralizado,8,17,2,781.86,490.79,GR,628.08,True
+800,5856765367312,implementación 24 horas proactivo,39,33,2,16757.86,12155.91,GR,2063.19,True

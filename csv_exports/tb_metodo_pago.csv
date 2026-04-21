@@ -1,0 +1,6 @@
+id_metodo_pago,tipo_pago
+1,Efectivo
+2,Tarjeta debito
+3,Tarjeta credito
+4,SINPE Movil
+5,Billetera digital

@@ -1,0 +1,179 @@
+{
+    "name": "fact_ventas",
+    "description": "Data Pipeline Application",
+    "artifact": {
+        "name": "cdap-data-pipeline",
+        "version": "6.11.1",
+        "scope": "SYSTEM"
+    },
+    "config": {
+        "resources": {
+            "memoryMB": 2048,
+            "virtualCores": 1
+        },
+        "driverResources": {
+            "memoryMB": 2048,
+            "virtualCores": 1
+        },
+        "connections": [
+            {
+                "from": "BigQuery",
+                "to": "Wrangler"
+            },
+            {
+                "from": "Wrangler",
+                "to": "BigQuery2"
+            }
+        ],
+        "comments": [],
+        "postActions": [],
+        "properties": {},
+        "processTimingEnabled": true,
+        "stageLoggingEnabled": false,
+        "stages": [
+            {
+                "name": "BigQuery",
+                "plugin": {
+                    "name": "BigQueryTable",
+                    "type": "batchsource",
+                    "label": "BigQuery",
+                    "artifact": {
+                        "name": "google-cloud",
+                        "version": "0.24.1",
+                        "scope": "SYSTEM"
+                    },
+                    "properties": {
+                        "useConnection": "true",
+                        "dataset": "stg_supermercado",
+                        "table": "temp_hechos_ventas",
+                        "readTimeout": "120",
+                        "enableQueryingViews": "false",
+                        "schema": "{\"type\":\"record\",\"name\":\"output\",\"fields\":[{\"name\":\"id_venta\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_tiempo\",\"type\":[\"long\",\"null\"]},{\"name\":\"fecha_venta\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"id_producto\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_cliente\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_sucursal\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_promocion\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_metodoPago\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_canal\",\"type\":[\"long\",\"null\"]},{\"name\":\"franja_horaria\",\"type\":[\"string\",\"null\"]},{\"name\":\"cantidad_vendida\",\"type\":[\"long\",\"null\"]},{\"name\":\"precio_unitario\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"descuento\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"monto_total\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"costo\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"margen\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]}]}",
+                        "connection": "${conn(BigQuery Default)}"
+                    }
+                },
+                "outputSchema": [
+                    {
+                        "name": "etlSchemaBody",
+                        "schema": "{\"type\":\"record\",\"name\":\"output\",\"fields\":[{\"name\":\"id_venta\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_tiempo\",\"type\":[\"long\",\"null\"]},{\"name\":\"fecha_venta\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"id_producto\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_cliente\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_sucursal\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_promocion\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_metodoPago\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_canal\",\"type\":[\"long\",\"null\"]},{\"name\":\"franja_horaria\",\"type\":[\"string\",\"null\"]},{\"name\":\"cantidad_vendida\",\"type\":[\"long\",\"null\"]},{\"name\":\"precio_unitario\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"descuento\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"monto_total\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"costo\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"margen\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]}]}"
+                    }
+                ],
+                "id": "BigQuery",
+                "type": "batchsource",
+                "label": "BigQuery",
+                "icon": "fa-plug",
+                "$$hashKey": "object:32",
+                "isPluginAvailable": true,
+                "_uiPosition": {
+                    "left": "560px",
+                    "top": "356.5px"
+                }
+            },
+            {
+                "name": "Wrangler",
+                "plugin": {
+                    "name": "Wrangler",
+                    "type": "transform",
+                    "label": "Wrangler",
+                    "artifact": {
+                        "name": "wrangler-transform",
+                        "version": "4.11.1",
+                        "scope": "SYSTEM"
+                    },
+                    "properties": {
+                        "field": "*",
+                        "expressionLanguage": "jexl",
+                        "precondition": "false",
+                        "on-error": "fail-pipeline",
+                        "schema": "{\"type\":\"record\",\"name\":\"output\",\"fields\":[{\"name\":\"id_venta\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_tiempo\",\"type\":[\"long\",\"null\"]},{\"name\":\"fecha_venta\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"id_producto\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_cliente\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_sucursal\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_promocion\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_metodoPago\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_canal\",\"type\":[\"long\",\"null\"]},{\"name\":\"franja_horaria\",\"type\":[\"string\",\"null\"]},{\"name\":\"cantidad_vendida\",\"type\":[\"long\",\"null\"]},{\"name\":\"precio_unitario\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"descuento\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"monto_total\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"costo\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"margen\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]}]}"
+                    }
+                },
+                "outputSchema": [
+                    {
+                        "name": "etlSchemaBody",
+                        "schema": "{\"type\":\"record\",\"name\":\"output\",\"fields\":[{\"name\":\"id_venta\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_tiempo\",\"type\":[\"long\",\"null\"]},{\"name\":\"fecha_venta\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"id_producto\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_cliente\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_sucursal\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_promocion\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_metodoPago\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_canal\",\"type\":[\"long\",\"null\"]},{\"name\":\"franja_horaria\",\"type\":[\"string\",\"null\"]},{\"name\":\"cantidad_vendida\",\"type\":[\"long\",\"null\"]},{\"name\":\"precio_unitario\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"descuento\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"monto_total\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"costo\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"margen\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]}]}"
+                    }
+                ],
+                "inputSchema": [
+                    {
+                        "name": "BigQuery",
+                        "schema": "{\"type\":\"record\",\"name\":\"output\",\"fields\":[{\"name\":\"id_venta\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_tiempo\",\"type\":[\"long\",\"null\"]},{\"name\":\"fecha_venta\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"id_producto\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_cliente\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_sucursal\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_promocion\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_metodoPago\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_canal\",\"type\":[\"long\",\"null\"]},{\"name\":\"franja_horaria\",\"type\":[\"string\",\"null\"]},{\"name\":\"cantidad_vendida\",\"type\":[\"long\",\"null\"]},{\"name\":\"precio_unitario\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"descuento\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"monto_total\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"costo\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"margen\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]}]}"
+                    }
+                ],
+                "id": "Wrangler",
+                "type": "transform",
+                "label": "Wrangler",
+                "icon": "icon-DataPreparation",
+                "$$hashKey": "object:33",
+                "isPluginAvailable": true,
+                "_uiPosition": {
+                    "left": "860px",
+                    "top": "356.5px"
+                }
+            },
+            {
+                "name": "BigQuery2",
+                "plugin": {
+                    "name": "BigQueryTable",
+                    "type": "batchsink",
+                    "label": "BigQuery2",
+                    "artifact": {
+                        "name": "google-cloud",
+                        "version": "0.24.1",
+                        "scope": "SYSTEM"
+                    },
+                    "properties": {
+                        "useConnection": "true",
+                        "dataset": "dw_supermercado",
+                        "table": "hechos_ventas",
+                        "operation": "insert",
+                        "truncateTable": "true",
+                        "allowSchemaRelaxation": "false",
+                        "readTimeout": "120",
+                        "location": "US",
+                        "createPartitionedTable": "false",
+                        "partitioningType": "TIME",
+                        "timePartitioningType": "DAY",
+                        "partitionFilterRequired": "false",
+                        "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"id_venta\",\"type\":\"long\"},{\"name\":\"id_tiempo\",\"type\":\"long\"},{\"name\":\"fecha_venta\",\"type\":{\"type\":\"int\",\"logicalType\":\"date\"}},{\"name\":\"id_producto\",\"type\":\"long\"},{\"name\":\"id_cliente\",\"type\":\"long\"},{\"name\":\"id_sucursal\",\"type\":\"long\"},{\"name\":\"id_promocion\",\"type\":\"long\"},{\"name\":\"id_metodoPago\",\"type\":\"long\"},{\"name\":\"id_canal\",\"type\":\"long\"},{\"name\":\"franja_horaria\",\"type\":\"string\"},{\"name\":\"cantidad_vendida\",\"type\":\"long\"},{\"name\":\"precio_unitario\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":32,\"scale\":3}},{\"name\":\"descuento\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":32,\"scale\":3}},{\"name\":\"monto_total\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":32,\"scale\":3}},{\"name\":\"costo\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":32,\"scale\":3}},{\"name\":\"margen\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":32,\"scale\":3}}]}",
+                        "connection": "${conn(BigQuery Default)}"
+                    }
+                },
+                "outputSchema": [
+                    {
+                        "name": "etlSchemaBody",
+                        "schema": "{\"type\":\"record\",\"name\":\"etlSchemaBody\",\"fields\":[{\"name\":\"id_venta\",\"type\":\"long\"},{\"name\":\"id_tiempo\",\"type\":\"long\"},{\"name\":\"fecha_venta\",\"type\":{\"type\":\"int\",\"logicalType\":\"date\"}},{\"name\":\"id_producto\",\"type\":\"long\"},{\"name\":\"id_cliente\",\"type\":\"long\"},{\"name\":\"id_sucursal\",\"type\":\"long\"},{\"name\":\"id_promocion\",\"type\":\"long\"},{\"name\":\"id_metodoPago\",\"type\":\"long\"},{\"name\":\"id_canal\",\"type\":\"long\"},{\"name\":\"franja_horaria\",\"type\":\"string\"},{\"name\":\"cantidad_vendida\",\"type\":\"long\"},{\"name\":\"precio_unitario\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":32,\"scale\":3}},{\"name\":\"descuento\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":32,\"scale\":3}},{\"name\":\"monto_total\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":32,\"scale\":3}},{\"name\":\"costo\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":32,\"scale\":3}},{\"name\":\"margen\",\"type\":{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":32,\"scale\":3}}]}"
+                    }
+                ],
+                "inputSchema": [
+                    {
+                        "name": "Wrangler",
+                        "schema": "{\"type\":\"record\",\"name\":\"output\",\"fields\":[{\"name\":\"id_venta\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_tiempo\",\"type\":[\"long\",\"null\"]},{\"name\":\"fecha_venta\",\"type\":[{\"type\":\"int\",\"logicalType\":\"date\"},\"null\"]},{\"name\":\"id_producto\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_cliente\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_sucursal\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_promocion\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_metodoPago\",\"type\":[\"long\",\"null\"]},{\"name\":\"id_canal\",\"type\":[\"long\",\"null\"]},{\"name\":\"franja_horaria\",\"type\":[\"string\",\"null\"]},{\"name\":\"cantidad_vendida\",\"type\":[\"long\",\"null\"]},{\"name\":\"precio_unitario\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"descuento\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"monto_total\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"costo\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]},{\"name\":\"margen\",\"type\":[{\"type\":\"bytes\",\"logicalType\":\"decimal\",\"precision\":38,\"scale\":9},\"null\"]}]}"
+                    }
+                ],
+                "id": "BigQuery2",
+                "type": "batchsink",
+                "label": "BigQuery2",
+                "icon": "fa-plug",
+                "$$hashKey": "object:34",
+                "isPluginAvailable": true,
+                "_uiPosition": {
+                    "left": "1160px",
+                    "top": "356.5px"
+                }
+            }
+        ],
+        "schedule": "0 1 */1 * *",
+        "engine": "spark",
+        "numOfRecordsPreview": 100,
+        "rangeRecordsPreview": {
+            "min": 1,
+            "max": "5000"
+        },
+        "description": "Data Pipeline Application",
+        "maxConcurrentRuns": 1,
+        "pushdownEnabled": false,
+        "transformationPushdown": {}
+    },
+    "version": "0afc6a11-3c84-11f1-94d1-52d867d39b15"
+}

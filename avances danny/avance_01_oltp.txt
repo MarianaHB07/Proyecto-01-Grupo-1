@@ -1,0 +1,141 @@
+============================================================================
+AVANCE 01 — SETUP DEL OLTP EN POSTGRESQL LOCAL
+Proyecto 01 BI — TI-6900 — Grupo 1 — Cadena de supermercados
+Responsable: Danny Cordero Arrieta
+============================================================================
+
+OBJETIVO DE ESTE AVANCE
+-----------------------
+Dejar la base de datos transaccional creada, con las 16 tablas, las
+restricciones de integridad, los indices secundarios y una verificacion
+automatica de que todo esta en orden.
+
+NOTA DE IMPLEMENTACION
+----------------------
+Se opto por instalar PostgreSQL localmente en lugar de usar Cloud SQL.
+Esto reduce los costos operativos del proyecto (Cloud SQL cobra por hora
+de instancia) y simplifica la configuracion. Los datos generados se
+exportan a CSV y se suben a Google Cloud Storage para alimentar los
+pipelines ETL en Data Fusion.
+
+
+PASOS EJECUTADOS
+----------------
+[X] 1. Creacion del proyecto en Google Cloud Platform
+       - Project ID: proyectobi-493618
+       - Region default: us-central1
+
+[X] 2. Habilitacion de APIs
+       - BigQuery API
+       - Cloud Storage API
+       - Cloud Data Fusion API
+       - Compute Engine API
+       - Cloud Dataproc API
+       Nota: Cloud SQL Admin API no se habilito porque se uso
+       PostgreSQL local en lugar de Cloud SQL.
+
+[X] 3. Instalacion de PostgreSQL local (Windows)
+       - Version: PostgreSQL 16
+       - Host: localhost
+       - Puerto: 5432
+       - Herramienta de administracion: pgAdmin 4 (incluido)
+
+[X] 4. Creacion de la base de datos y usuario
+       - Database: supermercado_oltp
+       - Usuario: postgres
+       - Comando: CREATE DATABASE supermercado_oltp;
+
+[X] 5. Conexion local verificada con psql
+       $ psql -U postgres -d supermercado_oltp
+       Resultado: Conexion exitosa a PostgreSQL 16 en localhost:5432
+
+[X] 6. Ejecucion de 01_create_schema.sql
+       Comando: psql -U postgres -d supermercado_oltp -f 01_oltp\schema\01_create_schema.sql
+       Resultado esperado: RAISE NOTICE "Total de tablas creadas: 16"
+       Resultado obtenido: Total de tablas creadas en schema sm: 16
+
+
+VERIFICACION AUTOMATICA
+-----------------------
+Ejecutar las siguientes queries despues del create_schema.sql.
+Copiar los resultados obtenidos a la derecha de cada linea.
+
+-- Query V1.1: Numero de tablas
+SELECT COUNT(*) FROM information_schema.tables
+WHERE table_schema = 'sm' AND table_type = 'BASE TABLE';
+
+Esperado: 16
+Obtenido: 16
+
+
+-- Query V1.2: Nombres de tablas
+SELECT table_name FROM information_schema.tables
+WHERE table_schema = 'sm' AND table_type = 'BASE TABLE'
+ORDER BY table_name;
+
+Esperado (16 tablas):
+    tb_canal_venta              [X]
+    tb_categoria                [X]
+    tb_cliente                  [X]
+    tb_inventario               [X]
+    tb_marca                    [X]
+    tb_metodo_pago              [X]
+    tb_producto                 [X]
+    tb_programa_lealtad         [X]
+    tb_promocion                [X]
+    tb_promocion_producto       [X]
+    tb_proveedor                [X]
+    tb_provincia                [X]
+    tb_subcategoria             [X]
+    tb_sucursal                 [X]
+    tb_venta_cabecera           [X]
+    tb_venta_detalle            [X]
+
+
+-- Query V1.3: Numero de foreign keys (debe ser >= 15)
+SELECT COUNT(*) FROM information_schema.table_constraints
+WHERE constraint_schema = 'sm' AND constraint_type = 'FOREIGN KEY';
+
+Esperado: >= 15
+Obtenido: 17
+
+
+-- Query V1.4: Numero de check constraints (debe ser >= 10)
+SELECT COUNT(*) FROM information_schema.table_constraints
+WHERE constraint_schema = 'sm' AND constraint_type = 'CHECK';
+
+Esperado: >= 10
+Obtenido: 18
+
+
+-- Query V1.5: Indices secundarios creados
+SELECT COUNT(*) FROM pg_indexes
+WHERE schemaname = 'sm' AND indexname LIKE 'idx_%';
+
+Esperado: 12
+Obtenido: 12
+
+
+BITACORA
+--------
+Fecha inicio:  19 de abril de 2026
+Fecha cierre:  19 de abril de 2026
+Tiempo total:  15 minutos
+Problemas:     Ninguno. La instalacion local de PostgreSQL fue directa.
+
+
+ENTREGABLES COMMITEADOS AL REPO
+-------------------------------
+[X] src/oltp/01_create_schema.sql
+[X] src/oltp/02_drop_all.sql
+[X] avances/avance_01_oltp.txt (este archivo, con marcas [X])
+
+
+CRITERIO DE CIERRE
+------------------
+Este avance se considera COMPLETO cuando:
+- Todas las 5 queries de verificacion devuelven los valores esperados  [X]
+- Todas las celdas [ ] estan marcadas como [X]                        [X]
+- El archivo del script SQL esta en el repo                            [X]
+
+Siguiente avance: avance_02_generacion_datos.txt
