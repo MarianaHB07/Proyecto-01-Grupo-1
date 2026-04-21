@@ -6,7 +6,6 @@
 **Institución:** Instituto Tecnológico de Costa Rica (TEC)  
 **Semestre:** I Semestre 2026  
 **Profesor:** Lic. Michael Lizandro Sánchez Soto  
-**Profesor alterno:** Dr. Federico Torres Carballo  
 **Fecha de entrega:** 21 de abril de 2026  
 
 ---
