@@ -237,8 +237,8 @@ python export_tables_to_csv.py
 |-------|-----------|-------------|---------|
 | 09:00 | Reunión de kick-off del grupo | Todos | Se revisó la rúbrica del proyecto, se asignaron roles y responsabilidades. Danny: OLTP + ETL. Raquel: modelo dimensional. Mariana: caso de negocio + documentación. Randall: dashboard + apoyo ETL. |
 | 10:30 | Definición de preguntas de negocio | Todos | Se definieron las 4 preguntas obligatorias y 1 adicional. Se identificaron los KPIs e indicadores clave. |
-| 14:00 | Creación del proyecto en GCP | Danny | Se creó el proyecto `proyectobi-493618` en Google Cloud Platform, región `us-central1`. Se habilitaron las APIs necesarias: BigQuery, Cloud Storage, Data Fusion, Compute Engine, Dataproc. |
-| 15:00 | Instalación de PostgreSQL local | Danny | Se instaló PostgreSQL 16 en Windows con pgAdmin 4. Se decidió usar PostgreSQL local en lugar de Cloud SQL para reducir costos operativos. |
+| 14:00 | Creación del proyecto en GCP | Danny | Se creó el proyecto `cadena-de-supermercados` en Google Cloud Platform, región `us-central1`. Se habilitaron las APIs necesarias: BigQuery, Cloud Storage, Data Fusion, Compute Engine, Dataproc. |
+| 15:00 | Instalación de PostgreSQL local | Danny y Raquel | Se instaló PostgreSQL 16 en Windows con pgAdmin 4. Se decidió usar PostgreSQL local en lugar de Cloud SQL para reducir costos operativos. |
 | 16:00 | Creación del repositorio GitHub | Mariana | Se creó el repositorio `Proyecto-01-Grupo-1` y se agregaron los 4 integrantes como colaboradores. |
 | 17:00 | Diseño inicial del esquema OLTP | Danny | Primer borrador del modelo ER con 16 tablas. Se establecieron las entidades principales: productos, clientes, sucursales, ventas, inventario. |
 
@@ -251,9 +251,9 @@ python export_tables_to_csv.py
 | 08:00 | Desarrollo del DDL completo | Danny | Se escribió `01_create_schema.sql` con las 16 tablas bajo el schema `sm`. Se definieron 17 foreign keys, 18 check constraints y 12 índices secundarios. Tablas principales: `tb_producto`, `tb_cliente`, `tb_venta_cabecera`, `tb_venta_detalle`. |
 | 10:00 | Script de limpieza | Danny | Se creó `02_drop_all.sql` para facilitar el desarrollo iterativo — permite borrar todas las tablas y recrear desde cero. |
 | 11:00 | Ejecución y verificación del schema | Danny | Se ejecutó el DDL contra PostgreSQL local. Verificación exitosa: 16 tablas creadas, 17 FKs, 18 checks, 12 índices. Se documentó todo en `avance_01_oltp.txt`. |
-| 14:00 | Desarrollo del generador de datos | Danny | Se inició el desarrollo de `generate_oltp_data.py` usando la librería Faker con seed 42 para reproducibilidad. Se configuró el locale `es_MX` (Faker no soporta `es_CR` directamente). |
-| 16:00 | Generación de datos sintéticos | Danny | Ejecución exitosa del generador. Total de filas generadas: 140,266 distribuidas en 16 tablas. Las tablas más pesadas: `tb_venta_detalle` (102,880 filas) y `tb_venta_cabecera` (25,000 filas). |
-| 17:30 | Verificación de integridad de datos | Danny | Se corrieron queries de validación sobre las 16 tablas. Todas las foreign keys se respetan, los checks pasan, no hay NULLs en campos NOT NULL. Se documentó en `avance_02_datos.txt`. |
+| 14:00 | Desarrollo del generador de datos | Danny,Mariana y Raquel | Se inició el desarrollo de `generate_oltp_data.py` usando la librería Faker con seed 42 para reproducibilidad. Se configuró el locale `es_MX` (Faker no soporta `es_CR` directamente). |
+| 16:00 | Generación de datos sintéticos | Danny,Mariana y Raquel | Ejecución exitosa del generador. Total de filas generadas: 140,266 distribuidas en 16 tablas. Las tablas más pesadas: `tb_venta_detalle` (102,880 filas) y `tb_venta_cabecera` (25,000 filas). |
+| 17:30 | Verificación de integridad de datos | Danny,Mariana y Raquel | Se corrieron queries de validación sobre las 16 tablas. Todas las foreign keys se respetan, los checks pasan, no hay NULLs en campos NOT NULL. Se documentó en `avance_02_datos.txt`. |
 
 ---
 
@@ -261,12 +261,12 @@ python export_tables_to_csv.py
 
 | Hora  | Actividad | Responsable | Detalle |
 |-------|-----------|-------------|---------|
-| 09:00 | Desarrollo del script de exportación | Danny | Se creó `export_tables_to_csv.py` para exportar las 16 tablas de PostgreSQL a archivos CSV. Los CSV se guardan en `csv_exports/` con headers incluidos. |
-| 10:00 | Exportación exitosa | Danny | Se generaron los 16 archivos CSV. Archivo más grande: `tb_venta_detalle.csv` (~4 MB). Total de datos exportados: ~6.9 MB. |
-| 11:00 | Subida de CSVs a Google Cloud Storage | Danny | Se subieron los 16 CSVs al bucket del proyecto en GCS. Estos sirven como fuente para los pipelines ETL de Data Fusion. |
+| 09:00 | Desarrollo del script de exportación | Danny y Mariana| Se creó `export_tables_to_csv.py` para exportar las 16 tablas de PostgreSQL a archivos CSV. Los CSV se guardan en `csv_exports/` con headers incluidos. |
+| 10:00 | Exportación exitosa | Danny y Mariana | Se generaron los 16 archivos CSV. Archivo más grande: `tb_venta_detalle.csv` (~4 MB). Total de datos exportados: ~6.9 MB. |
+| 11:00 | Subida de CSVs a Google Cloud Storage | Danny y Mariana | Se subieron los 16 CSVs al bucket del proyecto en GCS. Estos sirven como fuente para los pipelines ETL de Data Fusion. |
 | 14:00 | Diseño del modelo dimensional | Raquel + Danny | Se diseñó el esquema estrella con 7 dimensiones (`dim_tiempo`, `dim_producto`, `dim_cliente`, `dim_sucursal`, `dim_canal`, `dim_metodo_pago`, `dim_promocion`) y 2 hechos (`fact_ventas`, `fact_inventario`). |
-| 16:00 | Creación del DW en BigQuery | Danny | Se escribió y ejecutó `01_create_dw_schema.sql` en BigQuery. Se insertaron las filas subrogadas `-1` en todas las dimensiones para manejar claves faltantes. |
-| 17:00 | Verificación del DW | Danny | Se verificó que las 9 tablas del DW existieran en BigQuery con la estructura correcta. Se documentó en `avance_03_gcp_setup.txt`. |
+| 16:00 | Creación del DW en BigQuery | Danny y Raquel | Se escribió y ejecutó `01_create_dw_schema.sql` en BigQuery. Se insertaron las filas subrogadas `-1` en todas las dimensiones para manejar claves faltantes. |
+| 17:00 | Verificación del DW | Danny y Raquel | Se verificó que las 9 tablas del DW existieran en BigQuery con la estructura correcta. Se documentó en `avance_03_gcp_setup.txt`. |
 
 ---
 
@@ -303,11 +303,11 @@ python export_tables_to_csv.py
 
 | Hora  | Actividad | Responsable | Detalle |
 |-------|-----------|-------------|---------|
-| 09:00 | Generación de diagramas | Danny | Se generaron 4 diagramas PNG: diagrama ER del OLTP, esquema estrella del DW, arquitectura ETL completa, y orquestación de pipelines. Guardados en `05_diagramas/`. |
-| 11:00 | Diccionario de datos | Danny | Se finalizó el diccionario de datos del DW (17 páginas) documentando cada tabla, columna, tipo de dato, descripción y reglas de negocio. Versiones `.docx` y `.pdf` en `06_diccionario/`. |
+| 09:00 | Generación de diagramas | Danny,Randall y Raquel | Se generaron 4 diagramas PNG: diagrama ER del OLTP, esquema estrella del DW, arquitectura ETL completa, y orquestación de pipelines. Guardados en `05_diagramas/`. |
+| 11:00 | Diccionario de datos | Mariana y Raquel | Se finalizó el diccionario de datos del DW (17 páginas) documentando cada tabla, columna, tipo de dato, descripción y reglas de negocio. Versiones `.docx` y `.pdf` en `06_diccionario/`. |
 | 14:00 | Documentación de pipelines ETL | Danny | Se documentó el proceso de cada pipeline en `04_etl/pipelines_bigquery_simples_supermercado.docx` con capturas, configuraciones y transformaciones aplicadas. |
 | 16:00 | Avance de validación final | Danny + Randall | Se completó `avance_05_validacion.txt` con los resultados finales de las 6 validaciones. Todas pasaron correctamente. |
-| 17:00 | Checklist de entrega | Danny | Se actualizó `checklist_entrega.txt` con el estado de todos los rubros. Estado global: ~65% completo (pendiente informe final del grupo, presentación y dashboard). |
+| 17:00 | Checklist de entrega | Mariana y Raquel | Se actualizó `checklist_entrega.txt` con el estado de todos los rubros. Estado global: ~65% completo (pendiente informe final del grupo, presentación y dashboard). |
 
 ---
 
@@ -318,7 +318,7 @@ python export_tables_to_csv.py
 | 10:00 | Revisión cruzada de documentación | Danny + Raquel | Se revisaron todos los archivos de avances para consistencia. Se verificó que los volúmenes reportados coinciden con los datos reales. |
 | 12:00 | Prueba de reproducibilidad | Danny | Se ejecutó todo el flujo desde cero en un ambiente limpio: DDL → generación de datos → exportación CSV. Todo funciona correctamente con las instrucciones del README. |
 | 15:00 | Reunión grupal de revisión | Todos | Se revisó el estado del proyecto completo. Dashboard en Looker Studio en proceso (Randall). Informe y presentación pendientes de consolidar (Mariana + Raquel). |
-| 17:00 | Preparación para subida a GitHub | Danny | Se organizó la estructura final de archivos, se verificó que no haya credenciales expuestas, y se preparó el `.gitignore`. |
+| 17:00 | Preparación para subida a GitHub | Danny y Mariana | Se organizó la estructura final de archivos, se verificó que no haya credenciales expuestas, y se preparó el `.gitignore`. |
 
 ---
 
