@@ -1,0 +1,148 @@
+temp_dim_producto
+
+CREATE OR REPLACE TABLE `cadena-de-supermecados.stg_supermercado.temp_dim_producto` AS
+SELECT
+  ROW_NUMBER() OVER (ORDER BY p.id_producto) AS id_producto_sk,
+  CAST(p.id_producto AS INT64) AS id_producto_nk,
+  CAST(p.codigo_barras AS STRING) AS codigo_barras,
+  TRIM(p.nombre_producto) AS nombre_producto,
+  TRIM(c.nombre_categoria) AS categoria,
+  TRIM(s.nombre_subcategoria) AS subcategoria,
+  TRIM(m.nombre_marca) AS marca,
+  TRIM(m.tipo_marca) AS tipo_marca,
+  CAST(p.precio_unitario AS NUMERIC) AS precio_unitario,
+  TRIM(p.unidad_medida) AS unidad_medida
+FROM `cadena-de-supermecados.stg_supermercado.tb_producto` p
+JOIN `cadena-de-supermecados.stg_supermercado.tb_subcategoria` s
+  ON p.id_subcategoria = s.id_subcategoria
+JOIN `cadena-de-supermecados.stg_supermercado.tb_categoria` c
+  ON s.id_categoria = c.id_categoria
+JOIN `cadena-de-supermecados.stg_supermercado.tb_marca` m
+  ON p.id_marca = m.id_marca;
+
+
+
+temp_dim_clientes
+CREATE OR REPLACE TABLE `cadena-de-supermecados.stg_supermercado.temp_dim_cliente` AS
+WITH base AS (
+  SELECT
+    CAST(c.id_cliente AS INT64) AS id_cliente_nk,
+    CONCAT(TRIM(c.nombre), ' ', TRIM(c.apellido)) AS nombre_completo,
+    CASE
+      WHEN c.genero = 'M' THEN 'Masculino'
+      WHEN c.genero = 'F' THEN 'Femenino'
+      WHEN c.genero = 'N' THEN 'No binario'
+      ELSE 'No especificado'
+    END AS genero,
+    DATE_DIFF(CURRENT_DATE(), c.fecha_nacimiento, YEAR) AS edad,
+    CASE
+      WHEN DATE_DIFF(CURRENT_DATE(), c.fecha_nacimiento, YEAR) < 18 THEN 'Menor'
+      WHEN DATE_DIFF(CURRENT_DATE(), c.fecha_nacimiento, YEAR) BETWEEN 18 AND 25 THEN '18-25'
+      WHEN DATE_DIFF(CURRENT_DATE(), c.fecha_nacimiento, YEAR) BETWEEN 26 AND 35 THEN '26-35'
+      WHEN DATE_DIFF(CURRENT_DATE(), c.fecha_nacimiento, YEAR) BETWEEN 36 AND 50 THEN '36-50'
+      WHEN DATE_DIFF(CURRENT_DATE(), c.fecha_nacimiento, YEAR) BETWEEN 51 AND 65 THEN '51-65'
+      ELSE '65+'
+    END AS rango_edad,
+    TRIM(c.tipo_cliente) AS tipo_cliente,
+    c.fecha_afiliacion,
+    COALESCE(TRIM(pl.nivel), 'Sin programa') AS nivel_lealtad
+  FROM `cadena-de-supermecados.stg_supermercado.tb_cliente` c
+  LEFT JOIN `cadena-de-supermecados.stg_supermercado.tb_programa_lealtad` pl
+    ON c.id_programa = pl.id_programa
+)
+SELECT
+  -1 AS id_cliente_sk,
+  NULL AS id_cliente_nk,
+  'Cliente anónimo' AS nombre_completo,
+  'No aplica' AS genero,
+  NULL AS edad,
+  'No aplica' AS rango_edad,
+  'No aplica' AS tipo_cliente,
+  NULL AS fecha_afiliacion,
+  'Sin programa' AS nivel_lealtad
+UNION ALL
+SELECT
+  ROW_NUMBER() OVER (ORDER BY id_cliente_nk) AS id_cliente_sk,
+  id_cliente_nk,
+  nombre_completo,
+  genero,
+  edad,
+  rango_edad,
+  tipo_cliente,
+  fecha_afiliacion,
+  nivel_lealtad
+FROM base;
+
+
+
+temp_facts_ventas
+CREATE OR REPLACE TABLE `cadena-de-supermecados.stg_supermercado.temp_hechos_ventas` AS
+SELECT
+  CAST(vd.id_detalle AS INT64) AS id_venta,
+  dt.id_tiempo,
+  DATE(vc.fecha_hora) AS fecha_venta,
+  dp.id_producto_sk AS id_producto,
+  COALESCE(dc.id_cliente_sk, -1) AS id_cliente,
+  ds.id_sucursal_sk AS id_sucursal,
+  COALESCE(dpr.id_promocion_sk, -1) AS id_promocion,
+  dmp.id_metodoPago_sk AS id_metodoPago,
+  dca.id_canal_sk AS id_canal,
+  CASE
+    WHEN EXTRACT(HOUR FROM vc.fecha_hora) BETWEEN 0 AND 5 THEN 'Madrugada'
+    WHEN EXTRACT(HOUR FROM vc.fecha_hora) BETWEEN 6 AND 11 THEN 'Manana'
+    WHEN EXTRACT(HOUR FROM vc.fecha_hora) BETWEEN 12 AND 17 THEN 'Tarde'
+    ELSE 'Noche'
+  END AS franja_horaria,
+  CAST(vd.cantidad AS INT64) AS cantidad_vendida,
+  CAST(vd.precio_unitario_venta AS NUMERIC) AS precio_unitario,
+  CAST(COALESCE(vd.descuento_aplicado, 0) AS NUMERIC) AS descuento,
+  CAST(vd.subtotal_linea AS NUMERIC) AS monto_total,
+  CAST(vd.cantidad * p.costo_unitario AS NUMERIC) AS costo,
+  CAST(vd.subtotal_linea - (vd.cantidad * p.costo_unitario) AS NUMERIC) AS margen
+FROM `cadena-de-supermecados.stg_supermercado.tb_venta_detalle` vd
+JOIN `cadena-de-supermecados.stg_supermercado.tb_venta_cabecera` vc
+  ON vd.id_venta = vc.id_venta
+JOIN `cadena-de-supermecados.stg_supermercado.tb_producto` p
+  ON vd.id_producto = p.id_producto
+JOIN `cadena-de-supermecados.dw_supermercado.dim_tiempo` dt
+  ON dt.fecha = DATE(vc.fecha_hora)
+JOIN `cadena-de-supermecados.dw_supermercado.dim_producto` dp
+  ON dp.id_producto_nk = vd.id_producto
+LEFT JOIN `cadena-de-supermecados.dw_supermercado.dim_cliente` dc
+  ON dc.id_cliente_nk = vc.id_cliente
+JOIN `cadena-de-supermecados.dw_supermercado.dim_sucursal` ds
+  ON ds.id_sucursal_nk = vc.id_sucursal
+LEFT JOIN `cadena-de-supermecados.dw_supermercado.dim_promocion` dpr
+  ON dpr.id_promocion_nk = vd.id_promocion
+JOIN `cadena-de-supermecados.dw_supermercado.dim_metodoPago` dmp
+  ON dmp.id_metodoPago_nk = vc.id_metodo_pago
+JOIN `cadena-de-supermecados.dw_supermercado.dim_canal` dca
+  ON dca.id_canal_nk = vc.id_canal;
+
+
+
+temp_fact_inventario
+CREATE OR REPLACE TABLE `cadena-de-supermecados.stg_supermercado.temp_hechos_inventario` AS
+SELECT
+  CAST(i.id_inventario AS INT64) AS id_inventario,
+  dt.id_tiempo,
+  i.fecha AS fecha_snapshot,
+  dp.id_producto_sk AS id_producto,
+  ds.id_sucursal_sk AS id_sucursal,
+  CAST(i.stock_actual AS INT64) AS stock_actual,
+  CAST(i.stock_minimo AS INT64) AS stock_minimo,
+  CAST(COALESCE(i.entradas_dia, 0) AS INT64) AS entradas,
+  CAST(COALESCE(i.salidas_dia, 0) AS INT64) AS salidas,
+  CASE
+    WHEN i.stock_actual < i.stock_minimo THEN 1
+    ELSE 0
+  END AS indicador_quiebre
+FROM `cadena-de-supermecados.stg_supermercado.tb_inventario` i
+JOIN `cadena-de-supermecados.dw_supermercado.dim_tiempo` dt
+  ON dt.fecha = i.fecha
+JOIN `cadena-de-supermecados.dw_supermercado.dim_producto` dp
+  ON dp.id_producto_nk = i.id_producto
+JOIN `cadena-de-supermecados.dw_supermercado.dim_sucursal` ds
+  ON ds.id_sucursal_nk = i.id_sucursal;
+
+
