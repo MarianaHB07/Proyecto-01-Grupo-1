@@ -1,0 +1,302 @@
+Pipelines BigQuery – Supermercado
+Preparación previa
+Cargar CSVs a BigQuery Staging
+Ejecutado en BigQuery SQL Workspace, una query por tabla:
+SQL:
+LOAD DATA OVERWRITE `cadena-de-supermecados.stg_supermercado.tb_provincia`
+FROM FILES (format = 'CSV', uris = ['gs://supermercado_grupo1/tb_provincia.csv'], skip_leading_rows = 1);
+
+LOAD DATA OVERWRITE `cadena-de-supermecados.stg_supermercado.tb_sucursal`
+FROM FILES (format = 'CSV', uris = ['gs://supermercado_grupo1/tb_sucursal.csv'], skip_leading_rows = 1);
+
+LOAD DATA OVERWRITE `cadena-de-supermecados.stg_supermercado.tb_categoria`
+FROM FILES (format = 'CSV', uris = ['gs://supermercado_grupo1/tb_categoria.csv'], skip_leading_rows = 1);
+
+LOAD DATA OVERWRITE `cadena-de-supermecados.stg_supermercado.tb_subcategoria`
+FROM FILES (format = 'CSV', uris = ['gs://supermercado_grupo1/tb_subcategoria.csv'], skip_leading_rows = 1);
+
+LOAD DATA OVERWRITE `cadena-de-supermecados.stg_supermercado.tb_marca`
+FROM FILES (format = 'CSV', uris = ['gs://supermercado_grupo1/tb_marca.csv'], skip_leading_rows = 1);
+
+LOAD DATA OVERWRITE `cadena-de-supermecados.stg_supermercado.tb_producto`
+FROM FILES (format = 'CSV', uris = ['gs://supermercado_grupo1/tb_producto.csv'], skip_leading_rows = 1);
+
+LOAD DATA OVERWRITE `cadena-de-supermecados.stg_supermercado.tb_programa_lealtad`
+FROM FILES (format = 'CSV', uris = ['gs://supermercado_grupo1/tb_programa_lealtad.csv'], skip_leading_rows = 1);
+
+LOAD DATA OVERWRITE `cadena-de-supermecados.stg_supermercado.tb_cliente`
+FROM FILES (format = 'CSV', uris = ['gs://supermercado_grupo1/tb_cliente.csv'], skip_leading_rows = 1);
+
+LOAD DATA OVERWRITE `cadena-de-supermecados.stg_supermercado.tb_canal_venta`
+FROM FILES (format = 'CSV', uris = ['gs://supermercado_grupo1/tb_canal_venta.csv'], skip_leading_rows = 1);
+
+LOAD DATA OVERWRITE `cadena-de-supermecados.stg_supermercado.tb_metodo_pago`
+FROM FILES (format = 'CSV', uris = ['gs://supermercado_grupo1/tb_metodo_pago.csv'], skip_leading_rows = 1);
+
+LOAD DATA OVERWRITE `cadena-de-supermecados.stg_supermercado.tb_promocion`
+FROM FILES (format = 'CSV', uris = ['gs://supermercado_grupo1/tb_promocion.csv'], skip_leading_rows = 1);
+
+LOAD DATA OVERWRITE `cadena-de-supermecados.stg_supermercado.tb_venta_cabecera`
+FROM FILES (format = 'CSV', uris = ['gs://supermercado_grupo1/tb_venta_cabecera.csv'], skip_leading_rows = 1);
+
+LOAD DATA OVERWRITE `cadena-de-supermecados.stg_supermercado.tb_venta_detalle`
+FROM FILES (format = 'CSV', uris = ['gs://supermercado_grupo1/tb_venta_detalle.csv'], skip_leading_rows = 1);
+
+LOAD DATA OVERWRITE `cadena-de-supermecados.stg_supermercado.tb_inventario`
+FROM FILES (format = 'CSV', uris = ['gs://supermercado_grupo1/tb_inventario.csv'], skip_leading_rows = 1);
+Crear tabla temp_dim_tiempo en BigQuery
+SQL:
+CREATE OR REPLACE TABLE `cadena-de-supermecados.stg_supermercado.temp_dim_tiempo` AS
+SELECT
+  ROW_NUMBER() OVER (ORDER BY fecha) AS id_tiempo,
+  fecha,
+  EXTRACT(DAY FROM fecha) AS dia,
+  EXTRACT(MONTH FROM fecha) AS mes,
+  CASE EXTRACT(MONTH FROM fecha)
+    WHEN 1 THEN 'enero' WHEN 2 THEN 'febrero' WHEN 3 THEN 'marzo'
+    WHEN 4 THEN 'abril' WHEN 5 THEN 'mayo' WHEN 6 THEN 'junio'
+    WHEN 7 THEN 'julio' WHEN 8 THEN 'agosto' WHEN 9 THEN 'septiembre'
+    WHEN 10 THEN 'octubre' WHEN 11 THEN 'noviembre' ELSE 'diciembre'
+  END AS nombre_mes,
+  CONCAT('Q', CAST(EXTRACT(QUARTER FROM fecha) AS STRING)) AS trimestre,
+  EXTRACT(YEAR FROM fecha) AS anio,
+  CASE EXTRACT(DAYOFWEEK FROM fecha)
+    WHEN 1 THEN 'domingo' WHEN 2 THEN 'lunes' WHEN 3 THEN 'martes'
+    WHEN 4 THEN 'miercoles' WHEN 5 THEN 'jueves' WHEN 6 THEN 'viernes'
+    ELSE 'sabado'
+  END AS dia_semana,
+  CAST(NULL AS STRING) AS franja_horaria
+FROM UNNEST(GENERATE_ARRAY(0, DATE_DIFF(DATE '2026-12-31', DATE '2023-01-01', DAY))) AS n
+CROSS JOIN UNNEST([DATE_ADD(DATE '2023-01-01', INTERVAL n DAY)]) AS fecha;
+
+
+PIPELINE 1: pipe_dim_tiempo
+Arquitectura: BigQuery Source → Wrangler → BigQuery Sink
+Source BigQuery:
+Dataset: stg_supermercado
+Table: temp_dim_tiempo
+Wrangler — directivas:
+trim :nombre_mes
+trim :dia_semana
+Sink BigQuery:
+Dataset: dw_supermercado
+Table: dim_tiempo
+Truncate: true
+Output Schema nullable: solo franja_horaria
+Verificación:
+SQL:
+SELECT COUNT(*) FROM `cadena-de-supermecados.dw_supermercado.dim_tiempo`;
+-- Esperado: 1,461
+
+
+PIPELINE 2: pipe_dim_metodoPago
+Arquitectura: Wrangler (GCS) → BigQuery Sink
+Wrangler — origen: tb_metodo_pago.csv desde GCS
+Directivas (una por una, click WRANGLE después de cada una):
+parse-as-csv :body ',' true
+drop :body
+rename :id_metodo_pago :id_metodoPago_nk
+copy :id_metodoPago_nk :id_metodoPago_sk force
+set-type :id_metodoPago_sk long
+set-type :id_metodoPago_nk long
+trim :tipo_pago
+Sink BigQuery:
+Dataset: dw_supermercado
+Table: dim_metodoPago
+Truncate: true
+Output Schema: todos not nullable
+Verificación:
+SQL:
+SELECT * FROM `cadena-de-supermecados.dw_supermercado.dim_metodoPago`;
+-- Esperado: 5 filas
+
+
+PIPELINE 3: pipe_dim_canal
+Arquitectura: Wrangler (GCS) → BigQuery Sink
+Wrangler — origen: tb_canal_venta.csv desde GCS
+Directivas:
+parse-as-csv :body ',' true
+drop :body
+rename :id_canal :id_canal_nk
+copy :id_canal_nk :id_canal_sk force
+set-type :id_canal_sk long
+set-type :id_canal_nk long
+trim :tipo_canal
+Sink BigQuery:
+Dataset: dw_supermercado
+Table: dim_canal
+Truncate: true
+Output Schema: todos not nullable
+Verificación:
+SQL:
+SELECT * FROM `cadena-de-supermecados.dw_supermercado.dim_canal`;
+-- Esperado: 3 filas
+
+
+PIPELINE 4: pipe_dim_promocion
+Arquitectura: BigQuery Source → BigQuery Sink (sin Wrangler)
+Paso previo — crear tabla staging en BigQuery:
+SQL:
+CREATE OR REPLACE TABLE `cadena-de-supermecados.stg_supermercado.stg_dim_promocion` AS
+SELECT
+  ROW_NUMBER() OVER (ORDER BY id_promocion) AS id_promocion_sk,
+  id_promocion AS id_promocion_nk,
+  tipo_promocion,
+  TRIM(descripcion) AS descripcion,
+  CAST(fecha_inicio AS STRING) AS fecha_inicio,
+  CAST(fecha_fin AS STRING) AS fecha_fin
+FROM `cadena-de-supermecados.stg_supermercado.tb_promocion`;
+Crear tabla destino en BigQuery:
+SQL:
+CREATE OR REPLACE TABLE `cadena-de-supermercados.dw_supermercado.dim_promocion` (
+  id_promocion_sk  INT64,
+  id_promocion_nk  INT64,
+  tipo_promocion   STRING NOT NULL,
+  descripcion      STRING NOT NULL,
+  fecha_inicio     STRING,
+  fecha_fin        STRING
+);
+
+INSERT INTO `cadena-de-supermecados.dw_supermercado.dim_promocion`
+VALUES (-1, NULL, 'No aplica', 'Sin promocion', NULL, NULL);
+Source BigQuery:
+Dataset: stg_supermercado
+Table: stg_dim_promocion
+Sink BigQuery:
+Dataset: dw_supermercado
+Table: dim_promocion
+Truncate: false
+Output Schema:
+CampoTipoNullable
+id_promocion_sk
+long
+❌
+id_promocion_nk
+long
+✅
+tipo_promocion
+string
+❌
+descripcion
+string
+❌
+fecha_inicio
+string
+✅
+fecha_fin
+string
+✅
+SQL post-carga:
+SQL:
+CREATE OR REPLACE TABLE `cadena-de-supermecados.dw_supermercado.dim_promocion` AS
+SELECT
+  d.id_promocion_sk,
+  d.id_promocion_nk,
+  d.tipo_promocion,
+  d.descripcion,
+  SAFE.PARSE_DATE('%Y-%m-%d', d.fecha_inicio) AS fecha_inicio,
+  SAFE.PARSE_DATE('%Y-%m-%d', d.fecha_fin)    AS fecha_fin,
+  CAST(p.porcentaje_descuento AS NUMERIC)     AS porcentaje_descuento
+FROM `cadena-de-supermecados.dw_supermercado.dim_promocion` d
+LEFT JOIN `cadena-de-supermecados.stg_supermercado.tb_promocion` p
+  ON d.id_promocion_nk = p.id_promocion;
+Verificación:
+SQL:
+SELECT COUNT(*) FROM `cadena-de-supermecados.dw_supermercado.dim_promocion`;
+-- Esperado: 61
+
+
+PIPELINE 5: pipe_dim_sucursal
+Arquitectura: Wrangler (GCS: tb_sucursal) + GCS Source (tb_provincia) → Joiner → Wrangler final → BigQuery Sink
+Wrangler inicial — origen: tb_sucursal.csv desde GCS
+Directivas (una por una, click WRANGLE después de cada una):
+parse-as-csv :body ',' true
+drop :body
+drop :fecha_apertura
+drop :gerente
+drop :telefono
+set-type :id_provincia int
+GCS Source para tb_provincia:
+Path: gs://supermercado_grupo1/tb_provincia.csv
+Format: csv, Skip Header: true
+Output Schema manual:
+CampoTipo
+id_provincia
+string
+nombre_provincia
+string
+region
+string
+Joiner:
+Join Type: Inner
+Join Condition: Wrangler.id_provincia = GCS2.id_provincia
+Fields seleccionados:
+WranglerSeleccionado
+id_sucursal
+✅
+nombre_sucursal
+✅
+direccion
+✅
+id_provincia
+❌
+GCS2Seleccionado
+id_provincia
+❌
+nombre_provincia
+✅
+region
+✅
+Wrangler final — directivas:
+rename :nombre_provincia :provincia
+rename :id_sucursal :id_sucursal_nk
+copy :id_sucursal_nk :id_sucursal_sk force
+Sink BigQuery:
+Dataset: dw_supermercado
+Table: dim_sucursal
+Truncate: true
+Output Schema:
+CampoTipoNullable
+id_sucursal_sk
+int
+❌
+id_sucursal_nk
+int
+❌
+nombre_sucursal
+string
+❌
+direccion
+string
+✅
+provincia
+string
+❌
+region
+string
+❌
+Verificación:
+SQL:
+SELECT * FROM `cadena-de-supermecados.dw_supermercado.dim_sucursal`;
+-- Esperado: 15 filas
+
+
+Validación general de los 5 pipelines
+SQL:
+SELECT 'dim_tiempo'     AS tabla, COUNT(*) AS filas FROM `cadena-de-supermecados.dw_supermercado.dim_tiempo`
+UNION ALL SELECT 'dim_metodoPago', COUNT(*) FROM `cadena-de-supermecados.dw_supermercado.dim_metodoPago`
+UNION ALL SELECT 'dim_canal',      COUNT(*) FROM `cadena-de-supermecados.dw_supermercado.dim_canal`
+UNION ALL SELECT 'dim_promocion',  COUNT(*) FROM `cadena-de-supermecados.dw_supermercado.dim_promocion`
+UNION ALL SELECT 'dim_sucursal',   COUNT(*) FROM `cadena-de-supermercados.dw_supermercado.dim_sucursal`
+ORDER BY tabla;
+TablaFilas esperadas
+dim_tiempo
+1,461
+dim_metodoPago
+5
+dim_canal
+3
+dim_promocion
+61
+dim_sucursal
+15
